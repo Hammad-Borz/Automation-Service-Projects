@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Pytest cache
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Logs
+logs/
+
+# Generated reports
+reports/
+
+# Generated output files
+output/
+
+# VS Code local settings
+.vscode/
