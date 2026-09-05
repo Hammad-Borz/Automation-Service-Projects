@@ -1,9 +1,11 @@
+from pathlib import Path
+
 from file_validator import validate_file
 
 
 def test_valid_file(tmp_path):
     file_path = tmp_path / "sample.txt"
-    file_path.write_text("Hello, this is a test file.")
+    file_path.write_text("Hello, this is a test file.", encoding="utf-8")
 
     is_valid, message = validate_file(file_path)
 
@@ -23,9 +25,18 @@ def test_empty_file(tmp_path):
 
 def test_unsupported_file(tmp_path):
     file_path = tmp_path / "document.pdf"
-    file_path.write_text("Test content")
+    file_path.write_text("Test content", encoding="utf-8")
 
     is_valid, message = validate_file(file_path)
 
     assert is_valid is False
     assert message == "Unsupported file type"
+
+
+def test_missing_path(tmp_path):
+    file_path = tmp_path / "missing.txt"
+
+    is_valid, message = validate_file(file_path)
+
+    assert is_valid is False
+    assert message == "Path is not a file"
