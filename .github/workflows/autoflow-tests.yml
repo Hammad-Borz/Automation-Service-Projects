@@ -1,0 +1,36 @@
+name: AutoFlow Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'AutoFlow-Business-Automation-System/**'
+      - '.github/workflows/autoflow-tests.yml'
+  pull_request:
+    paths:
+      - 'AutoFlow-Business-Automation-System/**'
+      - '.github/workflows/autoflow-tests.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: AutoFlow-Business-Automation-System
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: AutoFlow-Business-Automation-System/requirements.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m pytest -q
