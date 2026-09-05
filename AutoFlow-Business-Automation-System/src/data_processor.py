@@ -1,24 +1,25 @@
+"""Process supported business files into structured metrics."""
+
 import csv
+from pathlib import Path
 
 
-def process_text_file(file_path):
+def process_text_file(file_path: Path) -> dict:
+    """Return basic text-file metrics."""
     content = file_path.read_text(encoding="utf-8")
-
-    lines = content.splitlines()
-    words = content.split()
 
     return {
         "file_name": file_path.name,
         "file_type": "Text",
-        "line_count": len(lines),
-        "word_count": len(words),
+        "line_count": len(content.splitlines()),
+        "word_count": len(content.split()),
     }
 
 
-def process_csv_file(file_path):
+def process_csv_file(file_path: Path) -> dict:
+    """Return CSV headers and data-row count."""
     with file_path.open(encoding="utf-8", newline="") as file:
-        reader = csv.reader(file)
-        rows = list(reader)
+        rows = list(csv.reader(file))
 
     headers = rows[0] if rows else []
     data_rows = rows[1:] if len(rows) > 1 else []
