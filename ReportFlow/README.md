@@ -1,62 +1,105 @@
-# ReportFlow
+# 📊 ReportFlow
 
-**Automated Business Reporting System**
+> **Automated Business Reporting System** — Turn raw business data into validated insights and professional reports through one repeatable Python workflow.
 
-ReportFlow turns everyday sales exports into a decision-ready business performance pack. It ingests CSV or Excel data, validates the input contract, cleans and enriches orders, calculates operational KPIs, and publishes formatted Excel, CSV, and text reports from one repeatable workflow.
+![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-12_Passing-16A34A)
+![Reporting](https://img.shields.io/badge/Focus-Business_Reporting-7C3AED)
+![Status](https://img.shields.io/badge/Status-Complete-16A34A)
 
-## Business Problem
+---
 
-Business teams often spend hours reconciling spreadsheets, calculating recurring metrics, and assembling slide-ready summaries. That manual process is slow, inconsistent, and difficult to audit.
+## 🎯 The Business Problem
 
-## Solution
+Business teams often spend hours reconciling spreadsheets, calculating recurring KPIs, and assembling performance summaries. That manual workflow is slow, repetitive, inconsistent, and difficult to audit.
 
-ReportFlow provides a modular Python pipeline that makes the reporting process repeatable: one input file becomes validated data, transparent analytical tables, and a professional workbook with summary sheets and charts.
+## 💡 The Solution
 
-## Key Features
+**ReportFlow** provides a modular automation pipeline that transforms a business data file into validated, analysis-ready data and multiple professional report formats.
 
-- CSV ingestion with practical `.xlsx` support
-- Required-column and business-rule validation
-- Missing-value handling, date normalization, and derived revenue
-- Total revenue, orders, units, average order value, and ranked views
-- Product, category, region, and monthly analysis
-- Executive text report and formatted multi-sheet Excel workbook
-- Excel charts for product revenue and monthly trends
-- Processed orders and summary CSV exports
-- File logging, custom exceptions, type hints, and pytest coverage
-- Realistic included demo dataset with no external services
+```text
+📥 Business Data
+       ↓
+🔍 Load & Validate
+       ↓
+🧹 Clean & Enrich
+       ↓
+📈 Calculate KPIs
+       ↓
+📊 Generate Reports
+       ↓
+┌───────────┬───────────┬─────────────┐
+│ 📗 Excel  │ 📄 CSV    │ 📝 Text     │
+└───────────┴───────────┴─────────────┘
+```
 
-## Workflow
+---
+
+# ✨ Key Features
+
+- 📥 CSV ingestion with practical `.xlsx` support
+- 🛡️ Required-column and business-rule validation
+- 🧹 Missing-value handling and data normalization
+- 💰 Revenue and business KPI calculations
+- 📦 Product and category performance analysis
+- 🌍 Regional performance analysis
+- 📅 Monthly trend analysis
+- 🏆 Top-performing business views
+- 📗 Formatted multi-sheet Excel reports
+- 📊 Excel charts for product revenue and monthly trends
+- 📄 Processed data and summary CSV exports
+- 📝 Executive text report generation
+- ⚙️ Centralized workflow orchestration
+- 📋 Logging and custom exceptions
+- 🧪 **12 automated tests**
+- 🚀 Included demo dataset with no external services required
+
+---
+
+# 🧠 System Workflow
 
 ```mermaid
 flowchart LR
-    A[CSV or Excel input] --> B[Load]
+    A[📥 CSV / Excel Input] --> B[Load]
     B --> C[Validate]
-    C --> D[Clean and enrich]
+    C --> D[Clean & Enrich]
     D --> E[Calculate KPIs]
-    E --> F[Generate reports]
-    F --> G[Excel workbook]
-    F --> H[CSV exports]
-    F --> I[Text report]
+    E --> F[Generate Reports]
+    F --> G[📗 Excel Workbook]
+    F --> H[📄 CSV Exports]
+    F --> I[📝 Text Report]
 ```
 
-## Architecture
+---
 
-- `data_loader.py` owns file-format handling.
-- `data_validator.py` enforces the input contract.
-- `data_processor.py` produces normalized, analysis-ready rows.
-- `analytics.py` creates reusable aggregate tables.
-- `report_generator.py` renders the executive text report.
-- `excel_exporter.py` creates workbook sheets, styling, and charts.
-- `workflow.py` is the orchestration boundary; `main.py` is the CLI entry point.
+# 🏗️ Architecture
 
-## Project Structure
+| Component | Responsibility |
+|---|---|
+| `data_loader.py` | File ingestion and format handling |
+| `data_validator.py` | Input contract and business-rule validation |
+| `data_processor.py` | Data cleaning and normalization |
+| `analytics.py` | Reusable KPI and aggregate calculations |
+| `report_generator.py` | Executive text report generation |
+| `excel_exporter.py` | Excel workbook, sheets, formatting, and charts |
+| `workflow.py` | End-to-end orchestration |
+| `main.py` | Application entry point |
+
+---
+
+# 📁 Project Structure
 
 ```text
 ReportFlow/
-├── data/input/sales_data.csv
-├── data/output/                  # generated, ignored by Git
-├── logs/                         # generated logs, ignored by Git
-├── src/
+│
+├── 📂 data/
+│   ├── 📂 input/
+│   │   └── sales_data.csv
+│   └── 📂 output/                 # Generated reports
+│
+├── 📂 logs/
+│
+├── 📂 src/
 │   ├── analytics.py
 │   ├── config.py
 │   ├── data_loader.py
@@ -69,72 +112,147 @@ ReportFlow/
 │   ├── models.py
 │   ├── report_generator.py
 │   └── workflow.py
-└── tests/
+│
+├── 📂 tests/
+├── README.md
+├── requirements.txt
+└── pytest.ini
 ```
 
-## Technology Stack
+---
 
-Python 3.10+, pandas, openpyxl, pytest, pathlib, and the standard `logging` library.
+# 🛠️ Technology Stack
 
-## Installation
+| Category | Technologies |
+|---|---|
+| 🐍 Programming | Python |
+| 📊 Data Processing | pandas |
+| 📗 Excel Automation | openpyxl |
+| 🧪 Testing | pytest |
+| 📁 File Handling | pathlib |
+| 📝 Logging | Python `logging` |
 
-From this folder:
+---
+
+# 🚀 Quick Start
+
+## 1️⃣ Install Dependencies
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
 
-## Run the Demo
+## 2️⃣ Run the Demo
 
 ```powershell
 python -m src.main
 ```
 
-The included dataset contains 15 orders across four regions and six months. A demo run creates files under `data/output/` and logs under `logs/`.
+The included demo dataset contains **15 orders**, and a successful run produces business reports automatically.
 
-Example terminal output:
+### Example Output
 
 ```text
 ReportFlow demo completed successfully
+
 Revenue: $21,350.00
 Orders: 15
 Average order value: $1,423.33
-Excel report: data/output/reportflow_business_report.xlsx
-Text report: data/output/business_report.txt
-CSV exports: processed_orders.csv, product_summary.csv, regional_summary.csv, monthly_summary.csv
+
+Excel report:
+reportflow_business_report.xlsx
+
+Text report:
+business_report.txt
+
+CSV exports:
+- processed_orders.csv
+- product_summary.csv
+- regional_summary.csv
+- monthly_summary.csv
 ```
 
-## Run Tests
+---
+
+# 📊 Generated Report Outputs
+
+### 📗 Excel Business Report
+
+A formatted workbook containing business summaries and analytical views, including charts where applicable.
+
+### 📄 CSV Exports
+
+- Processed orders
+- Product summary
+- Regional summary
+- Monthly summary
+
+### 📝 Executive Text Report
+
+A concise, decision-oriented summary of business performance and core KPIs.
+
+> 📌 Generated report files are intentionally ignored by Git to keep the repository clean.
+
+---
+
+# 🧪 Testing
+
+Run the complete test suite:
 
 ```powershell
 pytest
 ```
 
-The suite covers configuration, CSV loading failures, validation failures, processing, KPI calculations, text reports, Excel sheets/charts, and the end-to-end workflow.
+### Latest Verified Result
 
-## Example Outputs
+```text
+12 passed
+```
 
-- **Executive Summary**: headline revenue, order count, units, and average order value.
-- **Products / Categories / Regions**: ranked revenue, orders, and unit tables.
-- **Monthly Trends**: chronological revenue performance with a line chart.
-- **CSV exports**: analysis-ready files for downstream BI tools.
+The test suite covers:
 
-## Business Use Cases
+- ⚙️ Configuration
+- 📥 CSV loading and invalid-file scenarios
+- 🛡️ Data validation
+- 🧹 Data processing
+- 📈 Business analytics and KPI calculations
+- 📝 Text report generation
+- 📗 Excel sheets and charts
+- 🔄 End-to-end workflow execution
 
-- Weekly sales leadership reporting
-- Regional performance reviews
-- Product portfolio and category planning
-- Operations team order-volume monitoring
-- Repeatable finance or commercial reporting packs
+---
 
-## Future Improvements
+# 💼 Business Use Cases
 
-- Add configurable fiscal calendars and currency conversion
-- Add scheduled execution and email delivery
-- Add customer, margin, and cohort metrics
-- Add a dashboard layer with role-based access
-- Add schema versioning and data-quality observability
+ReportFlow can serve as a foundation for:
 
-## Portfolio Notes
+- 📅 Weekly sales reporting
+- 🌍 Regional performance reviews
+- 📦 Product and category planning
+- 📈 Operations and order-volume monitoring
+- 💰 Finance and commercial reporting packs
+- 🤖 Future scheduled reporting automation
 
-ReportFlow demonstrates separation of concerns, defensive input handling, reproducible analytics, and practical business communication. It is intentionally usable as a standalone local project and as a foundation for a scheduled reporting service.
+---
+
+# 🔮 Future Improvements
+
+- ⏰ Scheduled report generation
+- 📧 Automated email delivery
+- 💱 Currency conversion
+- 📅 Configurable fiscal calendars
+- 💹 Margin and profitability metrics
+- 👥 Customer and cohort analytics
+- 📊 Interactive dashboard integration
+- 🔐 Role-based access controls
+- 🔎 Data-quality observability
+
+---
+
+# 🏆 Portfolio Value
+
+ReportFlow demonstrates practical skills in:
+
+`Python` • `Business Automation` • `Data Processing` • `pandas` • `Excel Automation` • `openpyxl` • `Analytics` • `Reporting` • `pytest`
+
+**Built as a practical, modular foundation for real-world business reporting automation.** 🚀
