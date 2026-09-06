@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.pytest_tmp/
+pytest_temp/
+logs/*.log
+data/*.json
+reports/*.txt
+.venv/
+venv/
+env/
