@@ -1,11 +1,11 @@
 # 🤖 Automation Service Projects
 
-> **A growing portfolio of practical, client-focused Python automation, AI-powered workflows, API integrations, data-processing systems, and reporting solutions built around real business problems.**
+> **A practical portfolio of client-focused Python automation, AI-powered workflows, API integrations, data-processing systems, reporting solutions, and database automation projects built around real business problems.**
 
 ![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white)
-![Projects](https://img.shields.io/badge/Projects-8-7C3AED)
-![Tests](https://img.shields.io/badge/Automated_Tests-101-16A34A)
-![Status](https://img.shields.io/badge/Portfolio-Actively_Growing-16A34A)
+![Projects](https://img.shields.io/badge/Projects-9-7C3AED)
+![Tests](https://img.shields.io/badge/Automated_Tests-126-16A34A)
+![Status](https://img.shields.io/badge/Portfolio-Complete-16A34A)
 
 ---
 
@@ -13,7 +13,7 @@
 
 This is a **service-oriented engineering portfolio**, not a collection of isolated coding exercises.
 
-Each project is designed around a practical business workflow and demonstrates how **Python, automation, APIs, data processing, validation, testing, reporting, and AI** can be combined into reusable systems.
+Each project is designed around a practical business workflow and demonstrates how **Python, automation, APIs, data processing, validation, SQL, testing, reporting, and AI** can be combined into reusable systems.
 
 ```text
 💼 Business Problem
@@ -24,7 +24,7 @@ Each project is designed around a practical business workflow and demonstrates h
         ↓
 🛡️ Validation & Error Handling
         ↓
-⚙️ Automation / AI Workflow
+⚙️ Automation / AI / Data Workflow
         ↓
 🧪 Testing & Verification
         ↓
@@ -33,7 +33,7 @@ Each project is designed around a practical business workflow and demonstrates h
 
 ---
 
-# 🚀 Featured Projects
+# 🏆 Featured Projects
 
 | # | Project | Primary Focus | Tests | Status |
 |---|---|---|---:|---|
@@ -45,8 +45,9 @@ Each project is designed around a practical business workflow and demonstrates h
 | 06 | 📚 KnowledgeBase-AI | RAG and document question answering | 32 | 🟢 Complete |
 | 07 | 📧 MailFlow | Intelligent email automation | 12 | 🟢 Complete |
 | 08 | 📊 ReportFlow | Automated business reporting | 12 | 🟢 Complete |
+| 09 | 🗄️ DataOps Automator | SQL & database automation | 17 | 🟢 Complete |
 
-## 🏆 Current Portfolio: **8 Projects • 109 Automated Tests**
+## 🏆 Portfolio: **9 Projects • 126 Automated Tests**
 
 ---
 
@@ -186,6 +187,22 @@ Business Data → Load → Validate → Clean → Analyze → Generate Reports
 
 ---
 
+# 🗄️ 09 — DataOps Automator
+
+A repeatable **SQL and database automation system** that transforms raw sales data into a validated SQLite database, business analytics, and automated reports.
+
+```text
+Sales CSV → Validate → Transform → SQLite UPSERT → SQL Analytics → Reports
+```
+
+**Highlights:** 📥 CSV ingestion • 🛡️ Data validation • 🧹 pandas transformation • 🗄️ SQLite automation • 🔁 UPSERT design • 📊 SQL KPIs • 📤 Automated reports
+
+**Skills:** `Python` • `SQL` • `SQLite` • `Database Automation` • `pandas` • `pytest`
+
+📂 **Project:** `DataOps-Automator/`
+
+---
+
 # 🧠 Skills Demonstrated Across the Portfolio
 
 ## 🐍 Python Engineering
@@ -204,6 +221,7 @@ Business Data → Load → Validate → Clean → Analyze → Generate Reports
 - Web data extraction
 - Email automation
 - Automated business reporting
+- SQL and database automation
 
 ## 🤖 AI & Intelligent Workflows
 
@@ -214,12 +232,14 @@ Business Data → Load → Validate → Clean → Analyze → Generate Reports
 - Pydantic validation
 - Replaceable provider boundaries
 
-## 📊 Data & Reporting
+## 📊 Data, Reporting & Databases
 
 - CSV and Excel automation
 - Data cleaning and transformation
 - KPI calculations
-- Analytical summaries
+- SQL analytics
+- SQLite database design
+- UPSERT and repeatable data loading
 - Automated report generation
 - Excel workbook and chart generation
 
@@ -235,7 +255,7 @@ Business Data → Load → Validate → Clean → Analyze → Generate Reports
 
 # 🧪 Software Quality
 
-## 🟢 **109 Automated Tests Across 8 Projects**
+## 🟢 **126 Automated Tests Across 9 Projects**
 
 The portfolio emphasizes practical engineering practices:
 
@@ -261,6 +281,7 @@ Automation-Service-Projects/
 ├── KnowledgeBase-AI/
 ├── MailFlow/
 ├── ReportFlow/
+├── DataOps-Automator/
 └── README.md
 ```
 
@@ -268,7 +289,7 @@ Automation-Service-Projects/
 
 ---
 
-# 💼 Portfolio Purpose
+# 💼 Portfolio Services Demonstrated
 
 These projects demonstrate capabilities relevant to practical freelance and business automation services:
 
@@ -280,7 +301,8 @@ These projects demonstrate capabilities relevant to practical freelance and busi
 - 🤖 AI assistants and tool calling
 - 📚 Retrieval-Augmented Generation (RAG)
 - 📧 Email automation
-- 📈 Automated reporting
+- 📈 Excel and business reporting automation
+- 🗄️ SQL and database automation
 - ⚙️ End-to-end automation systems
 
 ---
@@ -295,6 +317,7 @@ These projects demonstrate capabilities relevant to practical freelance and busi
 | 🔍 Data Extraction | `BeautifulSoup4` |
 | 📄 Documents | PDF and DOCX libraries |
 | 📊 Data & Reporting | CSV, JSON, pandas, openpyxl |
+| 🗄️ Databases | SQL, SQLite, UPSERT workflows |
 | 🧪 Testing | `pytest`, `unittest.mock` |
 | 🔐 Configuration | `python-dotenv` |
 | 📝 Observability | Python `logging` |
@@ -302,15 +325,11 @@ These projects demonstrate capabilities relevant to practical freelance and busi
 
 ---
 
-# 📈 Portfolio Roadmap
+# 🏁 Portfolio Status
 
-The portfolio will continue expanding into additional high-value automation areas:
+## 🟢 **The current 9-project Automation Service Portfolio is complete.**
 
-- 🗄️ Database and SQL automation
-- ⚡ Workflow automation platforms
-- 🔗 Advanced API and webhook automation
-- 🚀 End-to-end AI automation systems
-- 🤖 Advanced agentic workflows
+The portfolio now covers nine practical service areas ranging from Python automation and API integration to AI workflows, RAG, email automation, business reporting, and SQL/database automation.
 
 ---
 
@@ -318,7 +337,7 @@ The portfolio will continue expanding into additional high-value automation area
 
 **Hammad Borz**
 
-> Python • AI Automation • API Integration • Data Automation • Automation Systems
+> Python • AI Automation • API Integration • Data Automation • Database Automation • Automation Systems
 
 ---
 
