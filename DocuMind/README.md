@@ -2,11 +2,16 @@
 
 > **An AI-powered Python automation system that transforms PDF and Word documents into validated, structured insights, machine-readable results, and human-readable reports.**
 
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
+![AI Automation](https://img.shields.io/badge/Focus-AI%20Automation-purple)
+![Tests](https://img.shields.io/badge/Tests-14%20Passed-brightgreen)
+![Architecture](https://img.shields.io/badge/Architecture-Modular-yellow)
+
 ---
 
-## ✨ What DocuMind Does
+## ✨ Overview
 
-DocuMind processes supported documents through a modular pipeline:
+DocuMind is a modular **AI document-processing pipeline** designed to turn supported documents into structured, validated outputs. It separates document extraction, AI analysis, validation, persistence, reporting, and logging into focused, testable components.
 
 ```text
 PDF / DOCX Document
@@ -22,56 +27,64 @@ PDF / DOCX Document
 📄 Generate Report
 ```
 
-The project separates document extraction, AI interaction, validation, persistence, and reporting into clear, testable components.
-
 ---
 
 ## 🚀 Key Capabilities
 
-- 📄 Extracts text from **PDF and DOCX** files
-- 🤖 Uses OpenAI for structured document analysis
-- 🧾 Produces summaries, key points, action items, and document categories
-- 🛡️ Validates model responses with **Pydantic** before saving them
-- 📦 Exports validated analysis as predictable JSON files
-- 📊 Generates concise, human-readable processing reports
-- ⚠️ Handles missing files, unsupported types, empty documents, missing credentials, AI failures, and invalid responses safely
-- 📝 Writes operational events to a dedicated log
-- 🧪 Includes a fully mocked pytest suite with **14 passing tests**
+- 📄 Extract text from **PDF** and **DOCX** files
+- 🤖 Perform structured AI-powered document analysis
+- 🧾 Produce summaries, key points, action items, and document categories
+- 🛡️ Validate model responses with **Pydantic** before persistence
+- 📦 Export validated analysis as predictable JSON files
+- 📊 Generate concise, human-readable processing reports
+- ⚠️ Handle missing files, unsupported formats, empty documents, missing credentials, AI failures, and invalid responses safely
+- 📝 Record operational events through centralized logging
+- 🧪 Include a fully mocked **pytest suite with 14 passing tests**
 
 ---
 
-# 🏗️ Architecture
+## 🏗️ System Architecture
 
 ```text
-Document
-   ↓
-DocumentReader
-   ↓
-AIProcessor
-   ↓
-ResultValidator
-   ↓
-ResultExporter
-   ↓
-Validated JSON Output
-
-        └──→ ReportGenerator → Processing Report
+                    ┌──────────────────┐
+                    │  PDF / DOCX File │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ DocumentReader   │
+                    └────────┬─────────┘
+                             ▼
+                    ┌──────────────────┐
+                    │   AIProcessor    │
+                    └────────┬─────────┘
+                             ▼
+                    ┌──────────────────┐
+                    │ ResultValidator  │
+                    └────────┬─────────┘
+                             ▼
+                    ┌──────────────────┐
+                    │ ResultExporter   │──► 📦 JSON Output
+                    └────────┬─────────┘
+                             └──► 📄 ReportGenerator ──► Text Report
 ```
+
+### Component Responsibilities
 
 | Component | Responsibility |
 |---|---|
 | `document_reader` | Extract text independently from PDF and DOCX files. |
-| `ai_processor` | Isolate OpenAI client setup and structured AI requests. |
+| `ai_processor` | Isolate AI client setup and structured analysis requests. |
 | `models` | Define the structured document-analysis contract. |
 | `result_validator` | Validate AI-generated results before persistence. |
 | `result_exporter` | Save validated analysis using safe JSON filenames. |
 | `report_generator` | Create concise human-readable reports. |
-| `logger` | Configure file logging once per process. |
+| `logger` | Configure centralized operational logging. |
 | `main` | Coordinate the end-to-end command-line workflow. |
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 ```text
 DocuMind/
@@ -100,70 +113,54 @@ DocuMind/
 
 ---
 
-# ⚙️ Installation
+## ⚙️ Installation
 
-From the repository's `DocuMind` directory:
-
-```bash
-python -m venv .venv
-```
-
-Activate the environment on Windows PowerShell:
+From the `DocuMind` directory:
 
 ```powershell
+python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-```
-
-Then install the dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-# 🔐 Configuration
+## 🔐 Configuration
 
-Copy `.env.example` to `.env` and provide your OpenAI API key:
+Copy `.env.example` to `.env` and add your API key:
 
 ```env
 OPENAI_API_KEY=your_api_key_here
 ```
 
-> 🔒 Never commit your `.env` file or API key to GitHub.
+> 🔒 **Security:** Never commit your `.env` file or API key to GitHub.
 
 ---
 
-# ▶️ Usage
+## ▶️ Usage
 
-Run the application from the DocuMind project directory with a supported document:
+Run the application from the project directory with a supported document:
 
-```bash
+```powershell
 python src/main.py sample_documents/example.pdf
 ```
 
-Supported document formats:
+### Supported Formats
 
 - 📕 PDF
 - 📘 DOCX
 
-On successful processing, DocuMind produces:
+### Processing Flow
 
 ```text
-Document
-   ↓
-Text Extraction
-   ↓
-AI Analysis
-   ↓
-Pydantic Validation
-   ↓
-JSON Result + Text Report
+Document → Text Extraction → AI Analysis → Pydantic Validation
+                                     ↓
+                        JSON Result + Text Report
 ```
 
 ---
 
-# 📤 Output
+## 📤 Output
 
 For a document such as `meeting-notes.docx`, DocuMind can generate:
 
@@ -171,7 +168,7 @@ For a document such as `meeting-notes.docx`, DocuMind can generate:
 output/results/meeting-notes_analysis.json
 ```
 
-Machine-readable validated analysis containing structured insights.
+A machine-readable, validated analysis containing structured insights.
 
 ```text
 output/reports/meeting-notes_report.txt
@@ -187,57 +184,57 @@ logs/documind.log
 
 ---
 
-# 🧪 Testing
+## 🧪 Testing
 
 Run the complete automated test suite:
 
-```bash
+```powershell
 pytest
 ```
 
-### Current verified result
+### Current Verified Result
 
 ```text
 14 passed
 ```
 
-The tests use mocked boundaries where appropriate, including mocked OpenAI interactions, so the suite does **not require real API calls**.
+The tests use mocked boundaries where appropriate, including mocked AI interactions, so the normal test suite does **not require live API calls**.
 
 ---
 
-# 🎯 Example Workflow
+## 🎯 Example Workflow
 
 1. 📥 Provide a PDF or DOCX document.
-2. 📖 DocuMind extracts the document text.
-3. 🤖 The AI processor requests structured analysis.
-4. 🛡️ Pydantic validates the returned result.
-5. 📦 The validated analysis is exported as JSON.
-6. 📄 A readable processing report is generated.
-7. 📝 Operational events are recorded in logs.
+2. 📖 Extract the document text.
+3. 🤖 Request structured AI analysis.
+4. 🛡️ Validate the returned result.
+5. 📦 Export the validated analysis as JSON.
+6. 📄 Generate a readable processing report.
+7. 📝 Record operational events in logs.
 
 ---
 
-# 🛠️ Skills Demonstrated
+## 🛠️ Skills Demonstrated
 
 `Python` • `AI Automation` • `OpenAI API` • `Document Processing` • `PDF` • `DOCX` • `Pydantic` • `Structured Data` • `JSON` • `Error Handling` • `Logging` • `pytest` • `Modular Architecture`
 
 ---
 
-# 🔮 Limitations & Future Improvements
-
-The current version intentionally focuses on text-based PDF and DOCX processing. Potential future improvements include:
+## 🔮 Future Improvements
 
 - 🔍 OCR support for scanned or image-only PDFs
 - 📚 Chunking and synthesis for very large documents
 - ⚡ Asynchronous batch processing
 - 📊 Richer report formats
-- 🔄 Multiple AI provider support
+- 🔄 Multiple AI-provider support
 - 📌 Source citations within generated analysis
 
 ---
 
 ## 🟢 Project Status
 
-**Complete — 14 automated tests passing.**
+**Complete · Tested · Portfolio Ready**
+
+> **14 automated tests passing.**
 
 DocuMind demonstrates a practical AI document-processing workflow built with modular architecture, validation, automated testing, and production-oriented error handling.
