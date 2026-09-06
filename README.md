@@ -1,16 +1,17 @@
 # 🤖 Automation Service Projects
 
-> **A growing portfolio of practical, client-focused Python automation, API integration, and data-processing systems built around real-world business workflows.**
+> **A growing portfolio of practical, client-focused Python automation, API integration, data-processing, and AI-powered systems built around real-world business workflows.**
 
 [![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
-[![Projects](https://img.shields.io/badge/projects-3-purple.svg)](#-featured-projects)
+[![Projects](https://img.shields.io/badge/projects-4-purple.svg)](#-featured-projects)
+[![Tests](https://img.shields.io/badge/automated%20tests-60-success.svg)](#-software-quality)
 [![Status](https://img.shields.io/badge/portfolio-actively%20growing-success.svg)](#-portfolio-roadmap)
 
 ---
 
 ## 🎯 What This Repository Demonstrates
 
-This is a **service-oriented portfolio**, not a collection of isolated coding exercises. Each project is designed to represent a practical automation problem that could be adapted for business or freelance clients.
+This is a **service-oriented portfolio**, not a collection of isolated coding exercises. Each project represents a practical automation problem that could be adapted for business or freelance clients.
 
 ### 🔄 Core Engineering Pattern
 
@@ -23,7 +24,7 @@ Modular Python Implementation
       ↓
 Validation & Error Handling
       ↓
-Automation Workflow
+Automation / AI Workflow
       ↓
 Testing & Documentation
 ```
@@ -37,6 +38,7 @@ Testing & Documentation
 | 01 | 🗂️ **AutoFlow** | Business file automation | 10 | 🟢 Complete |
 | 02 | 🔌 **ConnectHub** | Multi-API integration | 11 | 🟢 Complete |
 | 03 | ⛏️ **DataMiner** | Web data extraction & processing | 11 | 🟢 Complete |
+| 04 | 🧠 **DocuMind** | AI document processing | 14 | 🟢 Complete |
 
 ---
 
@@ -171,6 +173,47 @@ Generate Processing Report
 
 ---
 
+# 🧠 04 — DocuMind AI Document Processing System
+
+An AI-powered Python automation system that transforms **PDF and DOCX documents into validated, structured insights and reports**.
+
+### ⚙️ Workflow
+
+```text
+PDF / DOCX Document
+        ↓
+📖 Extract Text
+        ↓
+🤖 AI Analysis
+        ↓
+🛡️ Validate Result
+        ↓
+📦 Export JSON
+        ↓
+📄 Generate Report
+```
+
+### ✨ Capabilities
+
+- 📄 PDF and DOCX text extraction
+- 🤖 Structured AI document analysis
+- 🧾 Summary, key points, action items, and document categorization
+- 🛡️ Pydantic-based result validation
+- 📦 Machine-readable JSON export
+- 📄 Human-readable report generation
+- ⚠️ Safe handling of missing, empty, and unsupported documents
+- 🔐 Environment-based API configuration
+- 📝 File logging
+- 🧪 **14 automated tests with mocked external boundaries**
+
+### 🛠️ Skills Demonstrated
+
+`Python` • `AI Automation` • `OpenAI API` • `Document Processing` • `PDF` • `DOCX` • `Pydantic` • `Structured Data` • `Error Handling` • `Logging` • `pytest`
+
+📂 **Project:** `DocuMind/`
+
+---
+
 # 🧠 Skills Demonstrated Across the Portfolio
 
 ## 🐍 Python Development
@@ -188,7 +231,17 @@ Generate Processing Report
 - File-processing pipelines
 - API-to-API data workflows
 - Web data extraction
+- AI-powered document processing
 - Reporting pipelines
+
+## 🤖 AI & Document Processing
+
+- AI-assisted structured analysis
+- OpenAI API integration
+- PDF and DOCX processing
+- Structured result validation
+- Pydantic models
+- Machine-readable AI outputs
 
 ## 🌐 API & Web Integration
 
@@ -209,8 +262,9 @@ Generate Processing Report
 
 ## 🧪 Software Quality
 
+- **60 automated tests across 4 projects**
 - Automated testing with `pytest`
-- Mocking external HTTP behavior
+- Mocking external HTTP and AI behavior
 - Modular and testable code
 - Logging and debugging
 - `.gitignore` and environment configuration
@@ -247,6 +301,15 @@ Automation-Service-Projects/
 │   ├── reports/
 │   └── README.md
 │
+├── DocuMind/
+│   ├── src/
+│   ├── tests/
+│   ├── sample_documents/
+│   ├── output/
+│   ├── logs/
+│   ├── .env.example
+│   └── README.md
+│
 └── README.md
 ```
 
@@ -261,9 +324,9 @@ These projects are designed to demonstrate practical capabilities relevant to se
 - 🔍 Web scraping and data extraction
 - 📊 Data processing and transformation
 - 🗂️ File and document automation
+- 🤖 AI document processing
+- 🧠 AI automation and assistants
 - 📈 Automated reporting workflows
-- 🤖 AI automation
-- 📧 Email automation
 - ⚙️ End-to-end business automation systems
 
 Each project focuses on solving a **concrete workflow problem** rather than demonstrating isolated programming concepts.
@@ -275,8 +338,10 @@ Each project focuses on solving a **concrete workflow problem** rather than demo
 | Category | Technologies |
 |---|---|
 | 🐍 Programming | Python |
+| 🤖 AI | OpenAI API, Pydantic |
 | 🌐 HTTP & APIs | `requests` |
 | 🔍 HTML Parsing | `BeautifulSoup4` |
+| 📄 Document Processing | PDF, DOCX libraries |
 | 📊 Data Processing | CSV, JSON, Python standard library |
 | 🧪 Testing | `pytest`, `unittest.mock` |
 | 🔐 Configuration | `python-dotenv` |
@@ -289,7 +354,6 @@ Each project focuses on solving a **concrete workflow problem** rather than demo
 
 The portfolio will continue expanding into additional high-value automation areas:
 
-- 🤖 AI automation
 - 🧠 AI assistants and tool calling
 - 📚 Retrieval-Augmented Generation (RAG)
 - 📧 Email automation
@@ -302,15 +366,18 @@ The portfolio will continue expanding into additional high-value automation area
 
 # 📌 Current Status
 
-## 🟢 3 Professional Portfolio Projects Completed
+## 🟢 4 Professional Portfolio Projects Completed
 
-| Project | Focus | Status |
-|---|---|---|
-| 🗂️ AutoFlow | Business File Automation | 🟢 Complete |
-| 🔌 ConnectHub | API Integration & Automation | 🟢 Complete |
-| ⛏️ DataMiner | Web Data Extraction & Processing | 🟢 Complete |
+| Project | Focus | Tests | Status |
+|---|---|---:|---|
+| 🗂️ AutoFlow | Business File Automation | 10 | 🟢 Complete |
+| 🔌 ConnectHub | API Integration & Automation | 11 | 🟢 Complete |
+| ⛏️ DataMiner | Web Data Extraction & Processing | 11 | 🟢 Complete |
+| 🧠 DocuMind | AI Document Processing | 14 | 🟢 Complete |
 
-🚀 **This portfolio is actively growing with practical, client-focused automation systems.**
+### 🎯 Current Portfolio Total: **60 Automated Tests**
+
+🚀 **This portfolio is actively growing with practical, client-focused automation and AI systems.**
 
 ---
 
