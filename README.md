@@ -3,17 +3,19 @@
 > **A growing portfolio of practical, client-focused Python automation, API integration, data-processing, and AI-powered systems built around real-world business workflows.**
 
 [![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
-[![Projects](https://img.shields.io/badge/projects-4-purple.svg)](#-featured-projects)
-[![Tests](https://img.shields.io/badge/automated%20tests-60-success.svg)](#-software-quality)
+[![Projects](https://img.shields.io/badge/projects-5-purple.svg)](#-featured-projects)
+[![Tests](https://img.shields.io/badge/automated%20tests-77-success.svg)](#-software-quality)
 [![Status](https://img.shields.io/badge/portfolio-actively%20growing-success.svg)](#-portfolio-roadmap)
 
 ---
 
-## 🎯 What This Repository Demonstrates
+# 🎯 What This Portfolio Demonstrates
 
-This is a **service-oriented portfolio**, not a collection of isolated coding exercises. Each project represents a practical automation problem that could be adapted for business or freelance clients.
+This repository is a **service-oriented engineering portfolio**, not a collection of isolated coding exercises.
 
-### 🔄 Core Engineering Pattern
+Each project is designed around a practical business workflow and demonstrates how Python, APIs, data processing, automation, and AI can be combined into reusable systems.
+
+## 🔄 Core Engineering Pattern
 
 ```text
 Business Problem
@@ -39,6 +41,9 @@ Testing & Documentation
 | 02 | 🔌 **ConnectHub** | Multi-API integration | 11 | 🟢 Complete |
 | 03 | ⛏️ **DataMiner** | Web data extraction & processing | 11 | 🟢 Complete |
 | 04 | 🧠 **DocuMind** | AI document processing | 14 | 🟢 Complete |
+| 05 | 🤖 **TaskPilot** | AI business task assistant | 17 | 🟢 Complete |
+
+## 🏆 Current Portfolio: **5 Projects • 77 Automated Tests**
 
 ---
 
@@ -64,20 +69,16 @@ Generate Report
 Archive / Output Results
 ```
 
-### ✨ Capabilities
+### ✨ Highlights
 
 - 📁 Automated file discovery
 - ✅ File validation
-- 📄 TXT file processing
-- 📊 CSV data processing
+- 📄 TXT and CSV processing
 - 🗂️ Automatic file organization
 - 📑 Report generation
-- 📝 Logging
-- 🧪 Automated testing
+- 📝 Logging and automated testing
 
-### 🛠️ Skills Demonstrated
-
-`Python` • `File Automation` • `CSV Processing` • `Data Validation` • `Logging` • `pytest` • `Modular Architecture`
+**Skills:** `Python` • `File Automation` • `CSV Processing` • `Data Validation` • `pytest`
 
 📂 **Project:** `AutoFlow-Business-Automation-System/`
 
@@ -85,31 +86,13 @@ Archive / Output Results
 
 # 🔌 02 — ConnectHub Multi-API Integration & Automation System
 
-A reusable Python integration workflow that connects REST APIs through a reliable:
+A reusable Python integration workflow built around a reliable data pipeline:
 
 ```text
 Fetch → Validate → Transform → Send
 ```
 
-### ⚙️ Workflow
-
-```text
-Source REST API
-       ↓
-   Fetch Data
-       ↓
- Validate Records
-   ↓        ↓
-Valid     Invalid
-  ↓          ↓
-Transform   Log & Skip
-  ↓
-Send to Destination API
-  ↓
-Generate Execution Summary
-```
-
-### ✨ Capabilities
+### ✨ Highlights
 
 - 🌐 Reusable GET and POST API client
 - 🛡️ HTTP and network error handling
@@ -118,13 +101,9 @@ Generate Execution Summary
 - 🔄 Source-to-destination schema transformation
 - ⚙️ End-to-end workflow orchestration
 - 🔁 Partial-failure resilience
-- 📊 Structured processing summaries
 - 🔐 Environment-based configuration
-- 🧪 Automated tests with mocked HTTP requests
 
-### 🛠️ Skills Demonstrated
-
-`Python` • `REST APIs` • `API Integration` • `Data Validation` • `Data Transformation` • `Error Handling` • `Logging` • `pytest`
+**Skills:** `Python` • `REST APIs` • `API Integration` • `Data Transformation` • `pytest`
 
 📂 **Project:** `ConnectHub/`
 
@@ -152,22 +131,16 @@ Export CSV + JSON
 Generate Processing Report
 ```
 
-### ✨ Capabilities
+### ✨ Highlights
 
 - 🌐 Configurable HTTP fetching
 - 🔍 BeautifulSoup HTML extraction
-- ✅ Record-level validation
 - 🧹 Data cleaning and normalization
-- 📊 CSV export
-- 📦 JSON export
+- 📊 CSV and JSON exports
 - 📄 Processing report generation
-- 📝 File logging
-- 🔁 Reproducible local end-to-end demo
-- 🧪 **11 automated tests**
+- 🔁 Reproducible local demonstration
 
-### 🛠️ Skills Demonstrated
-
-`Python` • `Web Data Extraction` • `BeautifulSoup` • `requests` • `Data Cleaning` • `CSV` • `JSON` • `Automation Pipelines` • `pytest`
+**Skills:** `Python` • `Web Data Extraction` • `BeautifulSoup` • `requests` • `Data Cleaning`
 
 📂 **Project:** `DataMiner/`
 
@@ -175,7 +148,7 @@ Generate Processing Report
 
 # 🧠 04 — DocuMind AI Document Processing System
 
-An AI-powered Python automation system that transforms **PDF and DOCX documents into validated, structured insights and reports**.
+An AI-powered automation system that transforms **PDF and DOCX documents into validated, structured insights and reports**.
 
 ### ⚙️ Workflow
 
@@ -193,24 +166,58 @@ PDF / DOCX Document
 📄 Generate Report
 ```
 
-### ✨ Capabilities
+### ✨ Highlights
 
 - 📄 PDF and DOCX text extraction
 - 🤖 Structured AI document analysis
-- 🧾 Summary, key points, action items, and document categorization
+- 🧾 Summaries, key points, action items, and categorization
 - 🛡️ Pydantic-based result validation
 - 📦 Machine-readable JSON export
-- 📄 Human-readable report generation
-- ⚠️ Safe handling of missing, empty, and unsupported documents
-- 🔐 Environment-based API configuration
-- 📝 File logging
-- 🧪 **14 automated tests with mocked external boundaries**
+- 📄 Human-readable reports
+- ⚠️ Safe handling of invalid or unsupported documents
 
-### 🛠️ Skills Demonstrated
-
-`Python` • `AI Automation` • `OpenAI API` • `Document Processing` • `PDF` • `DOCX` • `Pydantic` • `Structured Data` • `Error Handling` • `Logging` • `pytest`
+**Skills:** `Python` • `AI Automation` • `OpenAI API` • `PDF` • `DOCX` • `Pydantic`
 
 📂 **Project:** `DocuMind/`
+
+---
+
+# 🤖 05 — TaskPilot AI Business Assistant
+
+A Python AI assistant that converts business task requests into **validated and structured task operations**.
+
+### ⚙️ Workflow
+
+```text
+💬 User Request
+      ↓
+🤖 TaskPilot Assistant
+      ↓
+🧠 Intent & Tool Selection
+      ↓
+🔧 Validated Python Tool
+      ↓
+🗂️ Task Manager + JSON Storage
+      ↓
+🛡️ Result Validation
+      ↓
+📊 Summary + Report
+```
+
+### ✨ Highlights
+
+- ➕ Create, list, update, complete, and delete tasks
+- 📊 Generate task summaries and priority breakdowns
+- 🛡️ Pydantic validation
+- 💾 Safe local JSON persistence
+- 🤖 Optional OpenAI tool/function calling
+- 🔧 Structured Python tool layer
+- 📄 Automated report generation
+- 🧪 **17 automated tests**
+
+**Skills:** `Python` • `AI Assistants` • `Tool Calling` • `Pydantic` • `JSON` • `pytest`
+
+📂 **Project:** `TaskPilot/`
 
 ---
 
@@ -220,7 +227,7 @@ PDF / DOCX Document
 
 - Modular application architecture
 - Object-oriented design
-- Functions and reusable components
+- Reusable functions and components
 - Error handling
 - File operations
 - Data processing
@@ -229,19 +236,20 @@ PDF / DOCX Document
 
 - Business workflow automation
 - File-processing pipelines
-- API-to-API data workflows
+- API-to-API integrations
 - Web data extraction
 - AI-powered document processing
-- Reporting pipelines
+- AI task assistance
+- Automated reporting workflows
 
-## 🤖 AI & Document Processing
+## 🤖 AI & Intelligent Workflows
 
 - AI-assisted structured analysis
 - OpenAI API integration
-- PDF and DOCX processing
-- Structured result validation
-- Pydantic models
-- Machine-readable AI outputs
+- Tool and function calling
+- Pydantic models and validation
+- Structured machine-readable outputs
+- AI boundary mocking for tests
 
 ## 🌐 API & Web Integration
 
@@ -260,15 +268,21 @@ PDF / DOCX Document
 - JSON generation
 - Structured reporting
 
-## 🧪 Software Quality
+---
 
-- **60 automated tests across 4 projects**
-- Automated testing with `pytest`
-- Mocking external HTTP and AI behavior
-- Modular and testable code
+# 🧪 Software Quality
+
+## 🟢 **77 Automated Tests Across 5 Projects**
+
+The portfolio emphasizes practical software engineering practices:
+
+- `pytest` automated testing
+- Mocking external HTTP and AI boundaries
+- Modular and testable architecture
+- Validation and error handling
 - Logging and debugging
 - `.gitignore` and environment configuration
-- Reproducible local demonstrations
+- Reproducible local workflows
 
 ---
 
@@ -280,34 +294,28 @@ Automation-Service-Projects/
 ├── AutoFlow-Business-Automation-System/
 │   ├── src/
 │   ├── tests/
-│   ├── input/
-│   ├── output/
-│   ├── reports/
 │   └── README.md
 │
 ├── ConnectHub/
 │   ├── src/
 │   ├── tests/
-│   ├── logs/
-│   ├── reports/
-│   ├── .env.example
 │   └── README.md
 │
 ├── DataMiner/
 │   ├── demo/
 │   ├── src/
 │   ├── tests/
-│   ├── output/
-│   ├── reports/
 │   └── README.md
 │
 ├── DocuMind/
 │   ├── src/
 │   ├── tests/
-│   ├── sample_documents/
-│   ├── output/
-│   ├── logs/
-│   ├── .env.example
+│   └── README.md
+│
+├── TaskPilot/
+│   ├── data/
+│   ├── src/
+│   ├── tests/
 │   └── README.md
 │
 └── README.md
@@ -317,17 +325,17 @@ Automation-Service-Projects/
 
 # 💼 Portfolio Purpose
 
-These projects are designed to demonstrate practical capabilities relevant to services such as:
+These projects demonstrate capabilities relevant to practical freelance and business automation services:
 
 - 🐍 Python automation
 - 🌐 API integration
 - 🔍 Web scraping and data extraction
 - 📊 Data processing and transformation
 - 🗂️ File and document automation
-- 🤖 AI document processing
-- 🧠 AI automation and assistants
-- 📈 Automated reporting workflows
-- ⚙️ End-to-end business automation systems
+- 🤖 AI assistants and tool calling
+- 🧠 AI document processing
+- 📈 Automated reporting
+- ⚙️ End-to-end automation systems
 
 Each project focuses on solving a **concrete workflow problem** rather than demonstrating isolated programming concepts.
 
@@ -338,10 +346,10 @@ Each project focuses on solving a **concrete workflow problem** rather than demo
 | Category | Technologies |
 |---|---|
 | 🐍 Programming | Python |
-| 🤖 AI | OpenAI API, Pydantic |
+| 🤖 AI | OpenAI API, Pydantic, Tool Calling |
 | 🌐 HTTP & APIs | `requests` |
 | 🔍 HTML Parsing | `BeautifulSoup4` |
-| 📄 Document Processing | PDF, DOCX libraries |
+| 📄 Document Processing | PDF and DOCX libraries |
 | 📊 Data Processing | CSV, JSON, Python standard library |
 | 🧪 Testing | `pytest`, `unittest.mock` |
 | 🔐 Configuration | `python-dotenv` |
@@ -354,7 +362,6 @@ Each project focuses on solving a **concrete workflow problem** rather than demo
 
 The portfolio will continue expanding into additional high-value automation areas:
 
-- 🧠 AI assistants and tool calling
 - 📚 Retrieval-Augmented Generation (RAG)
 - 📧 Email automation
 - 📊 Excel and Google Sheets automation
@@ -366,7 +373,7 @@ The portfolio will continue expanding into additional high-value automation area
 
 # 📌 Current Status
 
-## 🟢 4 Professional Portfolio Projects Completed
+## 🟢 5 Professional Portfolio Projects Completed
 
 | Project | Focus | Tests | Status |
 |---|---|---:|---|
@@ -374,10 +381,11 @@ The portfolio will continue expanding into additional high-value automation area
 | 🔌 ConnectHub | API Integration & Automation | 11 | 🟢 Complete |
 | ⛏️ DataMiner | Web Data Extraction & Processing | 11 | 🟢 Complete |
 | 🧠 DocuMind | AI Document Processing | 14 | 🟢 Complete |
+| 🤖 TaskPilot | AI Business Task Assistant | 17 | 🟢 Complete |
 
-### 🎯 Current Portfolio Total: **60 Automated Tests**
+### 🏆 Current Portfolio Total: **77 Automated Tests**
 
-🚀 **This portfolio is actively growing with practical, client-focused automation and AI systems.**
+🚀 **The portfolio is actively growing through practical, client-focused automation and AI systems.**
 
 ---
 
