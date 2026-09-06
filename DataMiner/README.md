@@ -1,40 +1,145 @@
-# DataMiner — Web Data Extraction & Processing System
+# ⛏️ DataMiner — Web Data Extraction & Processing System
 
-DataMiner is a reusable Python workflow for turning product-style HTML into clean, portable data. It fetches a page, extracts structured records using explicit CSS selectors, validates and normalizes each record, exports successful results, and creates a processing report.
+> **A reusable Python data pipeline that transforms structured HTML into validated, cleaned, and export-ready datasets.**
 
-## Business Problem
+[![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
+[![Tests](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg)](#-testing)
+[![Status](https://img.shields.io/badge/status-complete-success.svg)](#-project-status)
 
-Teams often receive catalog information in HTML but need dependable CSV or JSON data for analysis, migrations, and operational workflows. DataMiner demonstrates a clear, testable path from controlled HTML to cleaned data without coupling the project to a third-party commercial website.
+---
 
-## Features
+## 🎯 The Business Problem
 
-- Configurable HTTP fetching with timeout, User-Agent, and clear network/HTTP errors.
-- BeautifulSoup extraction from documented `.product-card` selectors.
-- Record-level validation and cleaning that lets valid data continue when individual records fail.
-- Whitespace, price, category, and availability normalization.
-- UTF-8 CSV and JSON exports, plus a human-readable processing report.
-- File logging without duplicate handlers and a fully offline pytest suite.
+Businesses often have useful catalog or product information embedded in HTML, while their downstream workflows need **clean CSV or JSON data** for analysis, migration, reporting, or automation.
 
-## Architecture
+**DataMiner** demonstrates a reliable and testable pipeline that:
 
 ```text
-SOURCE_URL -> WebClient -> DataExtractor -> DataValidator -> DataCleaner -> DataExporter -> ReportGenerator
-                              malformed cards   invalid records   cleaning failures
+Fetch HTML → Extract Records → Validate Data → Clean Records → Export Results → Generate Report
 ```
 
-## Project Structure
+The project uses a controlled and reproducible HTML demo rather than depending on a third-party website whose structure may change.
+
+---
+
+## ⚙️ Core Workflow
+
+```text
+                         SOURCE_URL
+                             │
+                             ▼
+                      🌐 WebClient
+                             │
+                             ▼
+                    🔍 DataExtractor
+                             │
+                ┌────────────┴────────────┐
+                ▼                         ▼
+         Validated Records          Malformed / Invalid
+                │                         │
+                ▼                         ▼
+            🧹 DataCleaner             Log & Skip
+                │
+          ┌─────┴─────┐
+          ▼           ▼
+     CSV Export    JSON Export
+          │           │
+          └─────┬─────┘
+                ▼
+         📄 Processing Report
+```
+
+---
+
+## ✨ Key Capabilities
+
+- 🌐 **HTTP fetching** with configurable timeout and a custom User-Agent
+- 🛡️ **Clear error handling** for network and unsuccessful HTTP responses
+- 🔍 **BeautifulSoup extraction** using documented CSS selectors
+- ✅ **Record-level validation** with invalid-record isolation
+- 🧹 **Data cleaning and normalization** for whitespace, prices, categories, and availability
+- 📊 **CSV export** for spreadsheet-friendly workflows
+- 📦 **JSON export** for application and API workflows
+- 📄 **Human-readable processing reports**
+- 📝 **File logging** without duplicate handlers
+- 🧪 **11 automated pytest tests** with mocked HTTP behavior
+- 🔁 **Reproducible local end-to-end demo** with no dependency on a live third-party website
+
+---
+
+## 🏗️ Project Architecture
+
+```text
+SOURCE_URL
+    │
+    ▼
+WebClient
+    │
+    ▼
+DataExtractor ──────► Malformed cards safely excluded
+    │
+    ▼
+DataValidator ──────► Invalid records reported
+    │
+    ▼
+DataCleaner ────────► Cleaning failures isolated
+    │
+    ▼
+DataExporter ───────► CSV + JSON
+    │
+    ▼
+ReportGenerator ────► Processing summary
+```
+
+---
+
+## 📁 Project Structure
 
 ```text
 DataMiner/
-├── demo/      # Local, reproducible sample catalog for the end-to-end demo
-├── src/       # Fetching, extraction, validation, cleaning, export, reporting
-├── tests/     # Offline unit tests with mocked HTTP
-├── output/    # Generated CSV and JSON files (ignored by Git)
-├── reports/   # Generated processing reports (ignored by Git)
-└── logs/      # Generated application log (ignored by Git)
+│
+├── demo/
+│   └── sample_products.html    # Reproducible local HTML catalog
+│
+├── src/
+│   ├── web_client.py           # HTTP access
+│   ├── data_extractor.py       # HTML extraction
+│   ├── data_validator.py       # Record validation
+│   ├── data_cleaner.py         # Data normalization
+│   ├── data_exporter.py        # CSV and JSON output
+│   ├── report_generator.py     # Processing reports
+│   ├── logger.py               # Application logging
+│   └── main.py                 # Workflow entry point
+│
+├── tests/                      # Automated test suite
+├── output/                     # Generated data (Git-ignored)
+├── reports/                    # Generated reports (Git-ignored)
+├── logs/                       # Generated logs (Git-ignored)
+│
+├── .env.example
+├── .gitignore
+├── pytest.ini
+├── requirements.txt
+└── README.md
 ```
 
-## Installation
+---
+
+## 🛠️ Technology Stack
+
+| Area | Technology |
+|---|---|
+| 🐍 Language | Python |
+| 🌐 HTTP | `requests` |
+| 🔍 HTML Parsing | `BeautifulSoup4` |
+| 🔐 Configuration | `python-dotenv` |
+| 🧪 Testing | `pytest` + `unittest.mock` |
+| 📊 Data Formats | CSV + JSON |
+| 📝 Logging | Python `logging` |
+
+---
+
+## 🚀 Installation
 
 ```powershell
 python -m venv .venv
@@ -42,44 +147,56 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## Usage
+---
 
-Set a source URL, then run the program from the project root:
+## 🧪 Run the Reproducible End-to-End Demo
 
-```powershell
-$env:SOURCE_URL = "https://example.com/catalog"
-python src/main.py
-```
+The included demo contains **five product cards**:
 
-## Local End-to-End Demo
+- 🟢 **4 records** are successfully cleaned and exported
+- 🟡 **1 record** intentionally contains `Price on request`, demonstrating how a cleaning failure is isolated without stopping the workflow
 
-The included `demo/sample_products.html` lets you run the whole workflow without
-depending on an external website. It contains five complete product cards. Four
-are exported after normalization; one uses `Price on request` to demonstrate how
-an otherwise valid record is safely reported as a cleaning failure.
+### Terminal 1 — Start the local source server
 
-From the `DataMiner` directory, start Python's built-in web server in one
-PowerShell window:
+From the `DataMiner` directory:
 
 ```powershell
 cd demo
 python -m http.server 8000
 ```
 
-In a second PowerShell window, return to the `DataMiner` directory, activate the
-environment if needed, and set the source URL before running the workflow:
+### Terminal 2 — Run DataMiner
+
+Open another PowerShell window in the `DataMiner` directory:
 
 ```powershell
 $env:SOURCE_URL = "http://localhost:8000/sample_products.html"
 python src/main.py
 ```
 
-Alternatively, copy `.env.example` to `.env` and run `python src/main.py`.
-`main.py` loads `.env` automatically, while a value already set in the normal
-environment takes precedence. The demo writes its CSV and JSON to `output/` and
-its run summary to `reports/`.
+The workflow generates:
 
-For integration or demonstrations, use HTML with this controlled structure:
+```text
+output/csv/products.csv
+output/json/products.json
+reports/processing_report.txt
+```
+
+### Optional `.env` configuration
+
+Copy `.env.example` to `.env` and run:
+
+```powershell
+python src/main.py
+```
+
+`main.py` automatically loads `.env`. A normal environment variable takes precedence when one is already set.
+
+---
+
+## 🔍 Supported HTML Structure
+
+DataMiner intentionally uses explicit selectors for predictable extraction:
 
 ```html
 <article class="product-card">
@@ -90,22 +207,60 @@ For integration or demonstrations, use HTML with this controlled structure:
 </article>
 ```
 
-## Testing
+---
+
+## 🧪 Testing
+
+Run the complete test suite:
 
 ```powershell
 pytest
 ```
 
-Tests cover successful and failed HTTP requests, HTML extraction, malformed cards, validation, cleaning and price conversion, CSV/JSON exports, and report generation. No internet access is required.
+### Latest verified result
 
-## Example Workflow
+```text
+11 passed
+```
 
-Given three product cards, DataMiner skips malformed HTML safely, reports invalid extracted data, cleans the usable records, writes `output/csv/products.csv` and `output/json/products.json`, and saves a summary in `reports/processing_report.txt`.
+The suite covers:
 
-## Technology Stack
+- Successful HTTP requests
+- Network and HTTP failures
+- HTML extraction
+- Malformed cards
+- Data validation
+- Data cleaning and price conversion
+- CSV and JSON exports
+- Report generation
 
-Python, requests, BeautifulSoup4, pytest, unittest.mock, csv, json, logging, and pathlib.
+The tests use mocked HTTP behavior, so **internet access is not required**.
 
-## Limitations and Future Improvements
+---
 
-This focused portfolio project processes one HTML response and a defined product-card structure. A production version may add pagination, retry/backoff behavior, rate limiting, configurable selectors, duplicate detection, provenance metadata, and scheduled execution.
+## 💼 Skills Demonstrated
+
+`Python` • `Web Data Extraction` • `BeautifulSoup` • `requests` • `Data Validation` • `Data Cleaning` • `CSV` • `JSON` • `Error Handling` • `Logging` • `pytest` • `Automation Pipelines`
+
+---
+
+## 🔮 Future Improvements
+
+A production version could add:
+
+- 🔁 Pagination and multi-page crawling
+- ⏱️ Retry and exponential backoff
+- 🚦 Rate limiting
+- ⚙️ Configurable CSS selectors
+- 🔍 Duplicate detection
+- 🧾 Data provenance metadata
+- 📅 Scheduled execution
+- 💾 Database storage
+
+---
+
+## 🟢 Project Status
+
+**Completed — Portfolio Ready** 🚀
+
+This project demonstrates a practical web data extraction workflow designed around a realistic client need: transforming controlled HTML data into clean, portable, automation-ready datasets.
