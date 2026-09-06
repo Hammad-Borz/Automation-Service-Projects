@@ -1,25 +1,50 @@
 # 🤖 Automation Service Projects
 
-> **A growing portfolio of practical Python, API, AI, and business automation systems built around real-world client problems.**
+> **A growing portfolio of practical, client-focused Python automation, API integration, and data-processing systems built around real-world business workflows.**
 
-This repository contains service-specific projects designed to demonstrate practical automation skills that can be applied to freelance work and business workflows.
+[![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
+[![Projects](https://img.shields.io/badge/projects-3-purple.svg)](#-featured-projects)
+[![Status](https://img.shields.io/badge/portfolio-actively%20growing-success.svg)](#-portfolio-roadmap)
 
 ---
 
-## 🚀 Featured Projects
+## 🎯 What This Repository Demonstrates
 
-| # | Project | Primary Focus | Status |
-|---|---|---|---|
-| 01 | 🗂️ **AutoFlow — Business Automation System** | Python automation, file processing | ✅ Completed |
-| 02 | 🔌 **ConnectHub — Multi-API Integration System** | REST APIs, data integration | ✅ Completed |
+This is a **service-oriented portfolio**, not a collection of isolated coding exercises. Each project is designed to represent a practical automation problem that could be adapted for business or freelance clients.
+
+### 🔄 Core Engineering Pattern
+
+```text
+Business Problem
+      ↓
+Requirements & Architecture
+      ↓
+Modular Python Implementation
+      ↓
+Validation & Error Handling
+      ↓
+Automation Workflow
+      ↓
+Testing & Documentation
+```
+
+---
+
+# 🚀 Featured Projects
+
+| # | Project | Primary Focus | Tests | Status |
+|---|---|---|---:|---|
+| 01 | 🗂️ **AutoFlow** | Business file automation | 10 | 🟢 Complete |
+| 02 | 🔌 **ConnectHub** | Multi-API integration | 11 | 🟢 Complete |
+| 03 | ⛏️ **DataMiner** | Web data extraction & processing | 11 | 🟢 Complete |
 
 ---
 
 # 🗂️ 01 — AutoFlow Business Automation System
 
-A modular Python automation system that processes business files through a complete workflow.
+A modular Python automation system for processing business files through a complete workflow.
 
-### ⚙️ Core Workflow
+### ⚙️ Workflow
 
 ```text
 Input Files
@@ -37,7 +62,7 @@ Generate Report
 Archive / Output Results
 ```
 
-### ✨ Core Capabilities
+### ✨ Capabilities
 
 - 📁 Automated file discovery
 - ✅ File validation
@@ -46,11 +71,11 @@ Archive / Output Results
 - 🗂️ Automatic file organization
 - 📑 Report generation
 - 📝 Logging
-- 🧪 Automated testing with `pytest`
+- 🧪 Automated testing
 
 ### 🛠️ Skills Demonstrated
 
-`Python` • `File Automation` • `CSV Processing` • `Logging` • `Testing` • `Modular Architecture`
+`Python` • `File Automation` • `CSV Processing` • `Data Validation` • `Logging` • `pytest` • `Modular Architecture`
 
 📂 **Project:** `AutoFlow-Business-Automation-System/`
 
@@ -58,15 +83,13 @@ Archive / Output Results
 
 # 🔌 02 — ConnectHub Multi-API Integration & Automation System
 
-A professional Python automation project for connecting REST APIs through a reliable:
+A reusable Python integration workflow that connects REST APIs through a reliable:
 
 ```text
 Fetch → Validate → Transform → Send
 ```
 
-workflow.
-
-### ⚙️ Core Workflow
+### ⚙️ Workflow
 
 ```text
 Source REST API
@@ -84,17 +107,16 @@ Send to Destination API
 Generate Execution Summary
 ```
 
-### ✨ Core Capabilities
+### ✨ Capabilities
 
 - 🌐 Reusable GET and POST API client
 - 🛡️ HTTP and network error handling
 - 📦 JSON response handling
-- ✅ Record-level data validation
+- ✅ Record-level validation
 - 🔄 Source-to-destination schema transformation
-- ⚙️ End-to-end API workflow orchestration
+- ⚙️ End-to-end workflow orchestration
 - 🔁 Partial-failure resilience
 - 📊 Structured processing summaries
-- 📝 File-based logging
 - 🔐 Environment-based configuration
 - 🧪 Automated tests with mocked HTTP requests
 
@@ -106,42 +128,97 @@ Generate Execution Summary
 
 ---
 
-## 🧠 Skills Demonstrated Across This Portfolio
+# ⛏️ 03 — DataMiner Web Data Extraction & Processing System
 
-### 🐍 Python Development
+A Python data pipeline that transforms structured HTML into **validated, cleaned, and export-ready datasets**.
+
+### ⚙️ Workflow
+
+```text
+SOURCE_URL
+    ↓
+Fetch HTML
+    ↓
+Extract Records
+    ↓
+Validate Data
+    ↓
+Clean & Normalize
+    ↓
+Export CSV + JSON
+    ↓
+Generate Processing Report
+```
+
+### ✨ Capabilities
+
+- 🌐 Configurable HTTP fetching
+- 🔍 BeautifulSoup HTML extraction
+- ✅ Record-level validation
+- 🧹 Data cleaning and normalization
+- 📊 CSV export
+- 📦 JSON export
+- 📄 Processing report generation
+- 📝 File logging
+- 🔁 Reproducible local end-to-end demo
+- 🧪 **11 automated tests**
+
+### 🛠️ Skills Demonstrated
+
+`Python` • `Web Data Extraction` • `BeautifulSoup` • `requests` • `Data Cleaning` • `CSV` • `JSON` • `Automation Pipelines` • `pytest`
+
+📂 **Project:** `DataMiner/`
+
+---
+
+# 🧠 Skills Demonstrated Across the Portfolio
+
+## 🐍 Python Development
 
 - Modular application architecture
-- Functions and classes
+- Object-oriented design
+- Functions and reusable components
 - Error handling
 - File operations
 - Data processing
 
-### ⚙️ Automation
+## ⚙️ Automation Systems
 
 - Business workflow automation
-- File organization
-- Data processing pipelines
-- Reporting
+- File-processing pipelines
+- API-to-API data workflows
+- Web data extraction
+- Reporting pipelines
 
-### 🌐 API Integration
+## 🌐 API & Web Integration
 
 - REST API communication
 - GET and POST requests
+- HTTP failure handling
 - Environment-based configuration
-- Request failure handling
+- HTML fetching and parsing
 - Data transformation pipelines
 
-### 🧪 Software Quality
+## 📊 Data Processing
+
+- Validation
+- Cleaning and normalization
+- CSV generation
+- JSON generation
+- Structured reporting
+
+## 🧪 Software Quality
 
 - Automated testing with `pytest`
 - Mocking external HTTP behavior
 - Modular and testable code
 - Logging and debugging
 - `.gitignore` and environment configuration
+- Reproducible local demonstrations
 
 ---
 
-## 📁 Repository Structure
+# 📁 Repository Structure
 
 ```text
 Automation-Service-Projects/
@@ -162,35 +239,45 @@ Automation-Service-Projects/
 │   ├── .env.example
 │   └── README.md
 │
+├── DataMiner/
+│   ├── demo/
+│   ├── src/
+│   ├── tests/
+│   ├── output/
+│   ├── reports/
+│   └── README.md
+│
 └── README.md
 ```
 
 ---
 
-## 🎯 Portfolio Purpose
+# 💼 Portfolio Purpose
 
-These projects are built to demonstrate practical capabilities for services such as:
+These projects are designed to demonstrate practical capabilities relevant to services such as:
 
 - 🐍 Python automation
 - 🌐 API integration
-- 📊 Data processing
+- 🔍 Web scraping and data extraction
+- 📊 Data processing and transformation
 - 🗂️ File and document automation
+- 📈 Automated reporting workflows
 - 🤖 AI automation
 - 📧 Email automation
-- 📈 Reporting workflows
 - ⚙️ End-to-end business automation systems
 
-Each project is intended to represent a concrete automation problem rather than simply demonstrate isolated programming concepts.
+Each project focuses on solving a **concrete workflow problem** rather than demonstrating isolated programming concepts.
 
 ---
 
-## 🛠️ Core Technology Stack
+# 🛠️ Core Technology Stack
 
 | Category | Technologies |
 |---|---|
 | 🐍 Programming | Python |
-| 🌐 API Communication | `requests` |
-| 📊 Data Processing | CSV and Python standard library tools |
+| 🌐 HTTP & APIs | `requests` |
+| 🔍 HTML Parsing | `BeautifulSoup4` |
+| 📊 Data Processing | CSV, JSON, Python standard library |
 | 🧪 Testing | `pytest`, `unittest.mock` |
 | 🔐 Configuration | `python-dotenv` |
 | 📝 Observability | Python `logging` |
@@ -198,11 +285,10 @@ Each project is intended to represent a concrete automation problem rather than 
 
 ---
 
-## 📈 Portfolio Roadmap
+# 📈 Portfolio Roadmap
 
-This repository will continue expanding with additional practical automation systems covering areas such as:
+The portfolio will continue expanding into additional high-value automation areas:
 
-- 🔍 Web scraping and data extraction
 - 🤖 AI automation
 - 🧠 AI assistants and tool calling
 - 📚 Retrieval-Augmented Generation (RAG)
@@ -210,24 +296,30 @@ This repository will continue expanding with additional practical automation sys
 - 📊 Excel and Google Sheets automation
 - 🗄️ Database and SQL automation
 - ⚡ Workflow automation platforms
-- 🚀 End-to-end automation systems
+- 🚀 End-to-end AI automation systems
 
 ---
 
-## 📌 Current Status
+# 📌 Current Status
 
-🟢 **2 professional automation projects completed**
+## 🟢 3 Professional Portfolio Projects Completed
 
-🚀 **This portfolio is actively growing with new client-focused automation systems.**
+| Project | Focus | Status |
+|---|---|---|
+| 🗂️ AutoFlow | Business File Automation | 🟢 Complete |
+| 🔌 ConnectHub | API Integration & Automation | 🟢 Complete |
+| ⛏️ DataMiner | Web Data Extraction & Processing | 🟢 Complete |
+
+🚀 **This portfolio is actively growing with practical, client-focused automation systems.**
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Hammad Borz**
 
-Python • AI Automation • API Integration • Automation Systems
+> Python • AI Automation • API Integration • Data Automation • Automation Systems
 
 ---
 
-### ⭐ Explore the individual project folders to view their architecture, implementation, tests, and documentation.
+### ⭐ Explore the individual project folders to review the architecture, implementation, tests, documentation, and practical workflows behind each project.
