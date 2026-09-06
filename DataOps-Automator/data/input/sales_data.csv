@@ -1,0 +1,17 @@
+order_id,order_date,customer,region,product,category,quantity,unit_price
+DO-1001,2025-01-05,Northstar Retail,North,Insight Dashboard,Software,2,1250
+DO-1002,2025-01-18,BluePeak Health,South,Workflow Engine,Software,1,980
+DO-1003,2025-02-03,Harbor Logistics,East,Data Strategy,Consulting,3,650
+DO-1004,2025-02-21,Northstar Retail,West,Insight Dashboard,Software,1,1250
+DO-1005,2025-03-07,Greenline Foods,North,Enablement Workshop,Training,4,420
+DO-1006,2025-03-16,BluePeak Health,East,Workflow Engine,Software,2,980
+DO-1007,2025-03-29,Harbor Logistics,South,Data Strategy,Consulting,2,650
+DO-1008,2025-04-04,Greenline Foods,West,Enablement Workshop,Training,5,420
+DO-1009,2025-04-19,Northstar Retail,South,Insight Dashboard,Software,2,1250
+DO-1010,2025-05-02,BluePeak Health,North,Workflow Engine,Software,3,980
+DO-1011,2025-05-14,Harbor Logistics,West,Data Strategy,Consulting,4,650
+DO-1012,2025-05-27,Greenline Foods,East,Enablement Workshop,Training,2,420
+DO-1013,2025-06-08,Northstar Retail,East,Insight Dashboard,Software,1,1250
+DO-1014,2025-06-17,BluePeak Health,West,Workflow Engine,Software,2,980
+DO-1015,2025-06-26,Greenline Foods,South,Enablement Workshop,Training,3,420
+DO-1016,2025-07-03,Harbor Logistics,North,Data Strategy,Consulting,1,650
