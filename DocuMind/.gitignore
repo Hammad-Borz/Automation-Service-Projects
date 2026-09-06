@@ -1,0 +1,16 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.pytest_tmp/
+.venv/
+venv/
+env/
+logs/*.log
+output/results/*.json
+output/reports/*.txt
+!logs/.gitkeep
+!output/results/.gitkeep
+!output/reports/.gitkeep
+pytest_temp/
+test_runtime/
