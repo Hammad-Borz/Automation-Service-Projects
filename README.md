@@ -1,32 +1,34 @@
 # 🤖 Automation Service Projects
 
-> **A growing portfolio of practical, client-focused Python automation, AI-powered workflows, API integrations, and data-processing systems built around real business problems.**
+> **A growing portfolio of practical, client-focused Python automation, AI-powered workflows, API integrations, data-processing systems, and reporting solutions built around real business problems.**
 
 ![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white)
-![Projects](https://img.shields.io/badge/Projects-6-7C3AED)
-![Tests](https://img.shields.io/badge/Automated_Tests-89-16A34A)
+![Projects](https://img.shields.io/badge/Projects-8-7C3AED)
+![Tests](https://img.shields.io/badge/Automated_Tests-101-16A34A)
 ![Status](https://img.shields.io/badge/Portfolio-Actively_Growing-16A34A)
 
 ---
 
-## 🎯 What This Portfolio Demonstrates
+# 🎯 What This Portfolio Demonstrates
 
 This is a **service-oriented engineering portfolio**, not a collection of isolated coding exercises.
 
-Each project is designed around a practical workflow and demonstrates how **Python, automation, APIs, data processing, validation, testing, and AI** can be combined into reusable systems.
+Each project is designed around a practical business workflow and demonstrates how **Python, automation, APIs, data processing, validation, testing, reporting, and AI** can be combined into reusable systems.
 
 ```text
-Business Problem
-      ↓
-Requirements & Architecture
-      ↓
-Modular Python Implementation
-      ↓
-Validation & Error Handling
-      ↓
-Automation / AI Workflow
-      ↓
-Testing & Documentation
+💼 Business Problem
+        ↓
+🏗️ Requirements & Architecture
+        ↓
+🐍 Modular Python Implementation
+        ↓
+🛡️ Validation & Error Handling
+        ↓
+⚙️ Automation / AI Workflow
+        ↓
+🧪 Testing & Verification
+        ↓
+📚 Documentation & Portfolio Presentation
 ```
 
 ---
@@ -40,9 +42,11 @@ Testing & Documentation
 | 03 | ⛏️ DataMiner | Web data extraction & processing | 11 | 🟢 Complete |
 | 04 | 🧠 DocuMind | AI document processing | 14 | 🟢 Complete |
 | 05 | 🤖 TaskPilot | AI business task assistant | 17 | 🟢 Complete |
-| 06 | 📧 MailFlow | Intelligent email automation | 12 | 🟢 Complete |
+| 06 | 📚 KnowledgeBase-AI | RAG and document question answering | 32 | 🟢 Complete |
+| 07 | 📧 MailFlow | Intelligent email automation | 12 | 🟢 Complete |
+| 08 | 📊 ReportFlow | Automated business reporting | 12 | 🟢 Complete |
 
-## 🏆 Current Portfolio: **6 Projects • 89 Automated Tests**
+## 🏆 Current Portfolio: **8 Projects • 109 Automated Tests**
 
 ---
 
@@ -122,7 +126,23 @@ User Request → Assistant → Intent / Tool Selection → Validated Tool → Ta
 
 ---
 
-# 📧 06 — MailFlow Intelligent Email Automation System
+# 📚 06 — KnowledgeBase-AI
+
+A document-focused **Retrieval-Augmented Generation (RAG)** system that indexes PDF and DOCX content and answers questions using retrieved source context.
+
+```text
+Documents → Extract → Chunk → Index → Retrieve → Ground Answer → Sources
+```
+
+**Highlights:** 📄 PDF/DOCX ingestion • ✂️ Text chunking • 🔎 Retrieval • 💬 Question answering • 🧠 Conversation-aware retrieval • 🛡️ Grounded-answer validation
+
+**Skills:** `Python` • `RAG` • `Document Processing` • `Retrieval` • `Pydantic` • `pytest`
+
+📂 **Project:** `KnowledgeBase-AI/`
+
+---
+
+# 📧 07 — MailFlow Intelligent Email Automation System
 
 A modular, safe-by-default email automation system that turns inbound messages into **prioritized, explainable, and actionable workflows**.
 
@@ -142,16 +162,7 @@ Generate Draft (Optional)
 Record Result
 ```
 
-### ✨ Highlights
-
-- 📥 Configurable IMAP ingestion plus a local demo provider
-- 🏷️ Email classification: urgent, support, sales, newsletter, invoice, and general
-- 🚦 High, medium, and low priority scoring
-- ⚙️ Configurable automation rules
-- ✍️ Deterministic response drafting with an extension point for future AI providers
-- 📤 Guarded SMTP architecture
-- 🔐 Safe demo mode that sends no real emails
-- 🧪 **12 automated tests**
+**Highlights:** 📥 Configurable IMAP ingestion • 🏷️ Email classification • 🚦 Priority scoring • ⚙️ Automation rules • ✍️ Response drafting • 📤 Guarded SMTP architecture
 
 **Skills:** `Python` • `Email Automation` • `IMAP` • `SMTP` • `Pydantic` • `pytest`
 
@@ -159,31 +170,61 @@ Record Result
 
 ---
 
+# 📊 08 — ReportFlow Automated Business Reporting System
+
+A business reporting pipeline that transforms raw sales data into **validated insights and professional Excel, CSV, and text reports**.
+
+```text
+Business Data → Load → Validate → Clean → Analyze → Generate Reports
+```
+
+**Highlights:** 📥 CSV/Excel ingestion • 🧹 Data processing • 💰 KPI calculations • 📦 Product analysis • 🌍 Regional analysis • 📅 Monthly trends • 📗 Excel charts • 📄 CSV exports
+
+**Skills:** `Python` • `pandas` • `openpyxl` • `Business Analytics` • `Excel Automation` • `pytest`
+
+📂 **Project:** `ReportFlow/`
+
+---
+
 # 🧠 Skills Demonstrated Across the Portfolio
 
-### 🐍 Python Engineering
+## 🐍 Python Engineering
+
 - Modular application architecture
 - Object-oriented and component-based design
 - Type hints and validation
 - Error handling and logging
 - Reusable, testable components
 
-### ⚙️ Automation Systems
+## ⚙️ Automation Systems
+
 - Business workflow automation
 - File-processing pipelines
 - API-to-API integrations
 - Web data extraction
 - Email automation
-- Automated reporting
+- Automated business reporting
 
-### 🤖 AI & Intelligent Workflows
+## 🤖 AI & Intelligent Workflows
+
 - AI-assisted structured analysis
 - OpenAI API integration
+- Retrieval-Augmented Generation (RAG)
 - Tool and function calling
 - Pydantic validation
 - Replaceable provider boundaries
 
-### 🌐 APIs & Integrations
+## 📊 Data & Reporting
+
+- CSV and Excel automation
+- Data cleaning and transformation
+- KPI calculations
+- Analytical summaries
+- Automated report generation
+- Excel workbook and chart generation
+
+## 🌐 APIs & Integrations
+
 - REST API communication
 - HTTP failure handling
 - Environment-based configuration
@@ -194,12 +235,11 @@ Record Result
 
 # 🧪 Software Quality
 
-## 🟢 **89 Automated Tests Across 6 Projects**
+## 🟢 **109 Automated Tests Across 8 Projects**
 
 The portfolio emphasizes practical engineering practices:
 
 - `pytest` automated testing
-- Mocking external boundaries where appropriate
 - Modular and testable architecture
 - Validation and error handling
 - Logging and debugging
@@ -220,10 +260,11 @@ Automation-Service-Projects/
 ├── TaskPilot/
 ├── KnowledgeBase-AI/
 ├── MailFlow/
+├── ReportFlow/
 └── README.md
 ```
 
-> 📌 Individual projects may contain `src/`, `tests/`, configuration files, data directories, and their own detailed README documentation.
+> 📌 Each project contains its own source code, tests, configuration, documentation, and practical workflow implementation.
 
 ---
 
@@ -249,11 +290,11 @@ These projects demonstrate capabilities relevant to practical freelance and busi
 | Category | Technologies |
 |---|---|
 | 🐍 Programming | Python |
-| 🤖 AI | OpenAI API, Pydantic, Tool Calling |
+| 🤖 AI | OpenAI API, RAG, Pydantic, Tool Calling |
 | 🌐 APIs & Web | `requests`, REST APIs, IMAP/SMTP |
 | 🔍 Data Extraction | `BeautifulSoup4` |
 | 📄 Documents | PDF and DOCX libraries |
-| 📊 Data | CSV, JSON, Python standard library |
+| 📊 Data & Reporting | CSV, JSON, pandas, openpyxl |
 | 🧪 Testing | `pytest`, `unittest.mock` |
 | 🔐 Configuration | `python-dotenv` |
 | 📝 Observability | Python `logging` |
@@ -265,9 +306,9 @@ These projects demonstrate capabilities relevant to practical freelance and busi
 
 The portfolio will continue expanding into additional high-value automation areas:
 
-- 📊 Excel and Google Sheets automation
 - 🗄️ Database and SQL automation
 - ⚡ Workflow automation platforms
+- 🔗 Advanced API and webhook automation
 - 🚀 End-to-end AI automation systems
 - 🤖 Advanced agentic workflows
 
