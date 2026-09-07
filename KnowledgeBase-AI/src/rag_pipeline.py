@@ -9,7 +9,7 @@ from .exceptions import EmptyQueryError
 from .llm_client import LLMClient, build_context
 from .logger import get_logger
 from .models import QueryRequest, RAGResponse
-from .result_validator import citations_from_chunks, validate_rag_response
+from .result_validator import citations_from_chunks, supporting_chunks, validate_rag_response
 from .retriever import Retriever
 
 
@@ -27,7 +27,12 @@ class RAGPipeline:
         self.default_top_k = default_top_k
         self.logger = get_logger()
 
-    def ask(self, question: str, top_k: int | None = None) -> RAGResponse:
+    def ask(
+        self,
+        question: str,
+        top_k: int | None = None,
+        filters: dict[str, object] | None = None,
+    ) -> RAGResponse:
         try:
             request = QueryRequest(question=question, top_k=top_k or self.default_top_k)
         except ValidationError as exc:
@@ -35,19 +40,20 @@ class RAGPipeline:
 
         self.logger.info("Starting RAG query")
         retrieval_query = self.conversation.expand_query(request.question)
-        chunks = self.retriever.retrieve(retrieval_query, top_k=request.top_k)
+        chunks = self.retriever.retrieve(retrieval_query, top_k=request.top_k, filters=filters)
         history = self.conversation.history()
         answer, grounded = self.llm.generate(request.question, chunks, history)
         if not chunks:
             grounded = False
-        sources = citations_from_chunks(chunks)
+        cited_chunks = supporting_chunks(answer, chunks) if grounded else []
+        sources = citations_from_chunks(cited_chunks)
         response = validate_rag_response(
             {
                 "question": request.question,
                 "answer": answer,
                 "grounded": grounded and bool(sources),
                 "sources": sources,
-                "retrieved_chunk_ids": [item.chunk.chunk_id for item in chunks],
+                "retrieved_chunk_ids": [item.chunk.chunk_id for item in cited_chunks],
             }
         )
         self.conversation.add_user(request.question)

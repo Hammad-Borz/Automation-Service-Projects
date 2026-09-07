@@ -20,7 +20,14 @@ class VectorStore(Protocol):
         embeddings: list[list[float]],
     ) -> None: ...
 
-    def search(self, query_embedding: list[float], top_k: int = 4) -> list[RetrievedChunk]: ...
+    def search(
+        self,
+        query_embedding: list[float],
+        top_k: int = 4,
+        filters: dict[str, object] | None = None,
+    ) -> list[RetrievedChunk]: ...
+
+    def chunks(self, filters: dict[str, object] | None = None) -> list[DocumentChunk]: ...
 
     def list_documents(self) -> list[DocumentMetadata]: ...
 
@@ -66,12 +73,20 @@ class JsonVectorStore:
         )
         self._save()
 
-    def search(self, query_embedding: list[float], top_k: int = 4) -> list[RetrievedChunk]:
+    def search(
+        self,
+        query_embedding: list[float],
+        top_k: int = 4,
+        filters: dict[str, object] | None = None,
+    ) -> list[RetrievedChunk]:
         if not self._records:
             return []
         try:
             scored: list[tuple[float, dict[str, Any]]] = []
             for record in self._records:
+                chunk = DocumentChunk.model_validate(record["chunk"])
+                if not _matches_filters(chunk, filters):
+                    continue
                 score = cosine_similarity(query_embedding, record["embedding"])
                 scored.append((max(0.0, min(1.0, score)), record))
             scored.sort(key=lambda item: item[0], reverse=True)
@@ -91,6 +106,13 @@ class JsonVectorStore:
 
     def list_documents(self) -> list[DocumentMetadata]:
         return [DocumentMetadata.model_validate(item) for item in self._documents.values()]
+
+    def chunks(self, filters: dict[str, object] | None = None) -> list[DocumentChunk]:
+        return [
+            DocumentChunk.model_validate(record["chunk"])
+            for record in self._records
+            if _matches_filters(DocumentChunk.model_validate(record["chunk"]), filters)
+        ]
 
     def delete_document(self, document_id: str) -> bool:
         existed = document_id in self._documents
@@ -142,3 +164,16 @@ def cosine_similarity(left: list[float], right: list[float]) -> float:
     if left_norm == 0 or right_norm == 0:
         return 0.0
     return dot / (left_norm * right_norm)
+
+
+def _matches_filters(chunk: DocumentChunk, filters: dict[str, object] | None) -> bool:
+    if not filters:
+        return True
+    values = {
+        "document_id": chunk.document_id,
+        "document_name": chunk.document_name,
+        "file_name": chunk.document_name,
+        "file_type": chunk.file_type,
+        "page_number": chunk.page_number,
+    }
+    return all(values.get(key) == value for key, value in filters.items() if key in values)

@@ -132,7 +132,13 @@ def build_system(settings: Settings, persist: bool = True) -> tuple[KnowledgeBas
         store=store,
     )
     pipeline = RAGPipeline(
-        retriever=Retriever(embeddings, store),
+        retriever=Retriever(
+            embeddings,
+            store,
+            candidate_k=settings.candidate_k,
+            minimum_relevance=settings.minimum_relevance,
+            rrf_k=settings.rrf_k,
+        ),
         llm=llm,
         conversation=ConversationManager(),
         default_top_k=settings.top_k,
@@ -224,6 +230,9 @@ def main() -> int:
                 chunk_size=settings.chunk_size,
                 chunk_overlap=settings.chunk_overlap,
                 top_k=settings.top_k,
+                candidate_k=settings.candidate_k,
+                minimum_relevance=settings.minimum_relevance,
+                rrf_k=settings.rrf_k,
                 embedding_dimension=settings.embedding_dimension,
                 documents_dir=settings.documents_dir,
                 vector_store_dir=settings.vector_store_dir,

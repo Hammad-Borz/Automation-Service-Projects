@@ -26,6 +26,9 @@ class Settings:
         chunk_size: int = 400,
         chunk_overlap: int = 80,
         top_k: int = 4,
+        candidate_k: int = 12,
+        minimum_relevance: float = 0.35,
+        rrf_k: int = 60,
         embedding_dimension: int = 256,
         documents_dir: Path | None = None,
         vector_store_dir: Path | None = None,
@@ -38,6 +41,9 @@ class Settings:
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
         self.top_k = top_k
+        self.candidate_k = candidate_k
+        self.minimum_relevance = minimum_relevance
+        self.rrf_k = rrf_k
         self.embedding_dimension = embedding_dimension
         self.documents_dir = documents_dir or (PROJECT_ROOT / "data" / "documents")
         self.vector_store_dir = vector_store_dir or (PROJECT_ROOT / "data" / "vector_store")
@@ -55,6 +61,12 @@ class Settings:
             raise ConfigurationError("CHUNK_OVERLAP must be >= 0 and smaller than CHUNK_SIZE.")
         if self.top_k < 1:
             raise ConfigurationError("TOP_K must be at least 1.")
+        if self.candidate_k < self.top_k:
+            raise ConfigurationError("CANDIDATE_K must be at least TOP_K.")
+        if not 0.0 <= self.minimum_relevance <= 1.0:
+            raise ConfigurationError("MINIMUM_RELEVANCE must be between 0 and 1.")
+        if self.rrf_k < 1:
+            raise ConfigurationError("RRF_K must be at least 1.")
         if self.embedding_dimension < 32:
             raise ConfigurationError("EMBEDDING_DIMENSION must be at least 32.")
         if not self.openai_model:
@@ -78,6 +90,9 @@ class Settings:
             chunk_size=_int_env("CHUNK_SIZE", 400),
             chunk_overlap=_int_env("CHUNK_OVERLAP", 80),
             top_k=_int_env("TOP_K", 4),
+            candidate_k=_int_env("CANDIDATE_K", 12),
+            minimum_relevance=_float_env("MINIMUM_RELEVANCE", 0.35),
+            rrf_k=_int_env("RRF_K", 60),
             embedding_dimension=_int_env("EMBEDDING_DIMENSION", 256),
         )
 
@@ -90,3 +105,13 @@ def _int_env(name: str, default: int) -> int:
         return int(raw)
     except ValueError as exc:
         raise ConfigurationError(f"{name} must be an integer.") from exc
+
+
+def _float_env(name: str, default: float) -> float:
+    raw = os.getenv(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        return float(raw)
+    except ValueError as exc:
+        raise ConfigurationError(f"{name} must be a number.") from exc

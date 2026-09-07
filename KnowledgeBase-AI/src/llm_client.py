@@ -65,8 +65,7 @@ class DemoLLMClient:
                 break
         if not unique:
             return INSUFFICIENT_ANSWER, False
-        names = ", ".join(dict.fromkeys(item.chunk.document_name for item in chunks))
-        return f"{' '.join(unique)} (Sources: {names})", True
+        return " ".join(unique), True
 
 
 class OpenAILLMClient:

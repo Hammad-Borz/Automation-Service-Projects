@@ -63,9 +63,11 @@ The default demo mode uses local deterministic embeddings and an extractive answ
 - ✂️ Configurable chunking with metadata preservation
 - 🧠 Local or API-backed embedding architecture
 - 🗄️ Local JSON-backed vector storage
-- 🔎 Top-k similarity retrieval
+- 🔎 Hybrid semantic + BM25 retrieval with reciprocal-rank fusion
+- 🧭 Configurable candidate expansion, reranking, and relevance thresholds
+- 🏷️ Metadata-aware filtering by document, filename, type, and page
 - 🤖 Grounded RAG answers
-- 📌 Source citations with document, chunk, and optional page information
+- 📌 Deterministic answer-supported citations with document, chunk, and optional page information
 - 💬 Session conversation history for follow-up questions
 - 📚 Knowledge-base management: add, list, remove, and clear
 - ⚠️ Robust validation and error handling
@@ -158,6 +160,9 @@ KnowledgeBase-AI/
 │   ├── embeddings.py
 │   ├── vector_store.py
 │   ├── retriever.py
+│   ├── keyword_retriever.py
+│   ├── hybrid_retriever.py
+│   ├── reranker.py
 │   ├── rag_pipeline.py
 │   ├── llm_client.py
 │   ├── conversation_manager.py
@@ -184,7 +189,10 @@ KnowledgeBase-AI/
 | 📕 PDF Processing | pypdf |
 | 📘 DOCX Processing | python-docx |
 | 🧠 Embeddings | Local hashing vectors or OpenAI embeddings |
-| 🗄️ Vector Storage | JSON-backed cosine search |
+| 🗄️ Vector Storage | JSON-backed cosine search with metadata filters |
+| 🔎 Lexical Retrieval | Dependency-free BM25 |
+| 🔀 Rank Fusion | Reciprocal Rank Fusion (RRF) |
+| 🧭 Reranking | Deterministic query-coverage reranker |
 | 🤖 Answer Generation | Demo extractive client or OpenAI |
 | 🧪 Testing | pytest |
 
@@ -227,6 +235,9 @@ copy .env.example .env
 | `CHUNK_SIZE` | Target chunk size |
 | `CHUNK_OVERLAP` | Overlap between chunks |
 | `TOP_K` | Number of retrieved chunks |
+| `CANDIDATE_K` | Number of broad hybrid candidates before reranking |
+| `MINIMUM_RELEVANCE` | Minimum reranked score required for grounding |
+| `RRF_K` | RRF rank-smoothing constant |
 | `EMBEDDING_DIMENSION` | Local embedding dimension |
 
 > 🔒 **Security:** Never commit `.env` files or API keys.
@@ -321,18 +332,20 @@ The tests use local hashing embeddings and scripted test doubles, so the normal 
 
 ## 🔮 Limitations & Future Improvements
 
-- 🔍 Demo embeddings are lexical hashed n-grams rather than large-model semantic embeddings
+- 🔍 Demo embeddings are lexical hashed n-grams; OpenAI mode provides model-based semantic vectors
 - 🗄️ The JSON vector store is designed for small local knowledge bases
 - 📄 PDF page citations are supported, while DOCX page mapping requires a future layout-aware reader
 - 💬 Conversation history currently exists only for the active process session
 - 🔐 No authentication or multi-user isolation yet
 - 🌐 No web interface or API layer yet
+- 🧪 Reranking is a local lexical second stage, not a cross-encoder model
+- 🎯 Relevance scores are deterministic retrieval signals, not calibrated probabilities
 
 ### Possible Next Steps
 
 - Persistent chat sessions
-- Hybrid keyword + vector retrieval
-- Chroma or FAISS vector-store integration
+- Cross-encoder or hosted reranking integration
+- Chroma, FAISS, or database-backed vector-store integration
 - Page-accurate citations directly inside answer text
 - FastAPI service layer
 - Web-based chat interface
