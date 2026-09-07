@@ -1,10 +1,10 @@
 # 🤖 Automation Service Projects
 
-> **A practical portfolio of client-focused Python automation, AI-powered workflows, API integrations, data-processing systems, reporting solutions, and database automation projects built around real business problems.**
+> **A practical portfolio of client-focused Python automation, AI-powered workflows, advanced RAG systems, API integrations, data-processing pipelines, reporting solutions, and database automation projects built around real business problems.**
 
 ![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white)
 ![Projects](https://img.shields.io/badge/Projects-9-7C3AED)
-![Tests](https://img.shields.io/badge/Automated_Tests-126-16A34A)
+![Tests](https://img.shields.io/badge/Automated_Tests-132-16A34A)
 ![Status](https://img.shields.io/badge/Portfolio-Complete-16A34A)
 
 ---
@@ -13,7 +13,7 @@
 
 This is a **service-oriented engineering portfolio**, not a collection of isolated coding exercises.
 
-Each project is designed around a practical business workflow and demonstrates how **Python, automation, APIs, data processing, validation, SQL, testing, reporting, and AI** can be combined into reusable systems.
+Each project is designed around a practical business workflow and demonstrates how **Python, automation, AI, APIs, retrieval systems, data processing, validation, SQL, testing, reporting, and intelligent decision workflows** can be combined into reusable systems.
 
 ```text
 💼 Business Problem
@@ -22,11 +22,11 @@ Each project is designed around a practical business workflow and demonstrates h
         ↓
 🐍 Modular Python Implementation
         ↓
+🧠 Automation / AI / Retrieval Workflow
+        ↓
 🛡️ Validation & Error Handling
         ↓
-⚙️ Automation / AI / Data Workflow
-        ↓
-🧪 Testing & Verification
+🧪 Testing & Runtime Verification
         ↓
 📚 Documentation & Portfolio Presentation
 ```
@@ -42,12 +42,12 @@ Each project is designed around a practical business workflow and demonstrates h
 | 03 | ⛏️ DataMiner | Web data extraction & processing | 11 | 🟢 Complete |
 | 04 | 🧠 DocuMind | AI document processing | 14 | 🟢 Complete |
 | 05 | 🤖 TaskPilot | AI business task assistant | 17 | 🟢 Complete |
-| 06 | 📚 KnowledgeBase-AI | RAG and document question answering | 32 | 🟢 Complete |
+| 06 | 📚 KnowledgeBase-AI | **Advanced RAG & intelligent knowledge systems** | **38** | 🟢 Upgraded & Complete |
 | 07 | 📧 MailFlow | Intelligent email automation | 12 | 🟢 Complete |
 | 08 | 📊 ReportFlow | Automated business reporting | 12 | 🟢 Complete |
 | 09 | 🗄️ DataOps Automator | SQL & database automation | 17 | 🟢 Complete |
 
-## 🏆 Portfolio: **9 Projects • 126 Automated Tests**
+## 🏆 Portfolio: **9 Projects • 132 Automated Tests**
 
 ---
 
@@ -127,17 +127,31 @@ User Request → Assistant → Intent / Tool Selection → Validated Tool → Ta
 
 ---
 
-# 📚 06 — KnowledgeBase-AI
+# 📚 06 — KnowledgeBase AI: Advanced RAG & Intelligent Knowledge System
 
-A document-focused **Retrieval-Augmented Generation (RAG)** system that indexes PDF and DOCX content and answers questions using retrieved source context.
+A multi-stage document intelligence system that combines **semantic retrieval, BM25 keyword retrieval, Reciprocal Rank Fusion (RRF), second-stage reranking, metadata filtering, relevance thresholds, abstention, and precise source attribution**.
 
 ```text
-Documents → Extract → Chunk → Index → Retrieve → Ground Answer → Sources
+Documents
+    ↓
+Extract → Chunk → Index
+    ↓
+Semantic Retrieval + BM25 Retrieval
+    ↓
+Hybrid Rank Fusion (RRF)
+    ↓
+Candidate Selection → Reranking
+    ↓
+Relevance Evaluation
+    ↓
+Grounded Answer OR Abstention
+    ↓
+Precise Citations
 ```
 
-**Highlights:** 📄 PDF/DOCX ingestion • ✂️ Text chunking • 🔎 Retrieval • 💬 Question answering • 🧠 Conversation-aware retrieval • 🛡️ Grounded-answer validation
+**Highlights:** 📄 PDF/DOCX ingestion • 🔍 Hybrid retrieval • 🔀 RRF • 🧠 Second-stage reranking • 🏷️ Metadata filtering • 🛡️ Weak-result abstention • 📌 Precise citations
 
-**Skills:** `Python` • `RAG` • `Document Processing` • `Retrieval` • `Pydantic` • `pytest`
+**Skills:** `Python` • `Advanced RAG` • `Hybrid Retrieval` • `BM25` • `RRF` • `Reranking` • `Document Intelligence` • `Pydantic` • `pytest`
 
 📂 **Project:** `KnowledgeBase-AI/`
 
@@ -223,14 +237,16 @@ Sales CSV → Validate → Transform → SQLite UPSERT → SQL Analytics → Rep
 - Automated business reporting
 - SQL and database automation
 
-## 🤖 AI & Intelligent Workflows
+## 🤖 AI & Intelligent Systems
 
 - AI-assisted structured analysis
 - OpenAI API integration
-- Retrieval-Augmented Generation (RAG)
-- Tool and function calling
+- AI assistants and tool calling
+- **Advanced RAG & intelligent knowledge systems**
+- Hybrid semantic + keyword retrieval
+- Rank fusion and reranking
+- Grounded-answer validation and abstention
 - Pydantic validation
-- Replaceable provider boundaries
 
 ## 📊 Data, Reporting & Databases
 
@@ -255,7 +271,7 @@ Sales CSV → Validate → Transform → SQLite UPSERT → SQL Analytics → Rep
 
 # 🧪 Software Quality
 
-## 🟢 **126 Automated Tests Across 9 Projects**
+## 🟢 **132 Automated Tests Across 9 Projects**
 
 The portfolio emphasizes practical engineering practices:
 
@@ -265,6 +281,7 @@ The portfolio emphasizes practical engineering practices:
 - Logging and debugging
 - `.gitignore` and environment configuration
 - Reproducible local demo workflows
+- Runtime verification alongside automated tests
 
 ---
 
@@ -278,7 +295,7 @@ Automation-Service-Projects/
 ├── DataMiner/
 ├── DocuMind/
 ├── TaskPilot/
-├── KnowledgeBase-AI/
+├── KnowledgeBase-AI/       # Advanced RAG & Intelligent Knowledge System
 ├── MailFlow/
 ├── ReportFlow/
 ├── DataOps-Automator/
@@ -299,7 +316,7 @@ These projects demonstrate capabilities relevant to practical freelance and busi
 - 📊 Data processing and transformation
 - 🗂️ File and document automation
 - 🤖 AI assistants and tool calling
-- 📚 Retrieval-Augmented Generation (RAG)
+- 📚 **Advanced RAG & Intelligent Knowledge Systems**
 - 📧 Email automation
 - 📈 Excel and business reporting automation
 - 🗄️ SQL and database automation
@@ -312,7 +329,7 @@ These projects demonstrate capabilities relevant to practical freelance and busi
 | Category | Technologies |
 |---|---|
 | 🐍 Programming | Python |
-| 🤖 AI | OpenAI API, RAG, Pydantic, Tool Calling |
+| 🤖 AI & RAG | OpenAI API, Advanced RAG, BM25, RRF, Reranking, Pydantic, Tool Calling |
 | 🌐 APIs & Web | `requests`, REST APIs, IMAP/SMTP |
 | 🔍 Data Extraction | `BeautifulSoup4` |
 | 📄 Documents | PDF and DOCX libraries |
@@ -327,9 +344,9 @@ These projects demonstrate capabilities relevant to practical freelance and busi
 
 # 🏁 Portfolio Status
 
-## 🟢 **The current 9-project Automation Service Portfolio is complete.**
+## 🟢 **The current 9-project Automation Service Portfolio is complete and verified.**
 
-The portfolio now covers nine practical service areas ranging from Python automation and API integration to AI workflows, RAG, email automation, business reporting, and SQL/database automation.
+The portfolio covers practical service areas ranging from Python automation and API integration to AI workflows, **Advanced RAG & Intelligent Knowledge Systems**, email automation, business reporting, and SQL/database automation.
 
 ---
 
@@ -337,7 +354,7 @@ The portfolio now covers nine practical service areas ranging from Python automa
 
 **Hammad Borz**
 
-> Python • AI Automation • API Integration • Data Automation • Database Automation • Automation Systems
+> Python • AI Automation • Advanced RAG • API Integration • Data Automation • Database Automation • Intelligent Automation Systems
 
 ---
 
