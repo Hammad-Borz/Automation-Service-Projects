@@ -1,82 +1,129 @@
-# 📚 KnowledgeBase AI — Multi-Document RAG Assistant
+# 📚 KnowledgeBase AI — Advanced RAG & Intelligent Knowledge System
 
-> **A production-style Python RAG system that ingests PDF and DOCX files, builds a local knowledge base, retrieves relevant context, and produces grounded answers with source citations.**
+> **A portfolio-quality Python document intelligence system that ingests PDF and DOCX files, performs multi-stage retrieval, evaluates relevance, and produces grounded answers with precise source attribution.**
 
-![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
-![RAG](https://img.shields.io/badge/AI-RAG-purple)
-![Tests](https://img.shields.io/badge/Tests-32%20Passed-brightgreen)
-![Mode](https://img.shields.io/badge/Demo-Offline-yellow)
+![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white)
+![Advanced RAG](https://img.shields.io/badge/AI-Advanced%20RAG-7C3AED)
+![Tests](https://img.shields.io/badge/Tests-38%20Passed-16A34A)
+![Mode](https://img.shields.io/badge/Demo-Offline-F59E0B)
+![Status](https://img.shields.io/badge/Portfolio-Ready-16A34A)
 
 ---
 
-## ✨ Overview
+# 🎯 Overview
 
-KnowledgeBase AI is a modular **Retrieval-Augmented Generation (RAG)** application for working with multiple documents. It converts supported files into chunked, embedded records, retrieves the most relevant context for a question, and generates answers that are grounded in the indexed knowledge base.
+KnowledgeBase AI is an **Advanced RAG & Intelligent Knowledge System** built for document-grounded question answering.
 
-The project supports both:
+Rather than relying on a single retrieval strategy, the system uses a **multi-stage retrieval pipeline** that combines independent semantic and BM25 keyword rankings, fuses them deterministically, reranks broader candidates, evaluates relevance, and abstains when the indexed knowledge base does not contain sufficient evidence.
+
+The project supports:
 
 - 🟢 **Demo mode** — deterministic, local, and offline
 - 🤖 **OpenAI mode** — API-backed embeddings and answer generation
 
 ---
 
-## 💼 The Business Problem
+# 💼 The Business Problem
 
-Organizations accumulate policy manuals, product guides, procedures, and operational documents that become difficult to search efficiently. Employees repeatedly ask questions, while generic AI systems can produce answers that are not supported by the actual documents.
+Organizations accumulate policy manuals, product guides, procedures, and operational documents that are difficult to search efficiently.
 
-A useful knowledge assistant should:
+A basic document chatbot can retrieve weakly related content, cite irrelevant sources, or attempt to answer questions that the available documents do not support.
 
-- 📄 Work with multiple documents
-- 🔎 Retrieve passages relevant to the user's question
-- 🛡️ Avoid fabricating information outside the available context
-- 📌 Show where an answer came from
+A stronger knowledge system should:
+
+- 📄 Work across multiple documents
+- 🔎 Combine lexical and semantic retrieval signals
+- 🧭 Filter retrieval using document metadata
+- 🧠 Rerank broad candidates before answering
+- 🛡️ Detect weak evidence and abstain when appropriate
+- 📌 Cite only sources that genuinely support the answer
 - 💬 Support follow-up questions during a conversation
 
 ---
 
-## 💡 The Solution
-
-KnowledgeBase AI implements the following RAG workflow:
+# 🧠 Advanced RAG Retrieval Pipeline
 
 ```text
 User Question
       ↓
-Query Processing + Conversation History
+Optional Conversation Context
       ↓
-🔎 Retrieve Relevant Chunks
+Metadata Filtering
       ↓
-📚 Build Grounded Context
+┌─────────────────────────────┐
+│ Semantic Retrieval          │
+└──────────────┬──────────────┘
+               │
+               ├── Reciprocal Rank Fusion (RRF)
+               │
+┌──────────────┴──────────────┐
+│ BM25 Keyword Retrieval      │
+└──────────────┬──────────────┘
+               ↓
+Broader Candidate Set
       ↓
-🤖 Answer Generation
+Second-Stage Reranking
       ↓
-📌 Answer + Source Citations
+Relevance / Confidence Evaluation
+      ↓
+Grounded Answer OR Abstention
+      ↓
+Precise Citation Selection
 ```
 
-The default demo mode uses local deterministic embeddings and an extractive answerer, allowing the project to run without external API calls.
+This architecture separates **retrieval**, **rank fusion**, **reranking**, **relevance evaluation**, and **citation selection** into explicit stages.
 
 ---
 
-## 🚀 Key Features
+# 🚀 Key Capabilities
 
-- 📄 Multi-document ingestion for **PDF** and **DOCX**
-- 🧹 Document processing and text normalization
-- ✂️ Configurable chunking with metadata preservation
-- 🧠 Local or API-backed embedding architecture
-- 🗄️ Local JSON-backed vector storage
-- 🔎 Hybrid semantic + BM25 retrieval with reciprocal-rank fusion
-- 🧭 Configurable candidate expansion, reranking, and relevance thresholds
-- 🏷️ Metadata-aware filtering by document, filename, type, and page
-- 🤖 Grounded RAG answers
-- 📌 Deterministic answer-supported citations with document, chunk, and optional page information
-- 💬 Session conversation history for follow-up questions
-- 📚 Knowledge-base management: add, list, remove, and clear
-- ⚠️ Robust validation and error handling
-- 📝 Centralized logging
-- 🧪 **32 automated tests passing** without requiring a live AI provider
+## 🔍 Hybrid Retrieval
+
+- 🧠 Independent semantic/vector-style retrieval
+- 🔤 Genuine BM25 lexical retrieval
+- 🔀 Deterministic Reciprocal Rank Fusion (RRF)
+- ⚙️ Configurable `RRF_K`
+
+## 🧭 Multi-Stage Ranking
+
+- 📥 Broad candidate retrieval using configurable `CANDIDATE_K`
+- 🧠 Independent second-stage local reranking
+- 🎯 Final ranking based on query-to-chunk relevance
+
+## 🛡️ Grounding & Abstention
+
+- 📏 Configurable `MINIMUM_RELEVANCE`
+- 🚫 Weak-result detection
+- 💬 Explicit insufficient-information responses
+- 🧾 No unsupported answer when evidence is inadequate
+
+## 🏷️ Metadata-Aware Retrieval
+
+Filtering supports:
+
+- Document ID
+- Filename
+- File type
+- Page number where available
+
+## 📌 Citation Precision
+
+- Only meaningful supporting sources are selected
+- Filename preserved
+- Chunk ID preserved
+- Page information preserved where available
+- Unsupported questions return **no irrelevant sources**
+
+## 📚 Knowledge-Base Management
+
+- Add and index documents
+- List indexed documents
+- Remove documents
+- Clear the knowledge base
 
 ---
 
-## 🏗️ RAG Architecture
+# 🏗️ System Architecture
 
 ```text
 PDF / DOCX Files
@@ -102,42 +149,32 @@ PDF / DOCX Files
 │ VectorStore       │  Persist local knowledge base
 └─────────┬─────────┘
           ▼
+     ┌────┴────┐
+     ▼         ▼
+Semantic    BM25 Keyword
+Retrieval    Retrieval
+     └────┬────┘
+          ▼
 ┌───────────────────┐
-│ Retriever         │  Find relevant chunks
+│ HybridRetriever   │  Fuse rankings with RRF
 └─────────┬─────────┘
           ▼
 ┌───────────────────┐
-│ RAGPipeline       │  Build context + orchestrate answer
+│ Reranker          │  Second-stage relevance ranking
 └─────────┬─────────┘
           ▼
 ┌───────────────────┐
-│ LLMClient         │  Generate grounded response
+│ RAGPipeline       │  Orchestrate answer generation
 └─────────┬─────────┘
           ▼
 ┌───────────────────┐
-│ ResultValidator   │  Validate response + citations
+│ ResultValidator   │  Validate grounding + citations
 └───────────────────┘
 ```
 
-### Core Components
-
-| Component | Responsibility |
-|---|---|
-| `document_reader` | Extract text from PDF/DOCX files and capture metadata. |
-| `document_processor` | Normalize extracted text before indexing. |
-| `chunker` | Split text into overlapping chunks with source identifiers. |
-| `embeddings` | Provide local hashing or OpenAI embeddings. |
-| `vector_store` | Persist documents, chunks, and vectors locally. |
-| `retriever` | Embed queries and return ranked chunks. |
-| `rag_pipeline` | Coordinate retrieval, generation, citations, and history. |
-| `llm_client` | Isolate demo and OpenAI answer-generation implementations. |
-| `conversation_manager` | Maintain session turns and support follow-up context. |
-| `knowledge_base` | Add, list, remove, and clear indexed documents. |
-| `result_validator` | Enforce the RAG response contract. |
-
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```text
 KnowledgeBase-AI/
@@ -169,7 +206,10 @@ KnowledgeBase-AI/
 │   ├── knowledge_base.py
 │   └── result_validator.py
 │
-├── tests/                  # Automated test suite
+├── tests/
+│   ├── test_advanced_retrieval.py
+│   └── ...
+│
 ├── .env.example
 ├── .gitignore
 ├── pytest.ini
@@ -179,26 +219,25 @@ KnowledgeBase-AI/
 
 ---
 
-## ⚙️ Technologies Used
+# ⚙️ Technology Stack
 
 | Area | Technology |
 |---|---|
-| 🐍 Language | Python 3.11+ |
+| 🐍 Language | Python 3.14+ |
 | 🛡️ Validation | Pydantic v2 |
 | ⚙️ Configuration | python-dotenv |
 | 📕 PDF Processing | pypdf |
 | 📘 DOCX Processing | python-docx |
-| 🧠 Embeddings | Local hashing vectors or OpenAI embeddings |
-| 🗄️ Vector Storage | JSON-backed cosine search with metadata filters |
-| 🔎 Lexical Retrieval | Dependency-free BM25 |
+| 🧠 Retrieval | Semantic/vector-style retrieval + BM25 |
 | 🔀 Rank Fusion | Reciprocal Rank Fusion (RRF) |
-| 🧭 Reranking | Deterministic query-coverage reranker |
+| 🧭 Reranking | Deterministic local second-stage reranker |
+| 🗄️ Knowledge Storage | JSON-backed local vector store |
 | 🤖 Answer Generation | Demo extractive client or OpenAI |
 | 🧪 Testing | pytest |
 
 ---
 
-## 🛠️ Installation
+# 🛠️ Installation
 
 From the `KnowledgeBase-AI` directory:
 
@@ -208,17 +247,9 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-For macOS/Linux:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
 ---
 
-## 🔐 Environment Configuration
+# 🔐 Configuration
 
 Copy the example environment file:
 
@@ -234,25 +265,23 @@ copy .env.example .env
 | `OPENAI_EMBEDDING_MODEL` | Embedding model selection |
 | `CHUNK_SIZE` | Target chunk size |
 | `CHUNK_OVERLAP` | Overlap between chunks |
-| `TOP_K` | Number of retrieved chunks |
-| `CANDIDATE_K` | Number of broad hybrid candidates before reranking |
-| `MINIMUM_RELEVANCE` | Minimum reranked score required for grounding |
+| `TOP_K` | Number of final retrieved chunks |
+| `CANDIDATE_K` | Broad hybrid candidate set before reranking |
+| `MINIMUM_RELEVANCE` | Minimum score required for grounding |
 | `RRF_K` | RRF rank-smoothing constant |
 | `EMBEDDING_DIMENSION` | Local embedding dimension |
 
-> 🔒 **Security:** Never commit `.env` files or API keys.
+> 🔒 Never commit `.env` files or API keys.
 
 ---
 
-## ▶️ Run the Application
-
-Run the complete demonstration:
+# ▶️ Run the Application
 
 ```powershell
 python -m src.main
 ```
 
-### Available Modes
+Available modes:
 
 ```powershell
 # Offline demonstration mode
@@ -265,98 +294,58 @@ python -m src.main --interactive
 python -m src.main --mode openai --interactive
 ```
 
-The standard demonstration:
-
-1. 📄 Creates and indexes sample documents
-2. 📚 Lists indexed knowledge-base documents
-3. ❓ Answers grounded questions
-4. 📌 Displays retrieved sources
-5. 🚫 Demonstrates handling of an unanswerable question
-6. 💬 Demonstrates follow-up context
-7. 🗑️ Removes a document
-8. 🧹 Clears the knowledge base
+The demonstration verifies document indexing, grounded answers, precise sources, unsupported-question abstention, conversation-aware retrieval, document removal, and knowledge-base clearing.
 
 ---
 
-## 💬 Example Interaction
+# 🧪 Verification
 
-```text
-Q: How many PTO days do employees receive?
-
-A: Employees receive 20 days of paid time off (PTO) each calendar year.
-
-Grounded: True
-
-Sources:
-  - acme_employee_handbook.pdf
-    [chunk_a1b2c3d4e5f6, page 1]
-```
-
-### Unanswerable Question
-
-```text
-Q: What is the company's current stock price?
-
-A: The indexed documents do not contain enough information to answer this question.
-
-Grounded: False
-```
-
-This behavior is important because a RAG system should identify when the available documents **do not support an answer** instead of fabricating one.
-
----
-
-## 🧪 Testing
-
-Run the full automated test suite:
+Run the complete automated test suite:
 
 ```powershell
 pytest
 ```
 
-### Current Verified Result
+## Current Verified Result
 
 ```text
-32 passed
+38 passed
 ```
 
-The tests use local hashing embeddings and scripted test doubles, so the normal test suite **does not require OpenAI or external API access**.
+The verified runtime demo also demonstrates:
+
+- ✅ Relevant source precision for supported questions
+- ✅ Improved exclusion of irrelevant secondary sources
+- ✅ Grounded answers from indexed documents
+- ✅ Abstention for unsupported questions
+- ✅ `Sources: none` when no source meaningfully supports the answer
 
 ---
 
-## 🎯 Skills Demonstrated
+# 🎯 Skills Demonstrated
 
-`Python` • `RAG` • `AI Automation` • `Document Processing` • `PDF` • `DOCX` • `Embeddings` • `Vector Search` • `Similarity Retrieval` • `OpenAI API` • `Pydantic` • `Dependency Injection` • `Testing` • `Error Handling` • `Modular Architecture`
+`Python` • `Advanced RAG` • `Hybrid Retrieval` • `BM25` • `Reciprocal Rank Fusion` • `Reranking` • `Metadata Filtering` • `Document Intelligence` • `PDF` • `DOCX` • `Embeddings` • `Vector Search` • `OpenAI API` • `Pydantic` • `Testing` • `Error Handling` • `Modular Architecture`
 
 ---
 
-## 🔮 Limitations & Future Improvements
+# ⚠️ Current Limitations
 
-- 🔍 Demo embeddings are lexical hashed n-grams; OpenAI mode provides model-based semantic vectors
-- 🗄️ The JSON vector store is designed for small local knowledge bases
-- 📄 PDF page citations are supported, while DOCX page mapping requires a future layout-aware reader
-- 💬 Conversation history currently exists only for the active process session
-- 🔐 No authentication or multi-user isolation yet
-- 🌐 No web interface or API layer yet
-- 🧪 Reranking is a local lexical second stage, not a cross-encoder model
+The project deliberately uses a lightweight local architecture. Current limitations include:
+
+- 🧠 The reranker is deterministic lexical scoring rather than a cross-encoder model
+- 🗄️ The JSON-backed store is intended for small local knowledge bases
+- 📄 DOCX page-level mapping is limited by document layout extraction
+- 💬 Conversation history exists only for the active process session
+- 🔐 No multi-user authentication or isolation layer
+- 🌐 No dedicated API or web interface in this phase
 - 🎯 Relevance scores are deterministic retrieval signals, not calibrated probabilities
 
-### Possible Next Steps
-
-- Persistent chat sessions
-- Cross-encoder or hosted reranking integration
-- Chroma, FAISS, or database-backed vector-store integration
-- Page-accurate citations directly inside answer text
-- FastAPI service layer
-- Web-based chat interface
-- Multi-user authentication and isolated knowledge bases
-
 ---
 
-## 🟢 Project Status
+# 🟢 Project Status
 
-**Complete · Tested · Portfolio Ready**
+## **Advanced RAG Upgrade Complete · Tested · Runtime Verified · Portfolio Ready**
 
-> **32 automated tests passing, with successful end-to-end runtime verification.**
+> **38 automated tests passing with successful end-to-end runtime verification.**
 
-KnowledgeBase AI demonstrates a practical, modular RAG architecture suitable for portfolio presentation and future expansion into a production-grade document intelligence system.
+KnowledgeBase AI now represents a genuine **Advanced RAG & Intelligent Knowledge System** with hybrid retrieval, deterministic rank fusion, second-stage reranking, metadata-aware filtering, relevance thresholds, abstention behavior, and precise source attribution.
