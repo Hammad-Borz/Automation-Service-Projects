@@ -1,0 +1,263 @@
+{
+    "name": "AutomationFlow — Make Lead Processing",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 3702030
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 600
+                }
+            }
+        },
+        {
+            "id": 2,
+            "module": "builtin:BasicIfElse",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 600,
+                    "name": "Classify Lead"
+                }
+            },
+            "branches": [
+                {
+                    "merge": false,
+                    "label": "Invalid Lead",
+                    "type": "condition",
+                    "flow": [
+                        {
+                            "id": 3,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "mapper": {
+                                "body": "{\"success\":false,\"message\":\"Invalid lead: email is required\"}",
+                                "status": 200
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 0
+                                }
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        [
+                            {
+                                "a": "{{1.email}}",
+                                "b": "",
+                                "o": "text:equal"
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "merge": false,
+                    "label": "Sales Lead",
+                    "type": "condition",
+                    "flow": [
+                        {
+                            "id": 4,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "mapper": {
+                                "body": "{\"success\":true,\"message\":\"Lead processed successfully\",\"lead\":{\"name\":\"{{1.name}}\",\"email\":\"{{1.email}}\",\"company\":\"{{1.company}}\",\"source\":\"{{1.source}}\"},\"analysis\":{\"lead_type\":\"sales\",\"priority\":\"high\",\"score\":80},\"automation\":{\"action\":\"notify_sales\",\"status\":\"prepared\"}}",
+                                "status": 200
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 300
+                                }
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "interested",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "automation",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "pricing",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "quote",
+                                "o": "text:contains"
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "merge": false,
+                    "label": "Support Lead",
+                    "type": "condition",
+                    "flow": [
+                        {
+                            "id": 5,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "mapper": {
+                                "body": "{\"success\":true,\"message\":\"Lead processed successfully\",\"lead\":{\"name\":\"{{1.name}}\",\"email\":\"{{1.email}}\",\"company\":\"{{1.company}}\",\"source\":\"{{1.source}}\"},\"analysis\":{\"lead_type\":\"support\",\"priority\":\"medium\",\"score\":60},\"automation\":{\"action\":\"support_routing\",\"status\":\"prepared\"}}",
+                                "status": 200
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 600
+                                }
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "problem",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "issue",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "error",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "support",
+                                "o": "text:contains"
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "merge": false,
+                    "label": "Billing Lead",
+                    "type": "condition",
+                    "flow": [
+                        {
+                            "id": 6,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "mapper": {
+                                "body": "{\"success\":true,\"message\":\"Lead processed successfully\",\"lead\":{\"name\":\"{{1.name}}\",\"email\":\"{{1.email}}\",\"company\":\"{{1.company}}\",\"source\":\"{{1.source}}\"},\"analysis\":{\"lead_type\":\"billing\",\"priority\":\"medium\",\"score\":50},\"automation\":{\"action\":\"billing_routing\",\"status\":\"prepared\"}}",
+                                "status": 200
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 900
+                                }
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "invoice",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "payment",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "billing",
+                                "o": "text:contains"
+                            }
+                        ],
+                        [
+                            {
+                                "a": "{{1.message}}",
+                                "b": "refund",
+                                "o": "text:contains"
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "merge": false,
+                    "disabled": false,
+                    "label": "",
+                    "type": "else",
+                    "flow": [
+                        {
+                            "id": 7,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "mapper": {
+                                "body": "{\"success\":true,\"message\":\"Lead processed successfully\",\"lead\":{\"name\":\"{{1.name}}\",\"email\":\"{{1.email}}\",\"company\":\"{{1.company}}\",\"source\":\"{{1.source}}\"},\"analysis\":{\"lead_type\":\"general\",\"priority\":\"medium\",\"score\":50},\"automation\":{\"action\":\"general_routing\",\"status\":\"prepared\"}}",
+                                "status": 200
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 1200
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.make.com",
+        "notes": []
+    }
+}

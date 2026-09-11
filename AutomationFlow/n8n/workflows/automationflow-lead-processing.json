@@ -1,0 +1,320 @@
+{
+  "name": "AutomationFlow — Lead Processing",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "automationflow/leads",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -880,
+        -48
+      ],
+      "id": "31d52ad5-823a-4bdb-832b-1bcb2a9f6b21",
+      "name": "Webhook",
+      "webhookId": "e0ff2743-4f22-4e4d-9663-fe170c1db809"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1f187856-67bb-46ca-a247-e09abe70e3ce",
+              "name": "name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "b10cb78a-0294-4471-800b-86ec2ba98c81",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "11bb228d-f1eb-422a-94a9-35281092aceb",
+              "name": "company",
+              "value": "={{ $json.body.company }}",
+              "type": "string"
+            },
+            {
+              "id": "0964af88-03f1-4d7e-8363-c33f33828615",
+              "name": "message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "24e69b7d-3c67-4a21-96cc-5a6d7152f8f3",
+              "name": "source",
+              "value": "={{ $json.body.source }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -704,
+        -48
+      ],
+      "id": "f3d590e5-db16-4321-9235-64f02dce8248",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"success\": true,\n  \"message\": \"Lead processed successfully\",\n  \"lead\": {\n    \"name\": \"{{ $json.lead.name }}\",\n    \"email\": \"{{ $json.lead.email }}\",\n    \"company\": \"{{ $json.lead.company }}\",\n    \"source\": \"{{ $json.lead.source }}\"\n  },\n  \"analysis\": {\n    \"lead_type\": \"{{ $json.lead_type }}\",\n    \"priority\": \"{{ $json.priority }}\",\n    \"score\": {{ $json.score }}\n  },\n  \"automation\": {\n    \"action\": \"{{ $json.action }}\",\n    \"status\": \"prepared\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        224,
+        -80
+      ],
+      "id": "d02ca115-4e3f-49cd-93c9-24bd3320e772",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a8abdf8c-0d85-4234-80b6-36f5c7b12c4e",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -528,
+        -48
+      ],
+      "id": "12dd6868-56f6-4570-9da9-1d2e921a6542",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"success\": false,\n  \"message\": \"Invalid lead: email is required\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -336,
+        128
+      ],
+      "id": "011664b4-aa81-4e43-8762-204a2cf5054f",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/process-lead",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"{{ $json.name }}\",\n  \"email\": \"{{ $json.email }}\",\n  \"company\": \"{{ $json.company }}\",\n  \"message\": \"{{ $json.message }}\",\n  \"source\": \"{{ $json.source }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        -336,
+        -64
+      ],
+      "id": "a136a4ed-109e-40e8-9d35-9efde00e0465",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ab904dc4-3136-4fd9-9660-8eb6dba54810",
+              "leftValue": "={{ $json.analysis.priority }}",
+              "rightValue": "high",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -160,
+        -64
+      ],
+      "id": "5db4143e-d4dc-485e-a011-17e02e8f67d2",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "507c962e-0a82-4753-9454-3ded26112415",
+              "name": "action",
+              "value": "notify_sales",
+              "type": "string"
+            },
+            {
+              "id": "85338459-e7e9-4dd8-a540-546668603ae4",
+              "name": "priority",
+              "value": "={{ $json.analysis.priority }}",
+              "type": "string"
+            },
+            {
+              "id": "d9906cf9-33eb-479e-b2d9-5e6a5a031e18",
+              "name": "lead_type",
+              "value": "={{ $json.analysis.lead_type }}",
+              "type": "string"
+            },
+            {
+              "id": "ed2d04b7-97bd-4392-b9d1-6261c1307fdb",
+              "name": "score",
+              "value": "={{ $json.analysis.score }}",
+              "type": "string"
+            },
+            {
+              "id": "36ae1069-ddc7-47d3-a3fb-b4fc4ec4684f",
+              "name": "email",
+              "value": "={{ $json.lead.email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        32,
+        -80
+      ],
+      "id": "ef74637a-3ac7-4e48-92e0-bf8ea196beb6",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "bd0f376e-0e38-434e-8346-19e5449e788c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6aa8251a4322cf5bfd56def8e5ddac6efbc308937164e095a5df54565219cd5b"
+  },
+  "nodeGroups": [],
+  "id": "ElU0yVMzymaSOdXF",
+  "tags": []
+}
