@@ -1,0 +1,1 @@
+"""InsightFlow analytics application."""

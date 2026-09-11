@@ -1,0 +1,11 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+pytest_temp/
+*.sqlite3
+*.db
+.env
+data/output/*
+!data/output/.gitkeep

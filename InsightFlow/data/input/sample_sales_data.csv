@@ -1,0 +1,45 @@
+order_id,customer_id,customer_name,customer_email,product,category,quantity,unit_price,total_amount,order_date,status,region,sales_channel
+SO-1001,C-001,Alice Johnson,alice@example.com,Analytics Suite,Software,2,700,1400,2026-01-05,completed,North America,online
+SO-1002,C-002,Bob Smith,bob@example.com,Data Connector,Software,1,450,450,2026-01-09,completed,Europe,retail
+SO-1003,C-003,Carla Ruiz,carla@example.com,Reporting Pack,Services,3,300,900,2026-01-15,completed,Latin America,marketplace
+SO-1004,C-001,Alice Johnson,alice@example.com,Premium Support,Support,1,500,500,2026-01-22,pending,North America,online
+SO-1005,C-004,David Lee,david@example.com,Automation Setup,Services,1,1200,1200,2026-02-03,completed,Asia Pacific,retail
+SO-1006,C-005,Eva Green,eva@example.com,Analytics Suite,Software,2,750,1500,2026-02-08,completed,Europe,online
+SO-1007,C-006,Frank Moore,frank@example.com,Data Connector,Software,2,400,800,2026-02-14,completed,North America,marketplace
+SO-1008,C-002,Bob Smith,bob@example.com,Reporting Pack,Services,1,350,350,2026-02-20,cancelled,Europe,retail
+SO-1009,C-007,Grace Kim,grace@example.com,Premium Support,Support,2,550,1100,2026-02-25,completed,Asia Pacific,online
+SO-1010,C-008,Henry Adams,henry@example.com,Automation Setup,Services,2,900,1800,2026-03-02,completed,North America,online
+SO-1011,C-009,Irene Cole,irene@example.com,Analytics Suite,Software,1,800,800,2026-03-07,completed,Europe,marketplace
+SO-1012,C-010,Jack Brown,jack@example.com,Data Connector,Software,3,500,1500,2026-03-12,completed,Latin America,retail
+SO-1013,C-003,Carla Ruiz,carla@example.com,Reporting Pack,Services,2,325,650,2026-03-19,refunded,Latin America,marketplace
+SO-1014,C-004,David Lee,david@example.com,Premium Support,Support,1,600,600,2026-03-27,pending,Asia Pacific,online
+SO-1015,C-011,Karen White,karen@example.com,Automation Setup,Services,1,1300,1300,2026-04-04,completed,North America,retail
+SO-1016,C-012,Leo Martin,leo@example.com,Analytics Suite,Software,2,850,1700,2026-04-09,completed,Europe,online
+SO-1017,C-013,Mia Davis,mia@example.com,Data Connector,Software,1,550,550,2026-04-16,completed,Asia Pacific,marketplace
+SO-1018,C-005,Eva Green,eva@example.com,Reporting Pack,Services,3,400,1200,2026-04-23,completed,Europe,retail
+SO-1019,C-014,Noah Wilson,noah@example.com,Premium Support,Support,1,650,650,2026-04-28,cancelled,North America,online
+SO-1020,C-015,Olivia Taylor,olivia@example.com,Automation Setup,Services,2,1100,2200,2026-05-02,completed,Latin America,online
+SO-1021,C-006,Frank Moore,frank@example.com,Analytics Suite,Software,1,900,900,2026-05-06,completed,North America,marketplace
+SO-1022,C-016,Paul Evans,paul@example.com,Data Connector,Software,2,600,1200,2026-05-11,completed,Europe,retail
+SO-1023,C-007,Grace Kim,grace@example.com,Reporting Pack,Services,1,450,450,2026-05-17,refunded,Asia Pacific,online
+SO-1024,C-017,Quinn Hall,quinn@example.com,Premium Support,Support,2,700,1400,2026-05-23,completed,North America,online
+SO-1025,C-018,Rachel King,rachel@example.com,Automation Setup,Services,4,950,3800,2026-05-29,completed,Europe,retail
+SO-1026,C-019,Sam Young,sam@example.com,Analytics Suite,Software,1,1000,1000,2026-06-03,completed,Latin America,online
+SO-1027,C-020,Tara Scott,tara@example.com,Data Connector,Software,2,650,1300,2026-06-08,completed,North America,marketplace
+SO-1028,C-002,Bob Smith,bob@example.com,Reporting Pack,Services,1,500,500,2026-06-14,pending,Europe,retail
+SO-1029,C-004,David Lee,david@example.com,Premium Support,Support,2,750,1500,2026-06-19,completed,Asia Pacific,online
+SO-1030,C-011,Karen White,karen@example.com,Automation Setup,Services,1,1400,1400,2026-06-27,completed,North America,retail
+SO-1031,C-003,Carla Ruiz,carla@example.com,Analytics Suite,Software,1,950,950,2026-07-02,completed,Latin America,online
+SO-1032,C-005,Eva Green,eva@example.com,Data Connector,Software,3,700,2100,2026-07-07,completed,Europe,marketplace
+SO-1033,C-012,Leo Martin,leo@example.com,Reporting Pack,Services,2,550,1100,2026-07-13,completed,Europe,retail
+SO-1034,C-015,Olivia Taylor,olivia@example.com,Premium Support,Support,1,800,800,2026-07-20,refunded,North America,online
+SO-1035,C-008,Henry Adams,henry@example.com,Automation Setup,Services,2,1250,2500,2026-07-26,completed,Asia Pacific,online
+SO-1036,C-016,Paul Evans,paul@example.com,Analytics Suite,Software,1,1050,1050,2026-08-01,completed,Europe,marketplace
+SO-1037,C-018,Rachel King,rachel@example.com,Data Connector,Software,2,750,1500,2026-08-06,completed,North America,retail
+SO-1038,C-006,Frank Moore,frank@example.com,Reporting Pack,Services,1,600,600,2026-08-12,cancelled,Latin America,online
+SO-1039,C-019,Sam Young,sam@example.com,Premium Support,Support,2,850,1700,2026-08-19,completed,North America,online
+SO-1040,C-020,Tara Scott,tara@example.com,Automation Setup,Services,3,1000,3000,2026-08-25,completed,Europe,retail
+SO-1041,C-001,Alice Johnson,alice@example.com,Analytics Suite,Software,1,1100,1100,2026-09-01,completed,North America,online
+SO-1042,C-010,Jack Brown,jack@example.com,Data Connector,Software,2,800,1600,2026-09-05,completed,Latin America,marketplace
+SO-1043,C-014,Noah Wilson,noah@example.com,Reporting Pack,Services,1,450,450,2026-09-07,pending,North America,retail
+SO-1044,C-009,Irene Cole,irene@example.com,Premium Support,Support,2,900,1800,2026-09-09,completed,Europe,online
