@@ -1,0 +1,25 @@
+order_id,customer_name,customer_email,company,product,category,quantity,unit_price,total_amount,currency,order_date,status,sales_region
+ORD-1001,  Alice Johnson ,ALICE@EXAMPLE.COM,Northstar Labs,Analytics Suite,software,2,750,999.99,usd,2026-01-15, COMPLETED , north america 
+ORD-1002,Bob Smith,bob@example.com,Acme Co,Data Connector,services,1,1200,1200,USD,2026-01-18,completed,Europe
+ORD-1002,Bob Smith,bob@example.com,Acme Co,Data Connector,services,1,1200,999,USD,2026-01-18,completed,Europe
+ORD-1003,Carla Ruiz,,Globex,Reporting Pack,software,3,400,1200,Usd,2026-02-02,pending,Latin America
+ORD-1004,David Lee,david@example.com,,Automation Setup,services,1,800,800,USD,2026-02-11, Pending ,North America
+ORD-1005,Eva Green,eva.example.com,Initech,Data Audit,consulting,2,350,700,USD,2026-02-20,completed,Europe
+ORD-1006,Frank Moore,frank@example.com,Wayne Enterprises,Premium Support,support,0,500,0,USD,2026-03-01,pending,North America
+ORD-1007,Grace Kim,grace@example.com,Stark Industries,Pipeline Build,services,4,-100,0,USD,2026-03-03,completed,Asia Pacific
+ORD-1008,Henry Adams,henry@example.com,Wonka,Data Cleanup,consulting,2,250,9999,USD,not-a-date,completed,Europe
+ORD-1009,Irene Cole,irene@example.com,Tyrell,Analytics Suite,software,1,750,750,USD,2026-03-21,refunded,Europe
+ORD-1010,Jack Brown,jack@example.com,Massive Dynamic,Data Connector,software,5,300,1500,USD,2026-04-02,CANCELLED, North America
+ORD-1011,Karen White,karen@example.com,Globex,Reporting Pack,software,2,600,1200,USD,2026-04-10,completed,Latin America
+ORD-1012,Leo Martin,leo@example.com,Acme Co,Automation Setup,services,1,900,900,USD,2026-04-12,pending,Europe
+ORD-1013,Mia Davis,mia@example.com,Northstar Labs,Premium Support,support,2,550,1100,USD,2026-05-05,completed,North America
+ORD-1014,Noah Wilson,noah@example.com,Initech,Data Audit,consulting,1,450,450,USD,2026-05-08,completed,Europe
+ORD-1015,Olivia Taylor,olivia@example.com,Stark Industries,Pipeline Build,services,2,1000,2000,USD,2026-05-15,completed,Asia Pacific
+ORD-1016,Paul Evans,paul@example.com,Tyrell,Analytics Suite,software,1,700,700,USD,2026-05-21,refunded,Europe
+ORD-1017,Quinn Hall,quinn@example.com,Wonka,Data Cleanup,consulting,3,200,600,USD,2026-06-02,pending,North America
+ORD-1018,Rachel King,rachel@example.com,Massive Dynamic,Data Connector,software,2,650,1300,USD,2026-06-07,completed,North America
+ORD-1019,Sam Young,sam@example.com,Globex,Reporting Pack,software,1,500,500,USD,2026-06-15,completed,Latin America
+ORD-1020,Tara Scott,tara@example.com,Acme Co,Automation Setup,services,3,800,2400,USD,2026-06-22,completed,Europe
+ORD-1021,,uma@example.com,Initech,Data Audit,consulting,1,450,450,USD,2026-07-01,completed,Europe
+ORD-1022,Victor Reed,victor@example.com,Wayne Enterprises,Premium Support, support ,1,600,600,USD,2026-07-03,completed,North America
+ORD-1023,Wendy Fox,wendy@example.com,Tyrell,Pipeline Build,services,2,900,1800,USD,2026-07-10,completed,Europe
