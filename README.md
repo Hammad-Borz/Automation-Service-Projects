@@ -1,287 +1,294 @@
 # 🤖 Automation Service Projects
 
-> **A practical portfolio of client-focused Python automation, AI-powered workflows, advanced RAG systems, API integrations, data-processing pipelines, reporting solutions, and database automation projects built around real business problems.**
+> **A professional portfolio of practical Python automation, AI automation, RAG, API integration, data-processing, reporting, database, email, and workflow-automation systems built around real business problems.**
 
-![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white)
-![Projects](https://img.shields.io/badge/Projects-9-7C3AED)
-![Tests](https://img.shields.io/badge/Automated_Tests-132-16A34A)
-![Status](https://img.shields.io/badge/Portfolio-Complete-16A34A)
+![Python](https://img.shields.io/badge/Python-3-3776AB?logo=python&logoColor=white)
+![Projects](https://img.shields.io/badge/Projects-10-7C3AED)
+![Tests](https://img.shields.io/badge/Automated_Tests-136-16A34A)
+![Status](https://img.shields.io/badge/Portfolio-Active-16A34A)
 
 ---
 
-# 🎯 What This Portfolio Demonstrates
+## 🎯 Portfolio Purpose
 
-This is a **service-oriented engineering portfolio**, not a collection of isolated coding exercises.
+This repository is a **service-oriented engineering portfolio**, not a collection of isolated tutorials.
 
-Each project is designed around a practical business workflow and demonstrates how **Python, automation, AI, APIs, retrieval systems, data processing, validation, SQL, testing, reporting, and intelligent decision workflows** can be combined into reusable systems.
+Each project represents a practical business capability that can be adapted into freelance services, internal automation, or larger automation systems.
 
 ```text
-💼 Business Problem
+💼 Business Requirement
         ↓
-🏗️ Requirements & Architecture
+🏗️ Architecture & Workflow Design
         ↓
-🐍 Modular Python Implementation
-        ↓
-🧠 Automation / AI / Retrieval Workflow
+🐍 Python / AI / Automation Implementation
         ↓
 🛡️ Validation & Error Handling
         ↓
 🧪 Testing & Runtime Verification
         ↓
-📚 Documentation & Portfolio Presentation
+📚 Documentation
+        ↓
+🚀 Reusable Business Solution
 ```
 
 ---
 
-# 🏆 Featured Projects
+# 🏆 Project Portfolio
 
-| # | Project | Primary Focus | Tests | Status |
-|---|---|---|---:|---|
-| 01 | 🗂️ AutoFlow | Business file automation | 10 | 🟢 Complete |
-| 02 | 🔌 ConnectHub | Multi-API integration | 11 | 🟢 Complete |
-| 03 | ⛏️ DataMiner | Web data extraction & processing | 11 | 🟢 Complete |
-| 04 | 🧠 DocuMind | AI document processing | 14 | 🟢 Complete |
-| 05 | 🤖 TaskPilot | AI business task assistant | 17 | 🟢 Complete |
-| 06 | 📚 KnowledgeBase-AI | **Advanced RAG & intelligent knowledge systems** | **38** | 🟢 Upgraded & Complete |
-| 07 | 📧 MailFlow | Intelligent email automation | 12 | 🟢 Complete |
-| 08 | 📊 ReportFlow | Automated business reporting | 12 | 🟢 Complete |
-| 09 | 🗄️ DataOps Automator | SQL & database automation | 17 | 🟢 Complete |
+| # | Project | Primary Service | Verification / Status |
+|---|---|---|---|
+| 01 | 🗂️ **AutoFlow** | Python Business Automation | 🟢 Complete • 10 tests |
+| 02 | 🔌 **ConnectHub** | Multi-API Integration | 🟢 Complete • 11 tests |
+| 03 | ⛏️ **DataMiner** | Web Data Extraction | 🟢 Complete • 11 tests |
+| 04 | 🧠 **DocuMind** | AI Document Processing | 🟢 Complete • 14 tests |
+| 05 | 🤖 **TaskPilot** | AI Assistant & Tool Calling | 🟢 Complete • 17 tests |
+| 06 | 📚 **KnowledgeBase-AI** | Advanced RAG | 🟢 Complete • 32 tests |
+| 07 | 📧 **MailFlow** | Email Automation | 🟢 Complete • 12 tests |
+| 08 | 📊 **ReportFlow** | Business Reporting | 🟢 Complete • 12 tests |
+| 09 | 🗄️ **DataOps Automator** | SQL & Database Automation | 🟢 Complete • 17 tests |
+| 10 | ⚙️ **AutomationFlow** | n8n & Make Workflow Automation | 🟢 Complete |
 
-## 🏆 Portfolio: **9 Projects • 132 Automated Tests**
+### 📈 Portfolio Metrics
+
+- **10 practical automation projects**
+- **136 automated tests** across the nine Python service projects with automated test suites
+- **2 workflow-automation implementations** in AutomationFlow: n8n + Make
+- **Python supporting service** integrated with the n8n implementation
+- Exportable workflow and scenario blueprints
+- Architecture, setup, and project documentation
+
+---
+
+# ⚙️ 10 — AutomationFlow — n8n & Make Business Automation Workflows
+
+AutomationFlow demonstrates how a real business lead-processing requirement can be implemented across **n8n and Make**, with a lightweight Python service providing deterministic lead analysis for the n8n workflow.
+
+```text
+Lead Source
+    ↓
+Webhook
+    ↓
+Normalize & Validate
+    ↓
+Lead Processing
+    ├── n8n → Python HTTP Service
+    └── Make → Native Make Routing
+    ↓
+Classification / Priority
+    ↓
+Automation Decision
+    ↓
+Structured Response
+```
+
+**Highlights:** 🔗 Webhooks • 🔀 Conditional routing • 🐍 Python HTTP integration • ⚙️ n8n • 🔵 Make • 📦 Exportable blueprints • 📚 Architecture & setup documentation
+
+**Skills:** `n8n` • `Make` • `Webhooks` • `Workflow Automation` • `FastAPI` • `Python` • `HTTP APIs`
+
+📂 **Project:** `AutomationFlow/`
 
 ---
 
 # 🗂️ 01 — AutoFlow Business Automation System
 
-A modular Python automation system for processing business files through a complete workflow.
+A modular Python system for automatically discovering, validating, organizing, processing, and reporting on business files.
 
 **Highlights:** 📁 File discovery • ✅ Validation • 📄 TXT/CSV processing • 🗂️ Organization • 📑 Reports • 📝 Logging
 
 **Skills:** `Python` • `File Automation` • `CSV Processing` • `Data Validation` • `pytest`
 
-📂 **Project:** `AutoFlow-Business-Automation-System/`
+📂 `AutoFlow-Business-Automation-System/`
 
 ---
 
-# 🔌 02 — ConnectHub Multi-API Integration & Automation System
+# 🔌 02 — ConnectHub Multi-API Integration System
 
-A reusable Python integration workflow built around a reliable pipeline:
+A reusable integration pipeline built around reliable API communication and transformation.
 
 ```text
 Fetch → Validate → Transform → Send
 ```
 
-**Highlights:** 🌐 GET/POST clients • 🛡️ Error handling • 📦 JSON processing • 🔄 Data transformation • ⚙️ Workflow orchestration
-
 **Skills:** `Python` • `REST APIs` • `API Integration` • `Data Transformation` • `pytest`
 
-📂 **Project:** `ConnectHub/`
+📂 `ConnectHub/`
 
 ---
 
-# ⛏️ 03 — DataMiner Web Data Extraction & Processing System
+# ⛏️ 03 — DataMiner Web Data Extraction System
 
-A Python pipeline that transforms structured HTML into **validated, cleaned, and export-ready datasets**.
+A web-extraction pipeline that transforms structured HTML into cleaned, validated, export-ready datasets.
 
 ```text
-Source URL → Fetch → Extract → Validate → Clean → Export → Report
+Source → Fetch → Extract → Validate → Clean → Export → Report
 ```
 
-**Highlights:** 🌐 HTTP fetching • 🔍 BeautifulSoup extraction • 🧹 Data normalization • 📊 CSV/JSON exports
+**Skills:** `Python` • `BeautifulSoup` • `requests` • `Web Data Extraction` • `Data Cleaning` • `pytest`
 
-**Skills:** `Python` • `Web Data Extraction` • `BeautifulSoup` • `requests` • `Data Cleaning`
-
-📂 **Project:** `DataMiner/`
+📂 `DataMiner/`
 
 ---
 
 # 🧠 04 — DocuMind AI Document Processing System
 
-An AI-powered workflow that transforms **PDF and DOCX documents into validated, structured insights and reports**.
+An AI-powered document workflow that converts PDF and DOCX content into structured insights and reports.
 
 ```text
-PDF / DOCX → Extract Text → AI Analysis → Validate → Export → Report
+PDF / DOCX → Extract → AI Analysis → Validate → Export → Report
 ```
 
-**Highlights:** 📄 Document extraction • 🤖 AI analysis • 🧾 Structured insights • 🛡️ Pydantic validation • 📦 JSON export
+**Skills:** `Python` • `AI Automation` • `OpenAI API` • `PDF` • `DOCX` • `Pydantic` • `pytest`
 
-**Skills:** `Python` • `AI Automation` • `OpenAI API` • `PDF` • `DOCX` • `Pydantic`
-
-📂 **Project:** `DocuMind/`
+📂 `DocuMind/`
 
 ---
 
 # 🤖 05 — TaskPilot AI Business Assistant
 
-A Python AI assistant that converts business task requests into **validated and structured task operations**.
+A business assistant that converts natural-language task requests into structured and validated operations.
 
 ```text
-User Request → Assistant → Intent / Tool Selection → Validated Tool → Task Manager → Report
+User Request → Intent / Tool Selection → Validated Tool → Task Operation → Report
 ```
-
-**Highlights:** ➕ Task operations • 📊 Summaries • 🛡️ Pydantic validation • 💾 JSON persistence • 🤖 Optional tool calling
 
 **Skills:** `Python` • `AI Assistants` • `Tool Calling` • `Pydantic` • `JSON` • `pytest`
 
-📂 **Project:** `TaskPilot/`
+📂 `TaskPilot/`
 
 ---
 
-# 📚 06 — KnowledgeBase AI: Advanced RAG & Intelligent Knowledge System
+# 📚 06 — KnowledgeBase AI — Advanced RAG System
 
-A multi-stage document intelligence system that combines **semantic retrieval, BM25 keyword retrieval, Reciprocal Rank Fusion (RRF), second-stage reranking, metadata filtering, relevance thresholds, abstention, and precise source attribution**.
+A multi-document knowledge system using hybrid retrieval, rank fusion, reranking, relevance evaluation, abstention, and source attribution.
 
 ```text
 Documents
     ↓
 Extract → Chunk → Index
     ↓
-Semantic Retrieval + BM25 Retrieval
+Semantic Retrieval + BM25
     ↓
-Hybrid Rank Fusion (RRF)
+RRF Hybrid Fusion
     ↓
-Candidate Selection → Reranking
+Reranking
     ↓
 Relevance Evaluation
     ↓
-Grounded Answer OR Abstention
-    ↓
-Precise Citations
+Grounded Answer / Abstention
 ```
 
-**Highlights:** 📄 PDF/DOCX ingestion • 🔍 Hybrid retrieval • 🔀 RRF • 🧠 Second-stage reranking • 🏷️ Metadata filtering • 🛡️ Weak-result abstention • 📌 Precise citations
+**Skills:** `Python` • `Advanced RAG` • `BM25` • `RRF` • `Reranking` • `Metadata Filtering` • `Pydantic` • `pytest`
 
-**Skills:** `Python` • `Advanced RAG` • `Hybrid Retrieval` • `BM25` • `RRF` • `Reranking` • `Document Intelligence` • `Pydantic` • `pytest`
-
-📂 **Project:** `KnowledgeBase-AI/`
+📂 `KnowledgeBase-AI/`
 
 ---
 
-# 📧 07 — MailFlow Intelligent Email Automation System
+# 📧 07 — MailFlow Intelligent Email Automation
 
-A modular, safe-by-default email automation system that turns inbound messages into **prioritized, explainable, and actionable workflows**.
+A safe-by-default email automation system that parses, classifies, prioritizes, and prepares actionable workflows for inbound messages.
 
 ```text
-Incoming Email
-      ↓
-Parse & Validate
-      ↓
-Classify
-      ↓
-Prioritize
-      ↓
-Apply Automation Rules
-      ↓
-Generate Draft (Optional)
-      ↓
-Record Result
+Incoming Email → Parse → Classify → Prioritize → Rules → Draft / Action → Record
 ```
-
-**Highlights:** 📥 Configurable IMAP ingestion • 🏷️ Email classification • 🚦 Priority scoring • ⚙️ Automation rules • ✍️ Response drafting • 📤 Guarded SMTP architecture
 
 **Skills:** `Python` • `Email Automation` • `IMAP` • `SMTP` • `Pydantic` • `pytest`
 
-📂 **Project:** `MailFlow/`
+📂 `MailFlow/`
 
 ---
 
-# 📊 08 — ReportFlow Automated Business Reporting System
+# 📊 08 — ReportFlow Automated Business Reporting
 
-A business reporting pipeline that transforms raw sales data into **validated insights and professional Excel, CSV, and text reports**.
+A reporting pipeline that transforms raw sales data into validated business insights and professional Excel, CSV, and text reports.
 
 ```text
 Business Data → Load → Validate → Clean → Analyze → Generate Reports
 ```
 
-**Highlights:** 📥 CSV/Excel ingestion • 🧹 Data processing • 💰 KPI calculations • 📦 Product analysis • 🌍 Regional analysis • 📅 Monthly trends • 📗 Excel charts • 📄 CSV exports
+**Skills:** `Python` • `pandas` • `openpyxl` • `Excel Automation` • `Business Analytics` • `pytest`
 
-**Skills:** `Python` • `pandas` • `openpyxl` • `Business Analytics` • `Excel Automation` • `pytest`
-
-📂 **Project:** `ReportFlow/`
+📂 `ReportFlow/`
 
 ---
 
 # 🗄️ 09 — DataOps Automator
 
-A repeatable **SQL and database automation system** that transforms raw sales data into a validated SQLite database, business analytics, and automated reports.
+A repeatable SQL/database automation system that loads validated sales data into SQLite, performs business analytics, and generates reports.
 
 ```text
-Sales CSV → Validate → Transform → SQLite UPSERT → SQL Analytics → Reports
+CSV → Validate → Transform → SQLite UPSERT → SQL Analytics → Reports
 ```
 
-**Highlights:** 📥 CSV ingestion • 🛡️ Data validation • 🧹 pandas transformation • 🗄️ SQLite automation • 🔁 UPSERT design • 📊 SQL KPIs • 📤 Automated reports
+**Skills:** `Python` • `SQL` • `SQLite` • `pandas` • `Database Automation` • `pytest`
 
-**Skills:** `Python` • `SQL` • `SQLite` • `Database Automation` • `pandas` • `pytest`
-
-📂 **Project:** `DataOps-Automator/`
+📂 `DataOps-Automator/`
 
 ---
 
-# 🧠 Skills Demonstrated Across the Portfolio
+# 🧠 Core Skills Demonstrated
 
 ## 🐍 Python Engineering
 
-- Modular application architecture
-- Object-oriented and component-based design
+- Modular architecture
 - Type hints and validation
 - Error handling and logging
-- Reusable, testable components
+- Reusable components
+- Automated testing
+- API and HTTP service development
 
-## ⚙️ Automation Systems
+## ⚙️ Business Automation
 
-- Business workflow automation
-- File-processing pipelines
+- File-processing workflows
 - API-to-API integrations
 - Web data extraction
 - Email automation
-- Automated business reporting
-- SQL and database automation
+- Excel/report automation
+- SQL/database automation
+- Webhook-driven workflows
+- n8n and Make orchestration
 
 ## 🤖 AI & Intelligent Systems
 
-- AI-assisted structured analysis
-- OpenAI API integration
-- AI assistants and tool calling
-- **Advanced RAG & intelligent knowledge systems**
+- AI document processing
+- AI assistants
+- Tool calling
+- Advanced RAG
 - Hybrid semantic + keyword retrieval
-- Rank fusion and reranking
-- Grounded-answer validation and abstention
-- Pydantic validation
+- BM25 and RRF
+- Reranking
+- Grounded answers and abstention
+- Structured AI outputs
 
-## 📊 Data, Reporting & Databases
+## 📊 Data & Reporting
 
-- CSV and Excel automation
+- CSV and JSON processing
 - Data cleaning and transformation
-- KPI calculations
+- KPI analysis
+- Excel generation
 - SQL analytics
-- SQLite database design
-- UPSERT and repeatable data loading
+- SQLite persistence
 - Automated report generation
-- Excel workbook and chart generation
-
-## 🌐 APIs & Integrations
-
-- REST API communication
-- HTTP failure handling
-- Environment-based configuration
-- IMAP and SMTP architecture
-- HTML parsing and transformation
 
 ---
 
-# 🧪 Software Quality
+# 🧪 Engineering Quality
 
-## 🟢 **132 Automated Tests Across 9 Projects**
+The portfolio emphasizes production-minded practices:
 
-The portfolio emphasizes practical engineering practices:
+- `pytest` automated verification
+- Modular and testable code
+- Input validation
+- Error handling
+- Logging
+- Environment-based configuration
+- Safe-by-default external actions
+- Reproducible demos
+- Clear architecture and setup documentation
+- Git/GitHub version control
 
-- `pytest` automated testing
-- Modular and testable architecture
-- Validation and error handling
-- Logging and debugging
-- `.gitignore` and environment configuration
-- Reproducible local demo workflows
-- Runtime verification alongside automated tests
+### 📊 Automated Verification
+
+**136 automated tests** are maintained across the nine Python service projects with automated test suites. AutomationFlow is primarily a workflow-platform portfolio project and is documented through its n8n/Make blueprints and supporting Python service.
 
 ---
 
@@ -295,58 +302,69 @@ Automation-Service-Projects/
 ├── DataMiner/
 ├── DocuMind/
 ├── TaskPilot/
-├── KnowledgeBase-AI/       # Advanced RAG & Intelligent Knowledge System
+├── KnowledgeBase-AI/
 ├── MailFlow/
 ├── ReportFlow/
 ├── DataOps-Automator/
+├── AutomationFlow/
+├── .github/
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── PORTFOLIO.md
+├── .gitignore
 └── README.md
 ```
 
-> 📌 Each project contains its own source code, tests, configuration, documentation, and practical workflow implementation.
+Each project is independently documented so a reviewer can inspect its architecture, implementation, testing approach, and business use case.
 
 ---
 
-# 💼 Portfolio Services Demonstrated
+# 💼 Freelance Service Capabilities
 
-These projects demonstrate capabilities relevant to practical freelance and business automation services:
+This portfolio demonstrates practical services suitable for businesses and freelance clients:
 
 - 🐍 Python automation
+- ⚙️ n8n & Make workflow automation
 - 🌐 API integration
 - 🔍 Web scraping and data extraction
-- 📊 Data processing and transformation
-- 🗂️ File and document automation
-- 🤖 AI assistants and tool calling
-- 📚 **Advanced RAG & Intelligent Knowledge Systems**
+- 📄 Document processing
+- 🤖 AI automation and assistants
+- 📚 RAG knowledge systems
 - 📧 Email automation
-- 📈 Excel and business reporting automation
-- 🗄️ SQL and database automation
-- ⚙️ End-to-end automation systems
+- 📊 Excel and reporting automation
+- 🗄️ SQL/database automation
+- 🔗 End-to-end business workflow integration
 
 ---
 
-# 🛠️ Core Technology Stack
+# 🛠️ Technology Stack
 
 | Category | Technologies |
 |---|---|
-| 🐍 Programming | Python |
-| 🤖 AI & RAG | OpenAI API, Advanced RAG, BM25, RRF, Reranking, Pydantic, Tool Calling |
-| 🌐 APIs & Web | `requests`, REST APIs, IMAP/SMTP |
-| 🔍 Data Extraction | `BeautifulSoup4` |
-| 📄 Documents | PDF and DOCX libraries |
-| 📊 Data & Reporting | CSV, JSON, pandas, openpyxl |
-| 🗄️ Databases | SQL, SQLite, UPSERT workflows |
-| 🧪 Testing | `pytest`, `unittest.mock` |
-| 🔐 Configuration | `python-dotenv` |
-| 📝 Observability | Python `logging` |
-| 🗃️ Version Control | Git & GitHub |
+| Programming | Python |
+| Workflow Automation | n8n, Make |
+| AI | OpenAI API, AI assistants, tool calling |
+| RAG | BM25, RRF, reranking, semantic retrieval |
+| APIs | REST, HTTP, FastAPI |
+| Web Extraction | BeautifulSoup, requests |
+| Documents | PDF, DOCX |
+| Data | CSV, JSON, pandas |
+| Reporting | openpyxl, Excel |
+| Databases | SQL, SQLite |
+| Email | IMAP, SMTP |
+| Testing | pytest |
+| Configuration | python-dotenv |
+| Version Control | Git, GitHub |
 
 ---
 
-# 🏁 Portfolio Status
+# 🚀 Portfolio Status
 
-## 🟢 **The current 9-project Automation Service Portfolio is complete and verified.**
+## 🟢 10 practical service projects documented and organized
 
-The portfolio covers practical service areas ranging from Python automation and API integration to AI workflows, **Advanced RAG & Intelligent Knowledge Systems**, email automation, business reporting, and SQL/database automation.
+The repository now covers a broad progression from foundational Python automation to AI systems, advanced RAG, data/database automation, and visual workflow orchestration with **n8n and Make**.
+
+The projects are intentionally structured as portfolio-ready implementations that can be reviewed individually or used as building blocks for larger automation systems.
 
 ---
 
@@ -354,8 +372,8 @@ The portfolio covers practical service areas ranging from Python automation and 
 
 **Hammad Borz**
 
-> Python • AI Automation • Advanced RAG • API Integration • Data Automation • Database Automation • Intelligent Automation Systems
+> Python • AI Automation • RAG • n8n • Make • API Integration • Data Automation • Database Automation • Intelligent Workflow Systems
 
 ---
 
-### ⭐ Explore the individual project folders to review their architecture, implementation, tests, documentation, and practical workflows.
+### ⭐ Explore the project directories to review the individual implementations, workflows, documentation, and engineering practices.
