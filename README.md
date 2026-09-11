@@ -3,8 +3,8 @@
 > **A portfolio of practical Python automation, AI automation, RAG, API integration, data-processing, reporting, database, email, webhook, and workflow-automation systems built around real business problems.**
 
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
-![Projects](https://img.shields.io/badge/Projects-11-7C3AED)
-![Tests](https://img.shields.io/badge/Automated_Tests-170-16A34A)
+![Projects](https://img.shields.io/badge/Projects-13-7C3AED)
+![Tests](https://img.shields.io/badge/Automated_Tests-265-16A34A)
 ![Status](https://img.shields.io/badge/Portfolio-Active-16A34A)
 
 ---
@@ -50,8 +50,10 @@ The projects are organized from core Python/business automation through integrat
 | 09 | 🗄️ **DataOps Automator** | SQL & Database Automation | 🟢 Complete • 17 tests |
 | 10 | ⚙️ **AutomationFlow** | n8n & Make Workflow Automation | 🟢 Complete |
 | 11 | ⚡ **EventPulse** | Webhook & Event Automation | 🟢 Complete • 34 tests |
+| 12 | 🗂️ **DataFlow Pro** | Business Data Processing Pipeline | 🟢 Complete • 37 tests |
+| 13 | 📈 **InsightFlow** | Automated Reporting & Analytics | 🟢 Complete • 58 tests |
 
-**Portfolio total: 11 projects • 170 automated tests across the Python projects with test suites.**
+**Portfolio total: 13 projects • 265 automated tests across the Python projects with test suites.**
 
 ---
 
@@ -277,13 +279,72 @@ Structured Result
 
 ---
 
+# 🗂️ 12 — DataFlow Pro — Business Data Processing Pipeline
+
+DataFlow Pro is a production-minded local pipeline for turning messy business transaction data into validated canonical records, quality intelligence, business KPIs, SQLite persistence, and shareable reports.
+
+```text
+Business CSV
+    ↓
+Ingestion → Validation → Cleaning → Deduplication
+    ↓
+Canonical Transformation
+    ↓
+Quality + Analytics
+    ├── SQLite Persistence
+    └── CSV / JSON / TXT / Excel Reports
+    ↓
+FastAPI Operations API
+```
+
+**Business capability:** automate reliable business-data ingestion, validation, quality analysis, database persistence, analytics, and reporting.
+
+**Highlights:** 🗂️ CSV ingestion • 🛡️ Validation • 🧹 Normalization • ♻️ Duplicate handling • 🗄️ SQLite UPSERT • 📊 Business analytics • 📑 Reports • ⚡ FastAPI • 🧪 37 tests
+
+**Skills:** `Python` • `pandas` • `Pydantic` • `SQL` • `SQLite` • `FastAPI` • `Data Quality` • `Business Analytics` • `pytest`
+
+📂 `DataFlow-Pro/`
+
+---
+
+# 📈 13 — InsightFlow — Automated Reporting & Analytics System
+
+InsightFlow transforms raw e-commerce transactions into validated data, executive KPIs, trend analysis, period comparisons, customer segments, explainable anomalies, deterministic insights, historical analytics runs, and business-ready reports.
+
+```text
+Raw Business Data
+      ↓
+Load → Validate → Normalize
+      ↓
+Analytics Engine
+├── KPIs
+├── Trends
+├── Period Comparisons
+├── Segmentation
+└── Anomaly Detection
+      ↓
+Deterministic Insights
+      ↓
+SQLite History + Reports + FastAPI API
+```
+
+**Business capability:** automate recurring business analytics and executive reporting with reproducible calculations, explainable insights, historical tracking, and professional reports.
+
+**Highlights:** 📊 KPI analytics • 📈 Trend analysis • 🔄 Period comparison • 👥 Customer segmentation • 🚨 Explainable anomalies • 💡 Rule-based insights • 🗄️ Historical run tracking • 📑 Excel/JSON/CSV/TXT reports • ⚡ FastAPI • 🧪 58 tests
+
+**Skills:** `Python` • `pandas` • `Business Analytics` • `FastAPI` • `SQLite` • `Pydantic` • `Anomaly Detection` • `Reporting Automation` • `pytest`
+
+📂 `InsightFlow/`
+
+---
+
 # 🧩 Capability Map
 
 The portfolio can be viewed as several connected engineering capabilities:
 
 ### 🐍 Python & Backend Automation
 
-`AutoFlow` → `ConnectHub` → `DataMiner` → `DataOps Automator` → `EventPulse`
+`AutoFlow` → `ConnectHub` → `DataMiner` → `DataOps Automator` → `DataFlow Pro` → `EventPulse` → `InsightFlow`
 
 ### 🤖 AI & Intelligent Automation
 
@@ -291,7 +352,7 @@ The portfolio can be viewed as several connected engineering capabilities:
 
 ### 📊 Business Data & Communication Automation
 
-`MailFlow` → `ReportFlow` → `DataOps Automator`
+`MailFlow` → `ReportFlow` → `DataOps Automator` → `DataFlow Pro` → `InsightFlow`
 
 ### ⚙️ Workflow & Integration Automation
 
@@ -339,6 +400,9 @@ The portfolio can be viewed as several connected engineering capabilities:
 - CSV and JSON processing
 - Data cleaning and transformation
 - KPI analysis
+- Trend and comparative analysis
+- Customer segmentation
+- Explainable anomaly detection
 - Excel generation
 - SQL analytics
 - SQLite persistence
@@ -363,7 +427,7 @@ The portfolio emphasizes production-minded practices:
 
 ### 📊 Automated Verification
 
-**170 automated tests** are maintained across the Python projects with automated test suites. AutomationFlow is primarily a workflow-platform portfolio project and is documented through its n8n/Make blueprints and supporting Python service.
+**265 automated tests** are maintained across the Python projects with automated test suites. AutomationFlow is primarily a workflow-platform portfolio project and is documented through its n8n/Make blueprints and supporting Python service.
 
 ---
 
@@ -383,6 +447,8 @@ Automation-Service-Projects/
 ├── DataOps-Automator/
 ├── AutomationFlow/
 ├── EventPulse/
+├── DataFlow-Pro/
+├── InsightFlow/
 ├── .github/
 ├── CONTRIBUTING.md
 ├── SECURITY.md
@@ -410,6 +476,7 @@ This portfolio demonstrates practical services suitable for businesses and freel
 - 📊 Excel and reporting automation
 - 🗄️ SQL/database automation
 - ⚡ Webhook and event-driven automation
+- 📈 Business analytics and automated reporting
 - 🔗 End-to-end business workflow integration
 
 ---
@@ -428,6 +495,7 @@ This portfolio demonstrates practical services suitable for businesses and freel
 | Documents | PDF, DOCX |
 | Data | CSV, JSON, pandas |
 | Reporting | openpyxl, Excel |
+| Analytics | KPIs, trends, segmentation, anomaly detection |
 | Databases | SQL, SQLite |
 | Email | IMAP, SMTP |
 | Validation | Pydantic |
@@ -439,9 +507,9 @@ This portfolio demonstrates practical services suitable for businesses and freel
 
 # 🚀 Portfolio Status
 
-## 🟢 11 practical service projects documented and organized
+## 🟢 13 practical service projects documented and organized
 
-The repository now covers a progression from foundational Python automation to API integration, web extraction, AI systems, advanced RAG, email/report/database automation, visual workflow orchestration, and event-driven automation.
+The repository now covers a progression from foundational Python automation to API integration, web extraction, AI systems, advanced RAG, email/report/database automation, visual workflow orchestration, event-driven automation, business data processing, and automated analytics/reporting.
 
 The projects are intentionally structured as portfolio-ready implementations that can be reviewed individually or combined into larger business automation systems.
 
@@ -451,7 +519,7 @@ The projects are intentionally structured as portfolio-ready implementations tha
 
 **Hammad Borz**
 
-> Python • AI Automation • RAG • n8n • Make • Webhooks • API Integration • Data Automation • Database Automation • Intelligent Workflow Systems
+> Python • AI Automation • RAG • n8n • Make • Webhooks • API Integration • Data Automation • Database Automation • Business Analytics • Intelligent Workflow Systems
 
 ---
 
