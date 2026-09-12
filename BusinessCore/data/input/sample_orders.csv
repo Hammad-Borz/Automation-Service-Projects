@@ -1,0 +1,11 @@
+customer_name,email,phone,company,product,category,quantity,unit_price,source
+Alice Thomson,alice@northstar.example,+15551230001,Northstar Labs,Automation Suite,software,4,1500,website
+Brian Patel,brian@atlas.example,+15551230002,Atlas Services,Customer Support Bundle,services,2,800,partner
+Carla Nguyen,carla@brightpath.example,+15551230003,BrightPath,Inventory Sync,software,12,1200,website
+Derek Ross,derek@harbor.example,+15551230004,Harbor Group,Compliance Package,compliance,7,2200,sales
+Eva Kim,eva@solstice.example,+15551230005,Solstice Co,Ops Dashboard,software,3,2500,website
+Frank Lewis,frank@summit.example,+15551230006,Summit Ops,Consulting Retainer,services,1,5000,partner
+Grace Wu,grace@lumen.example,+15551230007,Lumen Works,Shipping System,operations,18,900,website
+Henry Brooks,henry@copper.example,+15551230008,Copper Ventures,Analytics Pack,software,5,3500,sales
+Isla Romero,isla@marble.example,+15551230009,Marble Works,Workflow Upgrade,software,15,1400,website
+Jasmine Chen,jasmine@ridge.example,+15551230010,Ridge Group,Support Expansion,services,6,1100,partner
