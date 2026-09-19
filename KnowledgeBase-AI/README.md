@@ -8,6 +8,29 @@
 ![Mode](https://img.shields.io/badge/Demo-Offline-F59E0B)
 ![Status](https://img.shields.io/badge/Portfolio-Ready-16A34A)
 
+
+---
+
+## 🎯 Portfolio Snapshot
+
+| | Details |
+|---|---|
+| 💼 Service Focus | **📚 Advanced RAG & Intelligent Knowledge Systems** |
+| 🟢 Status | **Complete / Portfolio Ready** |
+| 🧪 Verification | **38 automated tests • Offline demo mode • OpenAI mode available** |
+
+## 🔴 What Problem Does This Project Address?
+
+Organizations need to search large document collections without relying on weak retrieval or unsupported answers.
+
+## 🟢 What Does It Solve?
+
+KnowledgeBase AI combines semantic and BM25 retrieval, RRF fusion, reranking, relevance evaluation, abstention, metadata filtering, and precise citations into a structured document-grounded workflow.
+
+## 🧭 Project Position
+
+This project is presented as a **service-specific implementation** inside the Automation Service Projects portfolio, with the technical architecture, setup, workflow, verification, and extension boundaries documented below.
+
 ---
 
 # 🎯 Overview
