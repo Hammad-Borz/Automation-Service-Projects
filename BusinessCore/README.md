@@ -1,18 +1,18 @@
 # 🏢 BusinessCore — End-to-End Business Automation System
 
-> **A production-minded FastAPI workflow platform that turns a validated customer order into coordinated business operations, persistence, tasks, notifications, audit events, analytics, and reports.**
+> **A production-minded FastAPI workflow platform that turns a validated customer order into coordinated operations, persistence, tasks, notifications, audit events, analytics, and reports.**
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-009688?logo=fastapi&logoColor=white)
-![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-25-16A34A)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-009688?logo=fastapi)
+![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite)
+![Tests](https://img.shields.io/badge/Tests-25-16A34A?logo=pytest)
 ![Status](https://img.shields.io/badge/Status-Complete-16A34A)
 
 ---
 
-## 🎯 Project Overview
+## 🎯 What It Solves
 
-**BusinessCore** is an end-to-end business automation backend rather than a simple CRUD API. It orchestrates a complete order-processing workflow from request validation through operational execution and reporting.
+BusinessCore demonstrates how individual automation capabilities can be composed into one coordinated business workflow instead of remaining isolated utilities.
 
 ```text
 Business Request
@@ -36,11 +36,7 @@ Analytics
 Business Reports
 ```
 
-The system is designed to demonstrate how individual automation capabilities can be composed into one reusable business workflow platform.
-
----
-
-## ✨ Core Capabilities
+## ⚙️ Core Capabilities
 
 - 🔄 End-to-end business workflow orchestration
 - 🛡️ Pydantic request validation
@@ -51,18 +47,14 @@ The system is designed to demonstrate how individual automation capabilities can
 - 🔔 Notification generation
 - 📝 Audit-event recording
 - 🗄️ SQLAlchemy + SQLite persistence
-- ♻️ Request-id based idempotent workflow processing
+- ♻️ Request-ID-based idempotent workflow processing
 - 📊 Business analytics and KPI summaries
-- 📑 TXT/JSON/CSV/Excel reporting support
+- 📑 TXT, JSON, CSV, and Excel reporting
 - 🌐 FastAPI REST endpoints
 - 📚 OpenAPI / Swagger documentation
-- 🧪 Automated pytest verification
-
----
+- 🧪 **25 automated tests**
 
 ## 🧠 Business Rules
-
-BusinessCore applies deterministic rules to each valid order so that business decisions are represented as executable automation logic.
 
 | Condition | Automated behavior |
 |---|---|
@@ -72,9 +64,7 @@ BusinessCore applies deterministic rules to each valid order so that business de
 | Every valid order | Invoice task + customer notification |
 | Blocked customer | Workflow is rejected |
 
-These rules are intentionally deterministic and testable, making the workflow predictable and suitable for automation backends.
-
----
+The rules are deterministic and testable, making the workflow behavior predictable.
 
 ## 🏗️ Architecture
 
@@ -107,49 +97,29 @@ These rules are intentionally deterministic and testable, making the workflow pr
        Analytics + Reporting
 ```
 
-### Layer responsibilities
+| Layer | Responsibility |
+|---|---|
+| **API** | HTTP interface, schemas, responses, and health endpoint |
+| **Core** | Validation, business rules, and workflow orchestration |
+| **Services** | Customer, order, task, notification, audit, analytics, and reporting |
+| **Database** | SQLAlchemy sessions and repository operations |
+| **Models** | Customer, order, task, notification, audit, and workflow state |
 
-- **API:** HTTP interface, request schemas, response handling, health endpoint
-- **Core:** validation, business rules, workflow orchestration
-- **Services:** customer, order, task, notification, audit, analytics, and reporting operations
-- **Database:** SQLAlchemy session management and repository operations
-- **Models:** customer, order, task, notification, audit, and workflow state
+## 🌐 API Surface
 
----
+| Area | Endpoints |
+|---|---|
+| Workflow | `POST /api/v1/workflows/process`, `GET /api/v1/workflows/{workflow_id}` |
+| Customers | `POST /api/v1/customers`, `GET /api/v1/customers`, `GET /api/v1/customers/{customer_id}` |
+| Orders | `POST /api/v1/orders`, `GET /api/v1/orders`, `GET /api/v1/orders/{order_id}` |
+| Operations | `GET /api/v1/tasks`, `GET /api/v1/notifications`, `GET /api/v1/audit` |
+| Analytics | `GET /api/v1/analytics/summary` |
+| Reporting | `POST /api/v1/reports/generate` |
+| Health | `GET /api/v1/health` |
 
-## 📡 API Surface
+Swagger/OpenAPI is available at `/docs`.
 
-### Workflow
-- `POST /api/v1/workflows/process`
-- `GET /api/v1/workflows/{workflow_id}`
-
-### Customers
-- `POST /api/v1/customers`
-- `GET /api/v1/customers`
-- `GET /api/v1/customers/{customer_id}`
-
-### Orders
-- `POST /api/v1/orders`
-- `GET /api/v1/orders`
-- `GET /api/v1/orders/{order_id}`
-
-### Operations
-- `GET /api/v1/tasks`
-- `GET /api/v1/notifications`
-- `GET /api/v1/audit`
-
-### Analytics & Reporting
-- `GET /api/v1/analytics/summary`
-- `POST /api/v1/reports/generate`
-
-### Health
-- `GET /api/v1/health`
-
-Swagger/OpenAPI is available when the application is running at `/docs`.
-
----
-
-## 🗂️ Project Structure
+## 📁 Project Structure
 
 ```text
 BusinessCore/
@@ -163,69 +133,37 @@ BusinessCore/
 │   └── input/
 │       └── sample_orders.csv
 ├── docs/
-│   └── setup/
-│       └── README.md
 ├── src/
 │   ├── api/
-│   │   ├── routes.py
-│   │   └── schemas.py
 │   ├── core/
-│   │   ├── business_rules.py
-│   │   ├── validation.py
-│   │   └── workflow_engine.py
 │   ├── database/
-│   │   ├── connection.py
-│   │   └── repository.py
 │   ├── models/
-│   │   ├── audit.py
-│   │   ├── customer.py
-│   │   ├── notification.py
-│   │   ├── order.py
-│   │   ├── task.py
-│   │   └── workflow.py
 │   ├── services/
-│   │   ├── analytics_service.py
-│   │   ├── audit_service.py
-│   │   ├── customer_service.py
-│   │   ├── notification_service.py
-│   │   ├── order_service.py
-│   │   ├── reporting_service.py
-│   │   └── task_service.py
 │   ├── config.py
 │   └── main.py
 └── tests/
-    ├── test_api.py
-    ├── test_business_rules.py
-    ├── test_validation.py
-    └── test_workflow.py
 ```
-
----
 
 ## 🧪 Verification
 
-The project was verified with the standard service-project checks:
+The service-project verification recorded:
 
 ```powershell
 pytest
 python -m src.main
 ```
 
-**Result:** `25 passed`
+**Result: 25 passed**
 
-The application starts successfully with Uvicorn at:
+The application runs with Uvicorn at:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-The project uses its own local `.venv` and is configured for **Python 3.12.x** on Windows.
+The project uses a local **Python 3.12.x** environment on Windows.
 
-> ⚠️ The current dependency pins are intentionally used with Python 3.12 because the selected FastAPI/Pydantic/SQLAlchemy/pandas/reporting stack provides the required Windows-compatible wheels there.
-
----
-
-## ⚙️ Setup
+## 🚀 Quick Start
 
 From the **BusinessCore** directory:
 
@@ -235,27 +173,31 @@ py -3.12 -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-Then verify:
+Verify:
 
 ```powershell
 pytest
 python -m src.main
 ```
 
-For custom configuration, copy `.env.example` to `.env`.
+For custom configuration:
 
-Default configuration uses:
+```text
+Copy .env.example → .env
+```
 
-- SQLite database: `data/businesscore.db`
-- Generated reports: `data/output/`
-- API: `http://127.0.0.1:8000`
-- Swagger UI: `http://127.0.0.1:8000/docs`
+Default local outputs:
+
+| Resource | Location |
+|---|---|
+| SQLite database | `data/businesscore.db` |
+| Generated reports | `data/output/` |
+| API | `http://127.0.0.1:8000` |
+| Swagger UI | `http://127.0.0.1:8000/docs` |
 
 Generated databases, reports, caches, logs, and the virtual environment are excluded from Git.
 
----
-
-## 🧰 Technology Stack
+## 🛠️ Technology Stack
 
 | Category | Technology |
 |---|---|
@@ -270,27 +212,23 @@ Generated databases, reports, caches, logs, and the virtual environment are excl
 | Testing | pytest, httpx |
 | Documentation | OpenAPI / Swagger |
 
----
-
 ## 💼 Business Value
 
-BusinessCore demonstrates a reusable pattern for automating operational business processes such as:
+BusinessCore demonstrates a reusable pattern for:
 
-- customer order intake
-- order routing and prioritization
-- approval workflows
-- fulfillment task generation
-- customer notifications
-- audit/compliance trails
-- operational analytics
-- automated business reporting
+- Customer order intake
+- Order routing and prioritization
+- Approval workflows
+- Fulfillment task generation
+- Customer notifications
+- Audit/compliance trails
+- Operational analytics
+- Automated business reporting
 
-It can serve as a foundation for larger integrations with CRMs, email systems, payment platforms, ERP systems, task-management tools, and external automation platforms.
-
----
+It can serve as a foundation for integrations with CRMs, email systems, payment platforms, ERP systems, task-management tools, and external automation platforms.
 
 ## 📌 Portfolio Position
 
 **Project #15 — End-to-End Business Automation Systems**
 
-BusinessCore extends the portfolio from individual automation capabilities into a coordinated business-process platform that combines **API engineering, workflow orchestration, business rules, persistence, operational automation, analytics, reporting, and auditability** in one system.
+BusinessCore brings together **API engineering, workflow orchestration, business rules, persistence, operational automation, analytics, reporting, and auditability** in one coordinated system.
