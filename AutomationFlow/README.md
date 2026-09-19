@@ -153,3 +153,26 @@ The workflow is designed to be safe for portfolio demonstration:
 AutomationFlow demonstrates a practical freelancer-ready capability: **turning a business requirement into a documented, webhook-driven automation workflow and implementing it across two leading automation platforms.**
 
 It also shows how a Python service can be integrated into an automation platform when deterministic business logic is more appropriate than embedding all logic directly in the workflow.
+
+
+---
+
+## 🎯 Portfolio Snapshot
+
+| | Details |
+|---|---|
+| 💼 Service Focus | **⚙️ n8n & Make Workflow Automation** |
+| 🟢 Status | **Complete / Portfolio Ready** |
+| 🧪 Verification | **Complete portfolio workflow • n8n + Make • Python supporting service** |
+
+## 🔴 What Problem Does This Project Address?
+
+Businesses need repeatable webhook-driven workflows that validate incoming information, apply business logic, route decisions, and return structured results.
+
+## 🟢 What Does It Solve?
+
+AutomationFlow demonstrates the same lead-processing requirement across n8n and Make, with a deterministic Python service supporting the n8n implementation.
+
+## 🧭 Project Position
+
+This project is presented as a **service-specific implementation** inside the Automation Service Projects portfolio, with the technical architecture, setup, workflow, verification, and extension boundaries documented below.
