@@ -8,6 +8,29 @@
 ![Mode](https://img.shields.io/badge/Demo_Mode-Safe-7C3AED)
 ![Status](https://img.shields.io/badge/Status-Complete-16A34A)
 
+
+---
+
+## 🎯 Portfolio Snapshot
+
+| | Details |
+|---|---|
+| 💼 Service Focus | **📧 Intelligent Email Automation** |
+| 🟢 Status | **Complete / Portfolio Ready** |
+| 🧪 Verification | **12 automated tests • Safe demo mode • IMAP/SMTP architecture** |
+
+## 🔴 What Problem Does This Project Address?
+
+Business teams receive repetitive support, sales, invoice, operational, and newsletter emails that require triage and consistent handling.
+
+## 🟢 What Does It Solve?
+
+MailFlow classifies, prioritizes, applies rules, prepares response drafts, and records results through a safe-by-default workflow without sending real email in demo mode.
+
+## 🧭 Project Position
+
+This project is presented as a **service-specific implementation** inside the Automation Service Projects portfolio, with the technical architecture, setup, workflow, verification, and extension boundaries documented below.
+
 ---
 
 # 🎯 The Business Problem
