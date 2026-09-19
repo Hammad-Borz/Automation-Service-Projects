@@ -1,153 +1,234 @@
 # 📧 MailFlow
-## Intelligent Email Automation System
 
-> **A modular, safe-by-default Python system for turning inbound emails into prioritized, explainable, and actionable business workflows.**
+## 1. Project Title
 
-![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-12_Passing-16A34A)
-![Mode](https://img.shields.io/badge/Demo_Mode-Safe-7C3AED)
+**MailFlow — Intelligent Email Automation System**
+
+A portfolio-focused Python automation project for processing inbound business emails through a structured, explainable, and safe-by-default workflow.
+
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-12%20Passing-16A34A)
+![Mode](https://img.shields.io/badge/Demo%20Mode-Safe-7C3AED)
 ![Status](https://img.shields.io/badge/Status-Complete-16A34A)
 
+---
+
+## 2. One-Line Description
+
+> **MailFlow classifies, prioritizes, applies business rules to, and prepares responses for inbound emails while keeping external side effects disabled in demo mode.**
 
 ---
 
-## 🎯 Portfolio Snapshot
+## 3. Problem
 
-| | Details |
-|---|---|
-| 💼 Service Focus | **📧 Intelligent Email Automation** |
-| 🟢 Status | **Complete / Portfolio Ready** |
-| 🧪 Verification | **12 automated tests • Safe demo mode • IMAP/SMTP architecture** |
+Business teams receive recurring **support requests, sales inquiries, invoices, urgent operational messages, newsletters, and general emails**.
 
-## 🔴 What Problem Does This Project Address?
-
-Business teams receive repetitive support, sales, invoice, operational, and newsletter emails that require triage and consistent handling.
-
-## 🟢 What Does It Solve?
-
-MailFlow classifies, prioritizes, applies rules, prepares response drafts, and records results through a safe-by-default workflow without sending real email in demo mode.
-
-## 🧭 Project Position
-
-This project is presented as a **service-specific implementation** inside the Automation Service Projects portfolio, with the technical architecture, setup, workflow, verification, and extension boundaries documented below.
-
----
-
-# 🎯 The Business Problem
-
-Business teams receive a constant flow of **support requests, sales inquiries, invoices, operational alerts, and newsletters**.
-
-Without automation:
+Manual triage creates several practical problems:
 
 - 🚨 Important messages can be missed.
-- ⏳ Teams spend time manually triaging repetitive emails.
+- ⏳ Repetitive classification consumes staff time.
 - 📨 Responses can become inconsistent.
-- ⚠️ Overly aggressive automation can create operational and security risks.
+- ⚠️ Uncontrolled automation can create unwanted external side effects.
+- 🔍 Manual processing makes it harder to apply consistent business rules.
+
+MailFlow addresses the processing and triage layer while keeping the automation behavior explicit and testable.
 
 ---
 
-# 💡 The Solution
+## 4. Solution
 
-**MailFlow** processes incoming emails through a structured automation pipeline.
+MailFlow implements a modular email-processing pipeline:
 
-It normalizes messages, classifies their purpose, assigns priority, applies automation rules, optionally prepares a response draft, and records the processing result.
+1. 📥 Receive or load email messages.
+2. 🔎 Parse and normalize messages.
+3. 🏷️ Classify each message.
+4. 🚦 Assign a priority.
+5. ⚙️ Evaluate configurable automation rules.
+6. ✍️ Generate a deterministic response draft when requested.
+7. 📋 Produce a structured processing result.
+8. 🔒 Keep demo-mode external side effects disabled.
 
-## 🔒 Safe by Default
-
-The built-in demo mode uses realistic local sample emails and **never sends real email**.
+The project separates email ingestion, classification, prioritization, rules, response generation, and delivery so individual components can be replaced or extended independently.
 
 ---
 
-# ⚙️ System Workflow
+## 5. Key Features
+
+### 📥 Email Ingestion
+
+- Local deterministic demo email provider.
+- IMAP reader for real mailbox ingestion.
+- IMAP connection supports SSL configuration.
+- Mailbox selection is configurable.
+- IMAP messages are selected with `readonly=True`.
+
+### 🏷️ Email Classification
+
+Transparent weighted keyword classification supports:
+
+- `urgent`
+- `support`
+- `sales`
+- `newsletter`
+- `invoice`
+- `general`
+
+The classifier is implemented as a replaceable component rather than being coupled to the workflow.
+
+### 🚦 Priority Detection
+
+Messages are assigned:
+
+- 🔴 **High**
+- 🟡 **Medium**
+- 🟢 **Low**
+
+Priority decisions use category, sender, subject, and body signals.
+
+### ⚙️ Automation Rules
+
+The default rule engine can:
+
+- Mark messages as processed.
+- Flag high-priority messages.
+- Request a response draft.
+- Prepare a notification.
+
+### ✍️ Response Generation
+
+- Deterministic local response generator.
+- Category-specific draft responses.
+- Provider interface for future AI/LLM implementations.
+- No paid API is required for the demo implementation.
+
+### 📤 Guarded SMTP Delivery
+
+- SMTP delivery is implemented behind a dedicated sender.
+- Demo mode prevents external delivery.
+- Real delivery requires demo mode to be disabled and SMTP credentials to be configured.
+- TLS can be enabled for SMTP connections.
+
+### 🔐 Safe Configuration
+
+- Environment-based configuration.
+- Pydantic settings validation.
+- `SecretStr` for password/API-key fields.
+- Demo mode enabled by default.
+
+### 🧪 Testing
+
+The project includes **12 automated tests** covering configuration, parsing, classification, prioritization, automation rules, response generation, and workflow orchestration.
+
+---
+
+## 6. How It Works
+
+For the normal local demo:
 
 ```text
-📥 Incoming Email
-        ↓
-🔎 Parse & Validate
-        ↓
-🏷️ Classify
-        ↓
-🚦 Prioritize
-        ↓
-⚙️ Apply Automation Rules
-        ↓
-✍️ Generate Response Draft (Optional)
-        ↓
-📋 Record Processing Result
+📥 Demo Email Dataset
+        │
+        ▼
+📨 Email Reader
+        │
+        ▼
+🔎 Parse / Normalize
+        │
+        ▼
+🏷️ Classifier
+        │
+        ▼
+🚦 Prioritizer
+        │
+        ▼
+⚙️ Rule Engine
+        │
+        ├── mark_processed
+        ├── flag_high_priority
+        ├── generate_response
+        └── prepare_notification
+        │
+        ▼
+✍️ Response Generator
+        │
+        ▼
+📋 Processing Result
+        │
+        ▼
+📝 Logging / CLI Output
+```
+
+The same workflow abstraction accepts injected components, so the processing logic is not tied to the demo reader.
+
+---
+
+## 7. Architecture / Workflow
+
+### 🧩 Architectural Components
+
+| Component | Responsibility |
+|---|---|
+| `email_reader.py` | Demo and IMAP ingestion boundary |
+| `email_parser.py` | MIME parsing and email normalization |
+| `classifier.py` | Transparent category classification |
+| `prioritizer.py` | Priority assignment |
+| `automation_rules.py` | Rule matching and action results |
+| `response_generator.py` | Response-provider interface and demo generator |
+| `email_sender.py` | Guarded SMTP delivery |
+| `workflow.py` | Central processing orchestration |
+| `models.py` | Domain models and validated contracts |
+| `config.py` | Environment-backed runtime configuration |
+| `logger.py` | Logging configuration |
+| `demo_data.py` | Local demo messages |
+
+### 🔄 Processing Boundary
+
+```text
+External / Demo Input
+        │
+        ▼
+┌─────────────────────┐
+│   Email Reader      │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│   Email Workflow    │
+├─────────────────────┤
+│ Classification      │
+│ Prioritization      │
+│ Rule Evaluation     │
+│ Response Generation │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│ Processing Result   │
+└──────────┬──────────┘
+           ▼
+     Logging / Output
+
+SMTP delivery is a separate guarded boundary.
 ```
 
 ---
 
-# ✨ Key Features
+## 8. Technologies
 
-## 📥 Email Ingestion
-
-- Configurable IMAP email ingestion
-- Local demo provider requiring no credentials
-- Read-only mailbox access architecture
-
-## 🏷️ Intelligent Classification
-
-Supported categories include:
-
-- 🚨 `urgent`
-- 🛠️ `support`
-- 💼 `sales`
-- 📰 `newsletter`
-- 🧾 `invoice`
-- 📩 `general`
-
-The classifier is designed as a replaceable component, allowing a future AI-based implementation.
-
-## 🚦 Priority Detection
-
-Emails are assigned:
-
-- 🔴 **High priority**
-- 🟡 **Medium priority**
-- 🟢 **Low priority**
-
-Priority decisions use category and message signals to keep the process explainable.
-
-## ⚙️ Automation Rules
-
-Configurable rules can produce actions such as:
-
-- ✅ Mark as processed
-- 🚩 Flag high-priority messages
-- ✍️ Generate a response draft
-- 🔔 Prepare a notification
-
-## ✍️ Response Generation
-
-MailFlow includes a deterministic response generator that works without paid APIs or credentials.
-
-A provider interface also creates a clean extension point for an approved AI or LLM provider later.
-
-## 📤 Guarded Email Delivery
-
-The SMTP sender is architected for real delivery, while demo mode prevents external sending.
-
----
-
-# 🧠 Architecture
-
-| Module | Responsibility |
+| Category | Technology |
 |---|---|
-| `email_reader.py` | Demo and IMAP provider boundary |
-| `email_parser.py` | MIME parsing and normalization |
-| `classifier.py` | Replaceable email classification |
-| `prioritizer.py` | Priority scoring |
-| `automation_rules.py` | Rule matching and action execution |
-| `response_generator.py` | Response-provider interface and demo implementation |
-| `email_sender.py` | Guarded SMTP delivery |
-| `workflow.py` | Central orchestration |
-| `models.py` | Validated domain contracts |
-| `config.py` | Environment-based configuration |
+| 🐍 Language | Python 3.11+ |
+| 🛡️ Data validation | Pydantic |
+| 📥 IMAP | Python `imaplib` |
+| 📤 SMTP | Python `smtplib` |
+| ✉️ Email parsing | Python `email` package |
+| 🔐 Configuration | `python-dotenv` |
+| 🧪 Testing | `pytest` |
+| 📝 Logging | Python `logging` |
+
+Runtime dependencies are intentionally lightweight; the project does not require a database or external AI API for its demo workflow.
 
 ---
 
-# 📁 Project Structure
+## 9. Project Structure
 
 ```text
 MailFlow/
@@ -194,35 +275,16 @@ MailFlow/
 
 ---
 
-# 🛠️ Technology Stack
+## 10. Installation
 
-| Category | Technology |
-|---|---|
-| 🐍 Language | Python |
-| 🛡️ Validation | Pydantic |
-| 📥 Email Reading | IMAP / `imaplib` |
-| 📤 Email Delivery | SMTP / `smtplib` |
-| 🔐 Configuration | `python-dotenv` |
-| 🧪 Testing | `pytest` |
-| 📝 Logging | Python `logging` |
-
----
-
-# 🚀 Installation
-
-## 1️⃣ Clone the repository
+### 1️⃣ Clone the portfolio repository
 
 ```bash
 git clone https://github.com/Hammad-Borz/Automation-Service-Projects.git
-```
-
-## 2️⃣ Navigate to MailFlow
-
-```bash
 cd Automation-Service-Projects/MailFlow
 ```
 
-## 3️⃣ Create a virtual environment
+### 2️⃣ Create a virtual environment
 
 ```bash
 python -m venv .venv
@@ -234,7 +296,7 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-## 4️⃣ Install dependencies
+### 3️⃣ Install dependencies
 
 ```bash
 python -m pip install -r requirements.txt
@@ -242,37 +304,74 @@ python -m pip install -r requirements.txt
 
 ---
 
-# ⚙️ Configuration
+## 11. Configuration
 
-Copy the example configuration:
+MailFlow reads configuration from `MAILFLOW_*` environment variables.
+
+Create a local `.env` from the supplied example:
 
 ```bash
 cp .env.example .env
 ```
 
-The default configuration intentionally enables demo mode:
+### Safe default
 
 ```text
 MAILFLOW_DEMO_MODE=true
 ```
 
-Only disable demo mode after configuring a controlled environment with the required credentials.
+### Main configuration groups
 
-### 🔐 Security Rule
+- `MAILFLOW_DEMO_MODE`
+- `MAILFLOW_LOG_LEVEL`
+- `MAILFLOW_LOG_FILE`
+- `MAILFLOW_IMAP_*`
+- `MAILFLOW_SMTP_*`
+- `MAILFLOW_RESPONSE_PROVIDER`
+- `MAILFLOW_AI_API_KEY`
 
-**Never commit real credentials, passwords, API keys, or SMTP secrets to GitHub.**
+### Important security boundary
 
-MailFlow reads sensitive values from environment variables.
+Do not commit real passwords, SMTP credentials, or API keys.
+
+When demo mode is disabled, the application requires the necessary SMTP/IMAP credentials for the corresponding real integration.
 
 ---
 
-# ▶️ Run the Demo
+## 12. Usage
+
+### ▶️ Run the local demo
 
 ```bash
 python -m src.main
 ```
 
-### Example workflow output
+The demo:
+
+1. Loads local sample emails.
+2. Processes them through the workflow.
+3. Displays category and priority.
+4. Displays the actions generated by the rule engine.
+5. Displays response drafts when requested.
+6. Confirms that no real email was sent.
+
+### 🧪 Run tests
+
+```bash
+pytest
+```
+
+Expected project result:
+
+```text
+12 passed
+```
+
+---
+
+## 13. Example
+
+A representative demo flow looks like:
 
 ```text
 MailFlow - Intelligent Email Automation System
@@ -293,62 +392,129 @@ Demo mode: True | Received: 5 emails
 Processing complete. No real emails were sent.
 ```
 
+The exact output is generated by the current demo implementation; the project uses deterministic demo response generation rather than an external LLM.
+
 ---
 
-# 🧪 Run the Tests
+## 14. Screenshots
 
-```bash
-pytest
-```
+> 🟡 **Reserved area — screenshots will be added later.**
 
-## 🟢 Current Result
+Planned visual proof:
+
+- 📥 Demo email input / received-message view.
+- 🏷️ Classification and priority results.
+- ⚙️ Generated automation actions.
+- ✍️ Response draft output.
+- 🔒 Demo-mode safety behavior.
+- 🧪 Test execution result.
+- 📝 Log output where useful.
+
+---
+
+## 15. Demo Video / GIF
+
+> 🟡 **Reserved area — demo video/GIF will be added later.**
+
+### Planned demonstration
 
 ```text
-12 passed
+Start MailFlow
+      ↓
+Load demo emails
+      ↓
+Classify
+      ↓
+Prioritize
+      ↓
+Apply rules
+      ↓
+Generate draft
+      ↓
+Show structured results
+      ↓
+Confirm no real email was sent
 ```
 
-The test suite covers important workflow components, including configuration, parsing, classification, prioritization, automation rules, response generation, and workflow orchestration.
+A later portfolio demo can also show the guarded boundary between processing logic and real SMTP delivery.
 
 ---
 
-# 🔒 Security & Safety
+## 16. Results / Benefits
 
-MailFlow is deliberately designed with cautious operational defaults:
+### 🧪 Current Verification
 
-- 🔐 Secrets are stored outside source code.
-- 🧪 Demo mode is enabled by default.
-- 📤 SMTP delivery is guarded in demo mode.
-- 📥 IMAP access is designed to be read-only.
-- 🔔 Notification and forwarding actions can prepare outcomes without creating demo-mode external side effects.
-- 👀 Generated drafts and automation rules should be reviewed before production use.
+- **12 automated tests** are documented for the project.
+- Demo mode provides a local workflow without external email delivery.
+- IMAP ingestion is isolated behind an email-reader abstraction.
+- Classification uses transparent keyword scoring.
+- Priority assignment is deterministic and explainable.
+- Automation rules are represented as explicit rule objects.
+- Response generation has a replaceable provider interface.
+- SMTP delivery is isolated and guarded by demo mode.
+- Configuration is environment-backed and secret fields use Pydantic `SecretStr`.
 
----
+### 💼 Portfolio / Service Relevance
 
-# 🔮 Future Improvements
-
-- 🔑 OAuth2 authentication for email providers
-- 📚 Mailbox pagination and incremental processing
-- 🗄️ Database persistence with idempotency keys
-- 👤 Human approval queues for outbound actions
-- 🤖 Production AI response providers
-- 📊 Metrics and observability
-- 🌐 Web dashboard
-- ⚡ Integration with workflow automation platforms
-
----
-
-# 🏆 Portfolio Value
-
-MailFlow demonstrates practical skills relevant to **business automation and freelance services**:
+MailFlow demonstrates practical capabilities in:
 
 `Python` • `Email Automation` • `IMAP` • `SMTP` • `Pydantic` • `Workflow Automation` • `Environment Configuration` • `Logging` • `pytest`
 
 ---
 
-## 👨‍💻 Author
+## 17. Limitations
+
+The current implementation has deliberate boundaries:
+
+- The demo workflow uses deterministic local sample data.
+- The classifier is rule/keyword based rather than an AI classifier.
+- The demo response generator is deterministic rather than LLM-generated.
+- There is no database-backed processing history.
+- There is no production web dashboard.
+- The current project does not implement OAuth2 mailbox authentication.
+- Production deployment, monitoring, mailbox pagination, and incremental processing are not implemented.
+
+These are documented extension boundaries rather than capabilities currently claimed by the project.
+
+---
+
+## 18. Future Improvements
+
+Potential next iterations include:
+
+- 🔑 OAuth2 authentication for supported email providers.
+- 📚 Mailbox pagination and incremental processing.
+- 🗄️ Persistent storage with idempotency keys.
+- 👤 Human approval queues for outbound actions.
+- 🤖 Production AI/LLM response providers.
+- 📊 Metrics and observability.
+- 🌐 Web dashboard.
+- ⚡ Integration with workflow automation platforms.
+
+---
+
+## 19. License
+
+No license file is currently documented for MailFlow.
+
+Until a license is added to the repository, users should not assume that the project is released under an open-source license.
+
+---
+
+## 20. Author / Contact
 
 **Hammad Borz**
 
 > Python • AI Automation • API Integration • Data Automation • Automation Systems
 
-⭐ **MailFlow is designed as a portfolio-quality foundation with readable modules, explicit boundaries, testable behavior, and safe operational defaults.**
+MailFlow is part of the **Automation-Service-Projects** portfolio and is positioned as a service-specific email automation implementation.
+
+---
+
+### 🔗 Repository
+
+[Automation-Service-Projects](../)
+
+### 📌 Project
+
+[MailFlow](./)
