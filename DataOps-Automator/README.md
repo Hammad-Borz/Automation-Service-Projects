@@ -1,135 +1,181 @@
-# 🗄️ DataOps Automator
+# 🗄️ DataOps Automator — SQL & Database Automation
 
-> **A repeatable Python and SQL automation system that transforms raw sales data into a validated SQLite database, business analytics, and decision-ready reports.**
+> **A repeatable Python + SQLite + SQL automation pipeline that validates sales CSV data, transforms it into database-ready records, performs safe UPSERT operations, calculates business analytics, and generates decision-ready reports.**
 
-![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.14%2B-3776AB?logo=python&logoColor=white)
 ![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-17-16A34A)
+![Tests](https://img.shields.io/badge/Tests-17-16A34A?logo=pytest)
 ![Status](https://img.shields.io/badge/Status-Complete-16A34A)
 
+---
+
+## 1. 🎯 Project Title
+
+**DataOps Automator — SQL & Database Automation**
+
+DataOps Automator is a local business-data automation system that moves sales data through validation, transformation, SQLite persistence, SQL analytics, and report generation.
 
 ---
 
-## 🎯 Portfolio Snapshot
+## 2. 📝 One-Line Description
 
-| | Details |
-|---|---|
-| 💼 Service Focus | **🗄️ SQL & Database Automation** |
-| 🟢 Status | **Complete / Portfolio Ready** |
-| 🧪 Verification | **17 automated tests • SQLite • SQL analytics • UPSERT** |
-
-## 🔴 What Problem Does This Project Address?
-
-Manual spreadsheet-to-database workflows can create duplicate records, inconsistent calculations, and weak repeatability.
-
-## 🟢 What Does It Solve?
-
-DataOps Automator validates and transforms sales data, performs SQLite UPSERT operations, runs SQL analytics, and produces repeatable business reports.
-
-## 🧭 Project Position
-
-This project is presented as a **service-specific implementation** inside the Automation Service Projects portfolio, with the technical architecture, setup, workflow, verification, and extension boundaries documented below.
+> **Validate sales data → transform it → UPSERT into SQLite → analyze with SQL → export business reports.**
 
 ---
 
-# 🎯 The Business Problem
+## 3. 🔴 Problem
 
-Sales reporting is often managed through manually maintained spreadsheets and repeated copy-and-paste operations. This can create:
+Manual spreadsheet-to-database workflows can create:
 
 - Duplicate records
 - Inconsistent calculations
-- Weak data validation
-- Fragile reporting workflows
-- Limited repeatability and auditability
+- Weak input validation
+- Fragile reporting processes
+- Repetitive copy-and-paste work
+- Limited repeatability
 
-DataOps Automator demonstrates how a structured **Python + SQLite + SQL analytics pipeline** can automate this workflow from ingestion to reporting.
+A reliable automation workflow needs a defined data contract, deterministic transformations, controlled database writes, and repeatable analytics.
 
 ---
 
-# ⚡ The Solution
+## 4. 🟢 Solution
 
-```text
+DataOps Automator provides an end-to-end Python + SQLite + SQL workflow:
+
+~~~text
 📥 Sales CSV
      ↓
 🛡️ Validate Data
      ↓
 🧹 Clean & Transform
      ↓
-🗄️ SQLite UPSERT
+🗄️ Initialize SQLite Schema
+     ↓
+🔁 UPSERT Sales Records
      ↓
 📊 SQL Analytics
      ↓
-📤 CSV Reports + Executive Summary
-```
+📤 CSV Reports + Executive Report
+~~~
 
-The system validates incoming sales data, transforms it into a database-ready format, safely upserts records into SQLite, calculates business metrics using SQL, and automatically exports analytical reports.
+The workflow is implemented as reusable modules and can be executed locally without an external database, cloud service, or API.
 
 ---
 
-# ✨ Key Features
+## 5. ⚙️ Key Features
 
-- 📥 CSV ingestion with clear missing-file and unsupported-format errors
-- 🛡️ Required-column and positive-value validation
-- 🧹 Non-mutating pandas transformations
+- 📥 CSV ingestion with missing-file and unsupported-format handling
+- 🛡️ Required-column validation
+- 🔢 Positive numeric validation for quantity and unit price
+- 📅 Order-date validation
+- 🧹 Non-mutating pandas transformation
 - 💰 Automatic revenue calculation
-- 📅 Reporting month generation
-- 🗄️ Automatic SQLite database and schema creation
+- 📆 Reporting-month generation
+- 🗄️ Automatic SQLite schema creation
 - 🔁 Repeatable `order_id` UPSERT operations
-- 🔒 Parameterized SQL queries
-- 📊 SQL-based KPIs and grouped revenue analytics
+- 🔒 Parameterized SQL persistence
+- ↩️ Transaction rollback handling
+- 📊 SQL-based KPI and grouped analytics
+- 🌍 Regional revenue analysis
+- 📦 Product and category revenue analysis
+- 📅 Monthly revenue analysis
+- 🏆 Top-product analysis
 - 📤 Six CSV analytics exports
 - 📝 Human-readable executive report
-- 📋 Structured console and file logging
+- 🧾 Structured application logging
 - 🧪 **17 automated pytest tests**
 - ⚙️ Fully automated end-to-end workflow
 
 ---
 
-# 🔄 System Workflow
+## 6. 🔄 How It Works
 
-```mermaid
-flowchart LR
-    A[📥 Sales CSV] --> B[Load]
-    B --> C[Validate]
-    C --> D[Clean & Transform]
-    D --> E[🗄️ SQLite UPSERT]
-    E --> F[📊 SQL Analytics]
-    F --> G[📄 CSV Reports]
-    F --> H[📝 Executive Report]
-```
+1. **Load** — Reads the configured sales CSV.
+2. **Validate** — Checks required columns, non-empty order IDs, positive quantities/prices, and valid dates.
+3. **Transform** — Creates a normalized copy, standardizes fields, calculates revenue, and derives the reporting month.
+4. **Initialize** — Creates the SQLite sales table when required.
+5. **Persist** — Inserts or updates records using `order_id` as the primary key.
+6. **Analyze** — Executes SQL aggregation queries against the database.
+7. **Export** — Writes six CSV analytics files plus a business report.
+8. **Log** — Records workflow stages and results in the project logs.
 
 ---
 
-# 🏗️ Architecture
+## 7. 🏗️ Architecture / Workflow
+
+~~~text
+                 ┌──────────────────────┐
+                 │     Sales CSV        │
+                 └──────────┬───────────┘
+                            ↓
+                    ┌───────────────┐
+                    │  DataLoader   │
+                    └───────┬───────┘
+                            ↓
+                    ┌───────────────┐
+                    │ DataValidator │
+                    └───────┬───────┘
+                            ↓
+                    ┌───────────────┐
+                    │ DataProcessor │
+                    └───────┬───────┘
+                            ↓
+                 ┌──────────────────────┐
+                 │ SQLite + UPSERT      │
+                 └──────────┬───────────┘
+                            ↓
+                    ┌───────────────┐
+                    │   Analytics   │
+                    └───────┬───────┘
+                            ↓
+                 ┌──────────────────────┐
+                 │ ReportExporter       │
+                 └──────────────────────┘
+~~~
+
+### Module Responsibilities
 
 | Module | Responsibility |
 |---|---|
-| `config.py` | Centralized and testable project settings |
-| `data_loader.py` | CSV loading and input-boundary errors |
-| `data_validator.py` | Required fields and business-rule validation |
-| `data_processor.py` | Data normalization and transformation |
-| `database_manager.py` | SQLite lifecycle, transactions, and schema setup |
-| `data_repository.py` | Parameterized persistence and retrieval |
-| `analytics.py` | SQL aggregation and KPI queries |
-| `report_exporter.py` | CSV and executive report generation |
+| `config.py` | Centralized project paths and required-column settings |
+| `data_loader.py` | CSV ingestion and input-boundary errors |
+| `data_validator.py` | Required-field and business-rule validation |
+| `data_processor.py` | Normalization, revenue calculation, and month derivation |
+| `database_manager.py` | SQLite connections, transactions, rollback, and schema lifecycle |
+| `data_repository.py` | Parameterized persistence and UPSERT operations |
+| `analytics.py` | SQL KPIs and grouped business analytics |
+| `report_exporter.py` | CSV and executive-report generation |
 | `workflow.py` | End-to-end orchestration |
-| `main.py` | Demo application entry point |
+| `main.py` | Command-line demo entry point |
 
 ---
 
-# 📁 Project Structure
+## 8. 🛠️ Technologies
 
-```text
+| Technology | Purpose |
+|---|---|
+| **Python 3.14+** | Application and workflow implementation |
+| **pandas** | CSV processing and data transformation |
+| **SQLite / sqlite3** | Local relational persistence |
+| **SQL** | KPI and grouped business analytics |
+| **pytest** | Automated testing |
+| **pathlib** | Filesystem management |
+| **Python logging** | Operational logging |
+
+Dependencies are defined in `requirements.txt`.
+
+---
+
+## 9. 📁 Project Structure
+
+~~~text
 DataOps-Automator/
-│
 ├── data/
 │   ├── input/
 │   │   └── sales_data.csv
-│   └── output/                 # Generated reports (ignored by Git)
-│
-├── database/                   # Generated SQLite database (ignored by Git)
-├── logs/                       # Generated logs (ignored by Git)
-│
+│   └── output/
+├── database/
+├── logs/
 ├── src/
 │   ├── analytics.py
 │   ├── config.py
@@ -145,53 +191,110 @@ DataOps-Automator/
 │   ├── report_exporter.py
 │   ├── schema.py
 │   └── workflow.py
-│
 ├── tests/
-│   └── 17 automated test cases
-│
 ├── .gitignore
 ├── pytest.ini
 ├── requirements.txt
 └── README.md
-```
+~~~
+
+### Runtime Locations
+
+~~~text
+data/input/sales_data.csv
+data/output/
+database/dataops.db
+logs/
+~~~
+
+Generated database, output, and log artifacts are excluded from Git.
 
 ---
 
-# 🛠️ Technology Stack
-
-| Area | Technologies |
-|---|---|
-| 🐍 Programming | Python 3.14+ |
-| 🗄️ Database | SQLite / `sqlite3` |
-| 📊 Data Processing | pandas |
-| 🧪 Testing | pytest |
-| 📁 File Management | pathlib |
-| 📝 Logging | Python logging |
-
----
-
-# 🚀 Installation
+## 10. 🚀 Installation
 
 From the `DataOps-Automator` directory:
 
-```powershell
+~~~powershell
 python -m pip install -r requirements.txt
-```
+~~~
 
-# ▶️ Run the Demo
+The current dependency set includes pandas and pytest.
 
-```powershell
+---
+
+## 11. 🔧 Configuration
+
+Project settings are centralized in `src/config.py`.
+
+The default project configuration creates:
+
+| Setting | Default |
+|---|---|
+| Input directory | `data/input/` |
+| Output directory | `data/output/` |
+| Database directory | `database/` |
+| Database | `database/dataops.db` |
+| Logs directory | `logs/` |
+
+Required input columns:
+
+~~~text
+order_id
+order_date
+customer
+region
+product
+category
+quantity
+unit_price
+~~~
+
+The application creates required runtime directories automatically.
+
+---
+
+## 12. ▶️ Usage
+
+### Run the Complete Workflow
+
+~~~powershell
 python -m src.main
-```
+~~~
 
-The included 16-record sample dataset runs locally without requiring an external database, cloud service, or API.
+The default workflow processes:
 
-## Example Result
+~~~text
+data/input/sales_data.csv
+~~~
 
-```text
-DataOps Automator - Database Automation System
-================================================
+and generates:
 
+~~~text
+data/output/
+database/dataops.db
+logs/
+~~~
+
+### Run the Test Suite
+
+~~~powershell
+pytest
+~~~
+
+The workflow does not require an external database, cloud service, or API.
+
+---
+
+## 13. 🧪 Example
+
+### Sample Dataset Result
+
+The included sample dataset contains **16 sales records**.
+
+The documented demo output is:
+
+~~~text
 Records processed: 16
 Database records: 16
 
@@ -203,139 +306,172 @@ Total Quantity Sold: 38
 Reports generated: 7
 
 Automation completed successfully.
-```
+~~~
+
+### SQL Analytics
+
+The analytics layer calculates:
+
+| Analysis | SQL Operation |
+|---|---|
+| Total revenue | `SUM(revenue)` |
+| Total orders | `COUNT(DISTINCT order_id)` |
+| Average order value | `AVG(revenue)` |
+| Quantity sold | `SUM(quantity)` |
+| Revenue by region | `GROUP BY region` |
+| Revenue by product | `GROUP BY product` |
+| Revenue by category | `GROUP BY category` |
+| Monthly revenue | `GROUP BY month` |
+| Top products | `ORDER BY revenue DESC LIMIT 5` |
+
+### Generated Reports
+
+~~~text
+kpi_summary.csv
+revenue_by_region.csv
+revenue_by_product.csv
+revenue_by_category.csv
+monthly_revenue.csv
+top_products.csv
+business_report.txt
+~~~
 
 ---
 
-# 🗄️ Database Design
+## 14. 📸 Screenshots
 
-The `sales` table uses `order_id` as its primary key and stores:
+> **Reserved area — screenshots will be added later.**
 
-- Order date
-- Customer
-- Region
-- Product
-- Category
-- Quantity
-- Unit price
-- Calculated revenue
-- Reporting month
+Planned portfolio evidence:
 
-The database layer uses **UPSERT behavior**, meaning repeated runs with the same `order_id` update existing records rather than creating duplicates.
-
----
-
-# 📊 SQL Analytics
-
-The analytics layer uses SQL operations including:
-
-- `SUM`
-- `COUNT`
-- `AVG`
-- `GROUP BY`
-- `ORDER BY`
-- `LIMIT`
-
-It calculates:
-
-### 📈 KPI Summary
-
-- Total revenue
-- Total orders
-- Average order value
-- Total quantity sold
-
-### 🌍 Revenue Analysis
-
-- Revenue by region
-- Revenue by product
-- Revenue by category
-- Monthly revenue trends
-- Top products ranked by revenue
+- Terminal workflow execution
+- Input sales CSV
+- SQLite database/table
+- UPSERT evidence
+- SQL analytics output
+- Generated CSV reports
+- Executive business report
+- Application logs
 
 ---
 
-# 📤 Generated Reports
+## 15. 🎥 Demo Video / GIF
 
-The automation workflow creates:
+> **Reserved area — demo video/GIF will be added later.**
 
-```text
-📊 kpi_summary.csv
-🌍 revenue_by_region.csv
-📦 revenue_by_product.csv
-🏷️ revenue_by_category.csv
-📅 monthly_revenue.csv
-🏆 top_products.csv
-📝 business_report.txt
-```
+Planned demonstration:
 
-Generated output files are excluded from Git because they can be recreated automatically by the application.
+~~~text
+Sales CSV
+   ↓
+Validation
+   ↓
+Transformation
+   ↓
+SQLite Schema
+   ↓
+UPSERT
+   ↓
+SQL Analytics
+   ↓
+6 CSV Reports
+   ↓
+Executive Report
+   ↓
+Completed Automation
+~~~
 
----
-
-# 🧪 Testing & Verification
-
-Run the complete test suite:
-
-```powershell
-pytest
-```
-
-## Latest Verified Result
-
-```text
-17 passed
-```
-
-The tests cover:
-
-- ⚙️ Configuration and directory creation
-- 📥 CSV loading and failure handling
-- 🛡️ Data validation
-- 🧹 Non-mutating data transformation
-- 🗄️ Database and schema creation
-- 🔄 Transaction rollback behavior
-- 🔁 UPSERT and duplicate prevention
-- 📊 SQL analytics
-- 📤 Report generation
-- 🚀 Repeatable end-to-end execution
+The final demo should show the complete workflow from raw sales data through database persistence and business reporting.
 
 ---
 
-# 💼 Business Use Cases
+## 16. 📊 Results / Benefits
 
-DataOps Automator can be adapted for:
+DataOps Automator provides:
 
-- Daily or weekly sales reporting
-- Regional performance reviews
-- Product portfolio analysis
-- Data quality checks before database loading
-- Automated business operations reporting
-- Lightweight local data automation for small teams
-
----
-
-# 🔮 Future Improvements
-
-- Configurable input file selection
-- Command-line options
-- Incremental ingestion audit tables
-- Margin and profitability analytics
-- Customer lifetime value analysis
-- Cohort analytics
-- Scheduled execution
-- Automated email delivery
-- Database migrations
-- Interactive dashboard layer
+- **Repeatable database automation** instead of manual spreadsheet-to-database processing.
+- **Validated inputs** before database persistence.
+- **Deterministic revenue calculations** from quantity × unit price.
+- **Duplicate-safe persistence** through `order_id` UPSERT behavior.
+- **Transactional database operations** with rollback handling.
+- **SQL-driven analytics** directly against persisted business data.
+- **Automated reporting** in reusable CSV and text formats.
+- **Local reproducibility** without external infrastructure.
+- **Automated verification** through 17 pytest tests.
 
 ---
 
-# 🧠 Skills Demonstrated
+## 17. ⚠️ Limitations
 
-`Python` • `SQL` • `SQLite` • `Database Automation` • `Data Validation` • `pandas` • `UPSERT` • `SQL Analytics` • `Reporting Automation` • `Logging` • `Exception Handling` • `pytest` • `Modular Architecture`
+The current implementation is intentionally a local batch automation system.
+
+Current limitations include:
+
+- CSV is the supported input format.
+- SQLite is intended for local/small-scale workloads.
+- Processing is synchronous.
+- No external database deployment is included.
+- No authentication/API layer is included.
+- No scheduled execution is included.
+- No interactive dashboard is included.
+- No incremental ingestion audit table is currently implemented.
+- No automated email delivery is currently implemented.
 
 ---
 
-## 🏆 Portfolio Context
+## 18. 🔮 Future Improvements
 
-**DataOps Automator is Project #9 in the Automation Service Projects portfolio**, demonstrating practical capabilities in **SQL and database automation**.
+Potential extensions include:
+
+- 📥 Configurable input-file selection
+- 🖥️ Command-line options
+- 🧾 Incremental ingestion audit tables
+- 💵 Margin and profitability analytics
+- 👥 Customer lifetime value analysis
+- 🧩 Cohort analytics
+- 📅 Scheduled execution
+- 📧 Automated email delivery
+- 🗃️ Database migrations
+- 📊 Interactive dashboard layer
+
+These are future extensions rather than current implementation claims.
+
+---
+
+## 19. 📜 License
+
+No license file is currently included in the project.
+
+> If this repository is later intended for open-source redistribution, add an appropriate `LICENSE` file and update this section accordingly.
+
+---
+
+## 20. 👤 Author / Contact
+
+**Hammad-Borz**
+
+- GitHub: [@Hammad-Borz](https://github.com/Hammad-Borz)
+- Repository: [Automation-Service-Projects](https://github.com/Hammad-Borz/Automation-Service-Projects)
+
+For project-specific questions, use the repository's GitHub issues or discussion mechanisms where appropriate.
+
+---
+
+## 💼 Portfolio Positioning
+
+DataOps Automator demonstrates practical **SQL + database automation** capabilities through:
+
+- Python data pipelines
+- CSV ingestion
+- Business-rule validation
+- pandas transformation
+- SQLite schema management
+- Parameterized SQL
+- UPSERT operations
+- Transaction rollback
+- SQL analytics
+- Automated report generation
+- Logging
+- pytest verification
+
+> **Portfolio note:** Points **14 (Screenshots)** and **15 (Demo Video/GIF)** are intentionally reserved for the later Visual Presentation and Demo Video phases.
