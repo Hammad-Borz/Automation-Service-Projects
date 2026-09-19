@@ -5,18 +5,16 @@
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white)
 ![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-34-16A34A)
+![Tests](https://img.shields.io/badge/Tests-34-16A34A?logo=pytest)
 ![Status](https://img.shields.io/badge/Status-Complete-16A34A)
 
 ---
 
-## 🎯 What EventPulse Does
+## 🎯 What It Solves
 
-EventPulse receives business webhook events, validates and normalizes them, applies deterministic automation rules, prepares safe local actions, and persists the complete processing lifecycle in SQLite.
+Webhook integrations become difficult to maintain when HTTP handling, validation, routing, business rules, side effects, and persistence are tightly coupled.
 
-It is designed around a common business problem: **webhook integrations become difficult to maintain when HTTP handling, validation, routing, business rules, side effects, and persistence are tightly coupled.** EventPulse separates these responsibilities into clear modules so new event types and rules can be added without rewriting the API layer.
-
-### Business Flow
+**EventPulse separates those responsibilities** into a modular event-processing pipeline:
 
 ```text
 External System
@@ -40,11 +38,9 @@ Persist Result
 Structured Response
 ```
 
----
-
 ## 🏗️ Architecture
 
-EventPulse follows a modular-monolith architecture with clear boundaries between the API, event-processing logic, database layer, domain models, and services.
+EventPulse uses a modular-monolith design with explicit boundaries between the API, processing logic, database layer, domain models, and services.
 
 ```text
                     ┌──────────────────────┐
@@ -69,8 +65,8 @@ EventPulse follows a modular-monolith architecture with clear boundaries between
                     └──────────┬───────────┘
                                ↓
                     ┌──────────────────────┐
-                    │ Action Executor      │
-                    │   safe local actions │
+                    │    Action Executor   │
+                    │    safe local work   │
                     └──────────┬───────────┘
                                ↓
                     ┌──────────────────────┐
@@ -78,67 +74,56 @@ EventPulse follows a modular-monolith architecture with clear boundaries between
                     └──────────────────────┘
 ```
 
-### Layer Responsibilities
-
 | Layer | Responsibility |
 |---|---|
 | `api/` | HTTP routes and Pydantic request/response schemas |
-| `core/` | Event processing, routing, business rules, and action execution |
+| `core/` | Event processing, routing, rules, and action execution |
 | `database/` | SQLite connection and repository operations |
 | `models/` | Normalized event/domain models |
 | `services/` | Application-level event and automation services |
-| `tests/` | Deterministic API, integration, and unit verification |
+| `tests/` | API, integration, and unit verification |
 | `docs/` | Architecture and setup documentation |
-
----
 
 ## ⚙️ Key Capabilities
 
-- 🔗 Webhook ingestion through FastAPI
-- 🛡️ Pydantic validation with flexible event payloads
-- 🔄 Event normalization into an internal representation
-- 🔀 Event routing based on event family/type
-- 🧠 Deterministic business-rule evaluation
-- 🗄️ SQLite persistence using parameterized SQL
-- ♻️ Idempotency protection using `event_id`
-- 📊 Processing status and analytics tracking
-- 📝 Structured Python logging
-- 🚦 Structured error responses
-- 🧪 34 automated tests
-- 🔒 Safe local action simulation with no external side effects
+- 🔗 FastAPI webhook ingestion
+- 🛡️ Pydantic payload validation
+- 🔄 Event normalization
+- 🔀 Event-family routing
+- 🧠 Deterministic business rules
+- ♻️ `event_id`-based idempotency
+- 🗄️ SQLite persistence with parameterized SQL
+- 📊 Processing and analytics tracking
+- 📝 Structured logging and errors
+- 🔒 Safe local action simulation
+- 🧪 **34 automated tests**
 
----
+## 📡 Supported Automation
 
-## 📡 Supported Event Automation
-
-| Event Type | Example Automation |
+| Event | Example behavior |
 |---|---|
 | `lead.created` | Classify valid leads and prepare sales handling |
 | `lead.updated` | Re-evaluate lead information and priority |
-| `order.created` | Flag high-value orders at or above the configured threshold |
-| `payment.received` | Prepare payment recording and confirmation actions |
-| `support.ticket_created` | Route urgent/high-priority support tickets |
+| `order.created` | Flag high-value orders at the configured threshold |
+| `payment.received` | Prepare payment recording/confirmation actions |
+| `support.ticket_created` | Route urgent or high-priority tickets |
 | Unknown event | Complete safely with `no_action` |
 
-### Lead Priority Rules
-
-Sales-related terms such as `interested`, `pricing`, `quote`, `demo`, or `buy` can raise a lead's priority. Valid lead data with an email is classified for appropriate sales handling.
+Lead rules recognize terms such as `interested`, `pricing`, `quote`, `demo`, and `buy` when determining sales priority.
 
 ### Idempotency
 
-`event_id` is unique in SQLite. If the same webhook is received again, EventPulse records it as a duplicate and returns the original processing result without executing the actions again.
+Repeated delivery of the same `event_id` is detected through a SQLite uniqueness constraint. The existing processing result is reused instead of executing the automation again.
 
 ```text
-First request
-    ↓
+First event
+   ↓
 Process → Store result → completed
 
-Same event_id again
-    ↓
-Detect duplicate → Reuse original result → duplicate
+Same event_id
+   ↓
+Detect duplicate → Reuse result → duplicate
 ```
-
----
 
 ## 🌐 API Surface
 
@@ -147,73 +132,53 @@ Detect duplicate → Reuse original result → duplicate
 | `GET` | `/health` | Service health check |
 | `POST` | `/webhooks/events` | Receive and process an event |
 | `GET` | `/events` | List persisted events |
-| `GET` | `/events/{event_id}` | Retrieve a specific event |
-| `GET` | `/events/{event_id}/result` | Retrieve processing result |
-| `GET` | `/automations/rules` | Inspect configured automation rules |
-| `GET` | `/analytics/overview` | View processing/automation analytics |
+| `GET` | `/events/{event_id}` | Retrieve an event |
+| `GET` | `/events/{event_id}/result` | Retrieve its result |
+| `GET` | `/automations/rules` | Inspect configured rules |
+| `GET` | `/analytics/overview` | View processing analytics |
 
-Swagger/OpenAPI is available at `/docs` when the service is running locally.
-
----
+Swagger/OpenAPI is available at `/docs`.
 
 ## 🧪 Verification
 
-EventPulse includes **34 automated tests** covering:
+**34 automated tests** cover:
 
 - API behavior
 - Webhook processing
 - Event-family handling
-- Event normalization
+- Normalization
 - Rule evaluation
 - Idempotency
 - Validation
 - Failure handling
 - Processing behavior
 
-Run the complete suite with:
-
 ```powershell
 pytest
 ```
 
-The tests use temporary SQLite databases and do not require network access, Docker, n8n, Make, paid APIs, or external services.
-
----
+Tests use temporary SQLite databases and do not require network access, Docker, n8n, Make, paid APIs, or external services.
 
 ## 🚀 Quick Start
-
-### 1. Create a virtual environment
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-```
-
-### 2. Install dependencies
-
-```powershell
 python -m pip install -r requirements.txt
-```
-
-### 3. Start the API
-
-```powershell
 python -m src.main
 ```
 
-The service runs locally and exposes the FastAPI documentation at:
+API documentation:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-### Alternative Uvicorn command
+Alternative:
 
 ```powershell
 uvicorn src.main:app --reload
 ```
-
----
 
 ## 📦 Example Webhook
 
@@ -232,7 +197,7 @@ uvicorn src.main:app --reload
 }
 ```
 
-Example processing response:
+Example response:
 
 ```json
 {
@@ -249,59 +214,32 @@ Example processing response:
 }
 ```
 
----
-
 ## 📁 Project Structure
 
 ```text
 EventPulse/
 ├── data/
-│   └── .gitkeep
 ├── docs/
 │   ├── architecture/
-│   │   └── architecture.md
 │   └── setup/
-│       └── setup.md
 ├── src/
 │   ├── api/
-│   │   ├── routes.py
-│   │   └── schemas.py
 │   ├── core/
-│   │   ├── action_executor.py
-│   │   ├── event_processor.py
-│   │   ├── event_router.py
-│   │   └── rule_engine.py
 │   ├── database/
-│   │   ├── connection.py
-│   │   └── repository.py
 │   ├── models/
-│   │   └── events.py
 │   ├── services/
-│   │   ├── automation_service.py
-│   │   └── event_service.py
 │   ├── config.py
 │   └── main.py
 ├── tests/
-│   ├── test_api.py
-│   ├── test_event_families.py
-│   ├── test_event_processing.py
-│   ├── test_failures.py
-│   ├── test_idempotency.py
-│   ├── test_normalization.py
-│   ├── test_rules.py
-│   ├── test_validation.py
-│   └── test_webhooks.py
 ├── .gitignore
 ├── pytest.ini
 ├── requirements.txt
 └── README.md
 ```
 
----
-
 ## 🔐 Security & Production Considerations
 
-The demonstration implementation validates incoming payloads, uses parameterized SQL, avoids exposing stack traces through API responses, and performs no real external side effects.
+The local implementation validates payloads, uses parameterized SQL, avoids exposing stack traces through API responses, and performs no real external side effects.
 
 A production deployment should additionally consider:
 
@@ -311,16 +249,12 @@ A production deployment should additionally consider:
 - Rate limiting and access controls
 - Retry and dead-letter policies
 - Metrics and observability
-- Durable queues for asynchronous workloads
-- Real action integrations behind controlled interfaces
-
-These concerns are intentionally documented separately from the local demonstration so the core event-processing architecture remains deterministic and easy to test.
-
----
+- Durable queues
+- Controlled external integrations
 
 ## 💼 Portfolio Value
 
-EventPulse demonstrates the engineering patterns required for **event-driven business automation** rather than a simple webhook endpoint:
+EventPulse demonstrates **event-driven business automation** through:
 
 - Clean API boundaries
 - Normalized internal events
@@ -330,17 +264,11 @@ EventPulse demonstrates the engineering patterns required for **event-driven bus
 - Safe action execution
 - Structured errors and logging
 - Automated verification
-- Clear architecture and setup documentation
-
-It can serve as a foundation for integrations such as CRM events, e-commerce events, payment notifications, support workflows, and other webhook-driven business processes.
-
----
+- Architecture documentation
 
 ## 🛠️ Technology Stack
 
 `Python 3.11+` • `FastAPI` • `Pydantic 2` • `Uvicorn` • `SQLite` • `pytest` • `SQL` • `REST/Webhooks`
-
----
 
 ## 👨‍💻 Author
 
