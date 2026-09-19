@@ -18,15 +18,6 @@
 | 🟢 Status | **Complete / Portfolio Ready** |
 | 🧪 Verification | See the **Testing & Verification** section below |
 
-## 🔴 What Problem Does This Project Address?
-
-Teams receive task requests through communication channels, while converting those requests into reliable structured operations can be repetitive.
-
-## 🟢 What Does It Solve?
-
-TaskPilot separates request interpretation, tool selection, validated execution, persistence, and result reporting into a controlled assistant workflow.
-
----
 
 ## 🎯 The Business Problem
 
