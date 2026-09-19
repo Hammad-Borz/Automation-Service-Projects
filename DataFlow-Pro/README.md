@@ -1,29 +1,41 @@
-# DataFlow Pro - Business Data Processing Pipeline
+# 📊 DataFlow Pro — Business Data Processing Pipeline
 
-## Overview
+> **A production-minded local data pipeline that turns messy business transaction data into validated records, quality intelligence, KPIs, SQLite persistence, and shareable reports.**
 
-DataFlow Pro is a production-minded local pipeline for turning messy business transaction data into validated canonical records, quality intelligence, business KPIs, SQLite persistence, and shareable reports. It is designed to demonstrate the engineering behind reliable business data automation rather than merely reading a CSV file.
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white)
+![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-37-16A34A?logo=pytest)
 
-## Why This Project Exists
+---
 
-Businesses frequently receive order data from spreadsheets, exports, and operational systems with inconsistent capitalization, missing values, duplicate orders, malformed contact data, and unreliable totals. DataFlow Pro makes those problems visible and repeatable: invalid rows are explained, duplicates are handled deterministically, and business metrics are calculated from trusted canonical fields.
+## 🎯 What It Solves
 
-## Core Capabilities
+Business transaction exports commonly contain inconsistent capitalization, missing values, duplicate orders, malformed contact data, invalid numbers, and unreliable totals.
 
-- CSV ingestion with required-column checks
-- Pydantic-backed canonical business model
-- Type conversion and normalization
-- Missing-value and business-rule validation
-- Deterministic duplicate detection by `order_id`
-- Calculated totals and high-value classification
-- Quality score and error counts
-- Revenue, volume, status, region, product, and monthly analytics
-- SQLite persistence with parameterized SQL and upsert behavior
-- CSV, JSON, text, and Excel reports
-- FastAPI operational API
-- 37 isolated pytest tests
+**DataFlow Pro makes data quality explicit and repeatable** instead of silently passing bad records through the system.
 
-## Architecture
+```text
+Business CSV
+    ↓
+Ingestion
+    ↓
+Validation
+    ↓
+Cleaning & Normalization
+    ↓
+Duplicate Detection
+    ↓
+Canonical Transformation
+    ↓
+Quality Analysis + Analytics
+    ↓
+SQLite Persistence
+    ↓
+Reports + API
+```
+
+## 🏗️ Architecture
 
 ```mermaid
 flowchart LR
@@ -41,59 +53,80 @@ flowchart LR
     Pipeline --> Ingest
 ```
 
-## Processing Flow
+## ⚙️ Core Capabilities
 
-1. **Ingest** reads a CSV and checks that required columns exist.
-2. **Validate** records missing values, invalid numbers, email formats, statuses, and dates without discarding the source row prematurely.
-3. **Clean** trims whitespace, normalizes case, fills safe defaults such as USD, and parses dates.
-4. **Deduplicate** retains the first valid occurrence of each `order_id`; later occurrences are counted in quality reporting.
-5. **Transform** calculates `total_amount = quantity * unit_price`, derived month/year fields, and the configurable high-value flag.
-6. **Quality and analytics** produce structured reports from the processed frame.
+- 📥 CSV ingestion with required-column checks
+- 🧱 Pydantic-backed canonical business model
+- 🧹 Type conversion and normalization
+- 🛡️ Missing-value and business-rule validation
+- ♻️ Deterministic duplicate detection by `order_id`
+- 🧮 Calculated totals and high-value classification
+- 📈 Quality score and validation-error reporting
+- 📊 Revenue, volume, status, region, product, and monthly analytics
+- 🗄️ SQLite persistence with parameterized SQL and upsert behavior
+- 📑 CSV, JSON, text, and Excel reporting
+- 🌐 FastAPI operational API
+- 🧪 **37 isolated pytest tests**
+
+## 🔄 Processing Rules
+
+1. **Ingest** checks the required CSV columns.
+2. **Validate** records missing values, invalid numbers, emails, statuses, and dates.
+3. **Clean** trims whitespace, normalizes case, applies safe defaults such as USD, and parses dates.
+4. **Deduplicate** keeps the first valid occurrence of each `order_id`.
+5. **Transform** calculates `total_amount = quantity × unit_price` plus derived month/year fields.
+6. **Analyze** produces quality metrics and business analytics.
 7. **Persist** upserts canonical records and stores the processing run.
-8. **Report** writes clean CSV, quality JSON, analytics JSON, summary text, and an Excel workbook.
+8. **Report** writes CSV, JSON, TXT, and Excel outputs.
 
-## Data Quality
+### Data Quality
 
-The sample dataset intentionally includes duplicate orders, whitespace and capitalization issues, malformed emails, invalid quantities and prices, a malformed date, missing customer data, and inconsistent source totals. The quality score is calculated as:
+The sample dataset intentionally includes duplicate orders, formatting issues, malformed emails, invalid quantities/prices, a malformed date, missing customer data, and inconsistent source totals.
 
-`valid records / input records * 100`
+The quality score is:
 
-The source `total_amount` is never trusted; canonical totals are calculated from quantity and unit price. Duplicate policy is deterministic: the first valid row for an `order_id` is canonical, while subsequent valid rows are counted as duplicates rather than silently ignored.
+`valid records / input records × 100`
 
-## Business Metrics
+The source `total_amount` is not trusted; canonical totals are calculated from quantity and unit price.
 
-The pipeline calculates total revenue, order count, quantity, average order value, completed revenue, cancelled and refunded counts, high-value count, revenue by category/region/product, status counts, and monthly revenue.
+## 📈 Business Metrics
 
-## API
+The pipeline calculates:
 
-- `GET /health`
-- `POST /pipeline/run` with optional `{ "input_path": "data/input/sample_business_data.csv" }`
-- `GET /pipeline/runs`
-- `GET /pipeline/runs/{run_id}`
-- `GET /analytics/overview`
-- `GET /records?limit=100&offset=0`
-- `GET /records/{order_id}`
-- `GET /quality/latest`
+- Total revenue
+- Order count and quantity
+- Average order value
+- Completed revenue
+- Cancelled and refunded counts
+- High-value count
+- Revenue by category, region, and product
+- Status counts
+- Monthly revenue
 
-Input paths are restricted to the project `data` directory. API errors are structured and do not expose tracebacks.
+## 🌐 API
 
-## Project Structure
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `GET` | `/health` | Health check |
+| `POST` | `/pipeline/run` | Run the pipeline |
+| `GET` | `/pipeline/runs` | List processing runs |
+| `GET` | `/pipeline/runs/{run_id}` | Retrieve a run |
+| `GET` | `/analytics/overview` | View analytics |
+| `GET` | `/records` | List canonical records |
+| `GET` | `/records/{order_id}` | Retrieve an order |
+| `GET` | `/quality/latest` | View latest quality report |
 
-```text
-DataFlow-Pro/
-  data/input/sample_business_data.csv
-  data/output/.gitkeep
-  docs/architecture/architecture.md
-  docs/setup/setup.md
-  src/api/              API schemas and routes
-  src/core/             validation, cleaning, transformation, quality, analytics, pipeline
-  src/database/         SQLite connection and repository
-  src/models/           canonical business models
-  src/services/         ingestion, processing, quality, reporting
-  tests/                isolated unit, integration, and API tests
+Input paths are restricted to the project `data` directory, and API errors do not expose tracebacks.
+
+## 🧪 Verification
+
+```powershell
+pytest
 ```
 
-## Installation
+Tests use temporary project folders and SQLite databases. They do not depend on existing runtime files, network access, Docker, or external services.
+
+## 🚀 Quick Start
 
 ```powershell
 python -m venv .venv
@@ -101,9 +134,7 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-## Running
-
-Run the sample pipeline through Python:
+Run the pipeline:
 
 ```powershell
 python -c "from src.config import Settings; from src.core.pipeline import Pipeline; print(Pipeline(Settings.for_project()).run())"
@@ -115,41 +146,58 @@ Start the API:
 python -m src.main
 ```
 
-Swagger is available at `http://127.0.0.1:8000/docs`.
+Swagger:
 
-## Running Tests
-
-```powershell
-pytest
+```text
+http://127.0.0.1:8000/docs
 ```
 
-Tests use temporary project folders and SQLite databases. They do not depend on existing runtime files, network access, Docker, or external services.
-
-## Example
+## 📦 Example API Request
 
 ```powershell
 Invoke-RestMethod -Uri http://127.0.0.1:8000/pipeline/run -Method Post -ContentType 'application/json' -Body '{}'
 ```
 
-A successful result includes the run ID, input/valid/invalid/duplicate counts, and generated report paths. The sample currently processes 24 rows with 19 valid records, 5 invalid records, and 1 duplicate; those values are calculated dynamically.
+The sample currently processes **24 rows**, with **19 valid records, 5 invalid records, and 1 duplicate**; these values are calculated dynamically by the pipeline.
 
-## Generated Outputs
+## 📁 Project Structure
+
+```text
+DataFlow-Pro/
+├── data/
+│   ├── input/
+│   └── output/
+├── docs/
+│   ├── architecture/
+│   └── setup/
+├── src/
+│   ├── api/
+│   ├── core/
+│   ├── database/
+│   ├── models/
+│   └── services/
+├── tests/
+├── requirements.txt
+└── README.md
+```
+
+## 📤 Generated Outputs
 
 - `data/output/clean_business_data.csv`: canonical valid records
-- `data/output/data_quality_report.json`: quality counts, score, and validation errors
+- `data/output/data_quality_report.json`: quality counts and validation errors
 - `data/output/business_analytics.json`: calculated KPIs and groupings
 - `data/output/business_summary.txt`: readable operational summary
-- `data/output/business_report.xlsx`: Summary, Clean Data, Data Quality, Revenue by Category, and Revenue by Region sheets
+- `data/output/business_report.xlsx`: multi-sheet Excel report
 - `data/dataflow.sqlite3`: ignored SQLite operational store
 
-## Technology Stack
+## 🛠️ Technology Stack
 
-Python 3.11+, pandas, Pydantic 2, SQLite, FastAPI, Uvicorn, pytest, httpx, and openpyxl.
+`Python 3.11+` • `pandas` • `Pydantic 2` • `FastAPI` • `Uvicorn` • `SQLite` • `pytest` • `httpx` • `openpyxl`
 
-## Production Considerations
+## 🔐 Production Considerations
 
-The local implementation is intentionally self-contained. A production deployment could add object storage for raw files, authenticated API access, scheduled jobs or a queue, retries and dead-letter handling, metrics and alerting, retention policies, schema versioning, a managed database, and stronger data lineage. Those are extensions rather than hidden requirements of this local portfolio project.
+The local implementation is intentionally self-contained. Production extensions could add object storage, authenticated API access, scheduled jobs or queues, retries/dead-letter handling, metrics and alerting, retention policies, schema versioning, a managed database, and stronger data lineage.
 
-## Portfolio Value
+## 💼 Portfolio Value
 
-DataFlow Pro demonstrates practical data engineering and business automation skills: modular pipeline design, defensive validation, explainable data-quality handling, deterministic transformations, safe persistence, reporting, API operations, and isolated automated tests.
+DataFlow Pro demonstrates practical **data engineering + business automation** skills through modular pipeline design, defensive validation, explainable data-quality handling, deterministic transformations, safe persistence, reporting, API operations, and isolated tests.
