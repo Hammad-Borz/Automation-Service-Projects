@@ -7,6 +7,29 @@
 ![Tests](https://img.shields.io/badge/Tests-17-16A34A)
 ![Status](https://img.shields.io/badge/Status-Complete-16A34A)
 
+
+---
+
+## 🎯 Portfolio Snapshot
+
+| | Details |
+|---|---|
+| 💼 Service Focus | **🗄️ SQL & Database Automation** |
+| 🟢 Status | **Complete / Portfolio Ready** |
+| 🧪 Verification | **17 automated tests • SQLite • SQL analytics • UPSERT** |
+
+## 🔴 What Problem Does This Project Address?
+
+Manual spreadsheet-to-database workflows can create duplicate records, inconsistent calculations, and weak repeatability.
+
+## 🟢 What Does It Solve?
+
+DataOps Automator validates and transforms sales data, performs SQLite UPSERT operations, runs SQL analytics, and produces repeatable business reports.
+
+## 🧭 Project Position
+
+This project is presented as a **service-specific implementation** inside the Automation Service Projects portfolio, with the technical architecture, setup, workflow, verification, and extension boundaries documented below.
+
 ---
 
 # 🎯 The Business Problem
