@@ -4,6 +4,25 @@
 
 ConnectHub demonstrates a practical API integration pipeline that retrieves records from a source REST API, validates them individually, transforms them into a destination schema, and sends valid records to another REST API. Individual failures are handled without unnecessarily stopping the entire batch.
 
+
+---
+
+## 🧭 Portfolio Snapshot
+
+| | Details |
+|---|---|
+| 🎯 Service Focus | **API Integration** |
+| 🟢 Status | **Complete / Portfolio Ready** |
+| 🧪 Verification | See the **Testing & Verification** section below |
+
+## 🔴 What Problem Does This Project Address?
+
+Business systems often need to exchange records through different REST APIs and schemas while individual records may fail.
+
+## 🟢 What Does It Solve?
+
+ConnectHub provides a controlled fetch → validate → transform → send workflow with record-level failure handling and execution metrics.
+
 ---
 
 ## 🚀 Project Highlights
