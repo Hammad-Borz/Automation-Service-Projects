@@ -7,6 +7,29 @@
 ![Reporting](https://img.shields.io/badge/Focus-Business_Reporting-7C3AED)
 ![Status](https://img.shields.io/badge/Status-Complete-16A34A)
 
+
+---
+
+## 🎯 Portfolio Snapshot
+
+| | Details |
+|---|---|
+| 💼 Service Focus | **📊 Automated Business Reporting** |
+| 🟢 Status | **Complete / Portfolio Ready** |
+| 🧪 Verification | **12 automated tests • Local demo dataset • Excel + CSV + text reporting** |
+
+## 🔴 What Problem Does This Project Address?
+
+Recurring KPI calculations and report preparation can require repetitive spreadsheet work and produce inconsistent reporting processes.
+
+## 🟢 What Does It Solve?
+
+ReportFlow turns business data into validated KPIs, analytical summaries, Excel workbooks, CSV exports, charts, and executive reports through one repeatable workflow.
+
+## 🧭 Project Position
+
+This project is presented as a **service-specific implementation** inside the Automation Service Projects portfolio, with the technical architecture, setup, workflow, verification, and extension boundaries documented below.
+
 ---
 
 ## 🎯 The Business Problem
