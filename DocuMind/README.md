@@ -7,6 +7,25 @@
 ![Tests](https://img.shields.io/badge/Tests-14%20Passed-brightgreen)
 ![Architecture](https://img.shields.io/badge/Architecture-Modular-yellow)
 
+
+---
+
+## 🧭 Portfolio Snapshot
+
+| | Details |
+|---|---|
+| 🎯 Service Focus | **AI Document Processing** |
+| 🟢 Status | **Complete / Portfolio Ready** |
+| 🧪 Verification | See the **Testing & Verification** section below |
+
+## 🔴 What Problem Does This Project Address?
+
+Business documents contain useful information, but manually extracting and structuring that information is repetitive; AI output also requires validation.
+
+## 🟢 What Does It Solve?
+
+DocuMind combines document extraction, AI analysis, Pydantic validation, JSON export, reporting, and logging into one controlled workflow.
+
 ---
 
 ## ✨ Overview
