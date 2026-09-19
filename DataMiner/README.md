@@ -17,15 +17,6 @@
 | 🟢 Status | **Complete / Portfolio Ready** |
 | 🧪 Verification | See the **Testing & Verification** section below |
 
-## 🔴 What Problem Does This Project Address?
-
-Useful business information can be embedded in HTML while downstream workflows need clean, structured datasets.
-
-## 🟢 What Does It Solve?
-
-DataMiner extracts, validates, cleans, exports, and reports on structured HTML data through a reproducible pipeline.
-
----
 
 ## 🎯 The Business Problem
 
