@@ -15,15 +15,6 @@ ConnectHub demonstrates a practical API integration pipeline that retrieves reco
 | 🟢 Status | **Complete / Portfolio Ready** |
 | 🧪 Verification | See the **Testing & Verification** section below |
 
-## 🔴 What Problem Does This Project Address?
-
-Business systems often need to exchange records through different REST APIs and schemas while individual records may fail.
-
-## 🟢 What Does It Solve?
-
-ConnectHub provides a controlled fetch → validate → transform → send workflow with record-level failure handling and execution metrics.
-
----
 
 ## 🚀 Project Highlights
 
