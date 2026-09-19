@@ -1,45 +1,44 @@
-# AutoServe API — Automation Backend Platform
+# ⚙️ AutoServe API — Automation Backend Platform
 
-## 1. Overview
+> **A reusable FastAPI automation backend for deterministic job execution, state management, idempotency, retries, auditability, metrics, and SQLite persistence.**
 
-AutoServe API is a reusable FastAPI automation backend designed for local, deterministic automation workflows. It demonstrates a professional backend architecture for creating jobs, validating requests, storing job state in SQLite, executing automation actions, tracking runs, recording audit events, enforcing idempotency, handling retries, and exposing metrics through a clean REST API.
+![Python](https://img.shields.io/badge/Python-Automation-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi)
+![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite)
 
-The project is intentionally local-only. All automation actions are deterministic Python functions running inside the application itself. They do not send real emails, call cloud APIs, or require credentials.
+---
 
-## 2. Why This Project Exists
+## 🎯 What It Solves
 
-This project exists to demonstrate production-oriented backend engineering for automation systems without unnecessary infrastructure. The focus is on:
+Automation backends need more than a function that performs an action. They need controlled job lifecycles, duplicate protection, failure handling, retries, audit history, persistence, and operational visibility.
 
-- clean service-layer architecture
-- explicit job lifecycle and state machine rules
-- idempotent request handling
-- retry control and failure recording
-- auditability and metrics
-- local SQLite persistence
-- FastAPI + OpenAPI documentation
+**AutoServe API packages those concerns into a local, deterministic backend.**
 
-## 3. Key Features
+```text
+Client
+  ↓
+FastAPI
+  ↓
+Pydantic Validation
+  ↓
+Job Manager
+  ↓
+State Machine
+  ↓
+Execution Engine
+  ↓
+Action Registry
+  ↓
+SQLite
+  ├── Jobs
+  ├── Runs
+  ├── Results
+  └── Audit Logs
+```
 
-- FastAPI REST API with automatic OpenAPI and Swagger docs
-- SQLite-backed repository layer with parameterized SQL
-- automation job state machine with controlled transitions
-- request idempotency using unique request IDs
-- local action registry for automation execution
-- run tracking and action result persistence
-- retry support with configurable retry limits
-- audit log generation for important lifecycle events
-- aggregate metrics calculations from the database
-- isolated test database configuration
+The implementation is intentionally local-only: actions are deterministic Python functions and do not send real emails, call cloud APIs, or require credentials.
 
-## 4. Architecture
-
-The backend follows a simple layered design:
-
-- API layer: FastAPI routes and request/response schemas
-- Service layer: job execution, run management, audit and metrics logic
-- Core layer: state machine, action registry, idempotency, retry logic
-- Repository layer: SQLite persistence and queries
-- Data layer: SQLite database with automation jobs, runs, results, and audit logs
+## 🏗️ Architecture
 
 ```mermaid
 graph TD
@@ -54,109 +53,86 @@ graph TD
     E --> J[Metrics Service]
 ```
 
-## 5. Automation Execution Flow
+| Layer | Responsibility |
+|---|---|
+| API | FastAPI routes and schemas |
+| Service | Job execution, runs, audit, and metrics |
+| Core | State machine, action registry, idempotency, retries |
+| Repository | SQLite persistence and queries |
+| Data | Jobs, runs, results, and audit records |
 
-The execution lifecycle is intentionally explicit:
+## ⚙️ Key Features
 
-1. Client submits a job creation request.
-2. Request validation checks automation type, payload, and request ID.
-3. The job is stored in SQLite with a `pending` status.
-4. A separate execution request triggers the execution engine.
-5. The state machine validates transitions.
+- 🌐 FastAPI REST API with OpenAPI/Swagger
+- 🗄️ SQLite repository with parameterized SQL
+- 🔄 Explicit automation job state machine
+- ♻️ Request-ID idempotency
+- ▶️ Local action registry and execution engine
+- 🧪 Run tracking and action-result persistence
+- 🔁 Controlled retries with configurable limits
+- 📝 Audit logging for lifecycle events
+- 📊 Database-backed aggregate metrics
+- 🧱 Isolated test database configuration
+- 🔒 No external side effects
+
+## 🔄 Execution Lifecycle
+
+1. Client submits a job request.
+2. Validation checks the automation type, payload, and request ID.
+3. The job is stored with `pending` status.
+4. An execution request starts the job.
+5. The state machine validates the transition.
 6. The action registry resolves the registered function.
-7. The function executes locally and returns a deterministic result.
-8. The result is stored as an action result.
-9. The job and run are marked complete or failed.
-10. The audit service writes event records.
+7. The action executes locally and returns a deterministic result.
+8. The result is persisted.
+9. The job/run becomes completed or failed.
+10. Audit events are recorded.
 11. Metrics are calculated from the database.
 
-## 6. Supported Automation Actions
+## 🧩 Supported Automation Actions
 
-These actions are local deterministic simulations and never call external services:
+| Action | Purpose |
+|---|---|
+| `send_notification` | Simulate notification delivery |
+| `create_task` | Create a local task result |
+| `update_customer_status` | Update a customer-status result |
+| `generate_summary` | Generate a deterministic text summary |
 
-- `send_notification`
-- `create_task`
-- `update_customer_status`
-- `generate_summary`
+These actions are local simulations and never call external services.
 
-Example payloads:
+## 🌐 API Surface
 
-```json
-{
-  "recipient": "customer@example.com",
-  "message": "Your request has been processed."
-}
-```
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `GET` | `/health` | Health check |
+| `POST` | `/jobs` | Create a job |
+| `GET` | `/jobs` | List jobs |
+| `GET` | `/jobs/{job_id}` | Retrieve a job |
+| `POST` | `/jobs/{job_id}/execute` | Execute a job |
+| `POST` | `/jobs/{job_id}/retry` | Retry a failed job |
+| `GET` | `/automations` | List supported automations |
+| `GET` | `/runs` | List runs |
+| `GET` | `/runs/{run_id}` | Retrieve a run |
+| `GET` | `/metrics/summary` | View aggregate metrics |
 
-```json
-{
-  "title": "Follow up with customer",
-  "priority": "high"
-}
-```
+## ♻️ Idempotency & Retry
 
-```json
-{
-  "customer_id": "CUST-001",
-  "status": "active"
-}
-```
+### Idempotency
 
-```json
-{
-  "text": "Business automation project completed successfully."
-}
-```
+Every job request contains a unique `request_id`. Re-submitting the same request returns the existing job instead of creating a duplicate.
 
-## 7. API Endpoints
+### Retry Control
 
-- `GET /health`
-- `POST /jobs`
-- `GET /jobs`
-- `GET /jobs/{job_id}`
-- `POST /jobs/{job_id}/execute`
-- `POST /jobs/{job_id}/retry`
-- `GET /automations`
-- `GET /runs`
-- `GET /runs/{run_id}`
-- `GET /metrics/summary`
+- Failed jobs can be retried.
+- Completed jobs cannot be retried.
+- Each retry creates a new run.
+- Retry count is tracked.
+- A configured maximum retry count is enforced.
+- Retry failures remain recorded.
 
-## 8. Database Design
+## 📝 Auditability
 
-The project uses SQLite with these core tables:
-
-- `automation_jobs`
-- `automation_runs`
-- `action_results`
-- `audit_logs`
-
-Important design details:
-
-- `request_id` is unique to support idempotency.
-- job status values are controlled to avoid free-form transitions.
-- JSON is used for payload/result/metadata serialization.
-- parameterized SQL is used throughout the repository layer.
-
-## 9. Idempotency
-
-Each job request includes a `request_id`.
-
-If the same request is submitted again, the API returns the existing job instead of creating a duplicate. This is supported by a uniqueness constraint on `request_id` and a repository-level lookup before insertion.
-
-## 10. Retry System
-
-Retries are explicit and controlled.
-
-- failed jobs can be retried
-- completed jobs cannot be retried
-- each retry creates a new run
-- retry count increments on a successful retry attempt
-- a configured maximum retry count is enforced
-- retry failures are recorded as failed runs
-
-## 11. Audit Logging
-
-The system records operational events for traceability, including:
+Important lifecycle events are stored in `audit_logs`, including:
 
 - `JOB_CREATED`
 - `JOB_STARTED`
@@ -166,186 +142,103 @@ The system records operational events for traceability, including:
 - `ACTION_EXECUTED`
 - `ACTION_FAILED`
 
-These events are stored in the `audit_logs` table with structured metadata.
+## 📊 Metrics
 
-## 12. Metrics
+The metrics service calculates values dynamically from the database:
 
-The metrics service calculates useful aggregate values dynamically from the database, including:
+- Total jobs
+- Pending jobs
+- Running jobs
+- Completed jobs
+- Failed jobs
+- Total runs
+- Successful runs
+- Failed runs
+- Success rate
 
-- total jobs
-- pending jobs
-- running jobs
-- completed jobs
-- failed jobs
-- total runs
-- successful runs
-- failed runs
-- success rate
+## 🗃️ Database Design
 
-## 13. Project Structure
+Core SQLite tables:
 
 ```text
-AutoServe-API/
-├── .gitignore
-├── README.md
-├── requirements.txt
-├── pytest.ini
-├── data/
-│   └── .gitkeep
-├── docs/
-│   ├── architecture/
-│   │   └── architecture.md
-│   └── setup/
-│       └── setup.md
-├── src/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── main.py
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── routes.py
-│   │   └── schemas.py
-│   ├── core/
-│   │   ├── __init__.py
-│   │   ├── action_registry.py
-│   │   ├── execution_engine.py
-│   │   ├── idempotency.py
-│   │   ├── job_manager.py
-│   │   ├── retry_manager.py
-│   │   └── state_machine.py
-│   ├── database/
-│   │   ├── __init__.py
-│   │   ├── connection.py
-│   │   └── repository.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── automation.py
-│   └── services/
-│       ├── __init__.py
-│       ├── audit_service.py
-│       ├── automation_service.py
-│       ├── metrics_service.py
-│       └── run_service.py
-└── tests/
-    ├── __init__.py
-    ├── conftest.py
-    ├── test_health.py
-    ├── test_schemas.py
-    ├── test_state_machine.py
-    ├── test_action_registry.py
-    ├── test_job_creation.py
-    ├── test_job_execution.py
-    ├── test_idempotency.py
-    ├── test_retry.py
-    ├── test_repository.py
-    ├── test_audit.py
-    ├── test_metrics.py
-    ├── test_api_jobs.py
-    ├── test_api_runs.py
-    └── test_error_handling.py
+automation_jobs
+automation_runs
+action_results
+audit_logs
 ```
 
-## 14. Installation
+Important design choices include unique `request_id` values for idempotency, controlled job status transitions, JSON serialization for payload/result/metadata, and parameterized SQL.
 
-```bash
-python -m venv .venv
-```
+## 🧪 Verification
 
-Windows activation:
+Run the complete test suite with:
 
 ```powershell
-.venv\Scripts\activate
+pytest
 ```
 
-Install dependencies:
+The project includes isolated tests for health, schemas, state transitions, action registration, job creation/execution, idempotency, retries, repositories, audit logging, metrics, API behavior, and error handling.
 
-```bash
-pip install -r requirements.txt
-```
+## 🚀 Quick Start
 
-## 15. Running the API
-
-From the project root:
-
-```bash
+```powershell
+python -m venv .venv
+.\.venv\Scripts\activate
+python -m pip install -r requirements.txt
 python -m src.main
 ```
 
-The application starts on:
+Application:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-## 16. Running Tests
+Swagger/OpenAPI:
 
-```bash
-pytest
+```text
+http://127.0.0.1:8000/docs
+http://127.0.0.1:8000/redoc
+http://127.0.0.1:8000/openapi.json
 ```
 
-## 17. Swagger / OpenAPI
+## 📁 Project Structure
 
-FastAPI exposes automatic API documentation at:
-
-- http://127.0.0.1:8000/docs
-- http://127.0.0.1:8000/redoc
-- http://127.0.0.1:8000/openapi.json
-
-## 18. Example API Workflow
-
-### Create a job
-
-```http
-POST /jobs
+```text
+AutoServe-API/
+├── data/
+├── docs/
+│   ├── architecture/
+│   └── setup/
+├── src/
+│   ├── api/
+│   ├── core/
+│   ├── database/
+│   ├── models/
+│   ├── services/
+│   ├── config.py
+│   └── main.py
+├── tests/
+├── .gitignore
+├── pytest.ini
+├── requirements.txt
+└── README.md
 ```
 
-```json
-{
-  "automation_type": "create_task",
-  "payload": {
-    "title": "Follow up with customer",
-    "priority": "high"
-  },
-  "request_id": "REQ-001"
-}
-```
-
-### Execute the job
-
-```http
-POST /jobs/{job_id}/execute
-```
-
-This resolves the `create_task` action, executes it locally, stores the run, and moves the job to `completed` when successful.
-
-### Failed execution and retry
-
-A failed job can be retried with:
-
-```http
-POST /jobs/{job_id}/retry
-```
-
-This creates a fresh run and updates the retry count, while preserving the audit trail.
-
-## 19. Engineering Practices
+## 🛠️ Engineering Practices
 
 - PEP 8 naming and formatting
-- explicit state validation instead of loose string checks
-- typed models and function signatures
-- small, focused service and repository responsibilities
-- local-only deterministic action execution
-- no unsafe SQL interpolation
-- no credentials or cloud dependencies
+- Typed models and function signatures
+- Small, focused service/repository responsibilities
+- Explicit state validation
+- Local deterministic execution
+- Parameterized SQL
+- No credentials or cloud dependencies
 
-## 20. Future Improvements
+## 💼 Portfolio Value
 
-Potential follow-ups for a later version include:
+AutoServe API demonstrates backend engineering patterns for **automation platforms**, including REST API design, lifecycle management, idempotency, retry control, auditability, persistence, metrics, and deterministic execution.
 
-- richer run history and event filtering
-- job queue semantics for background execution
-- plugin architecture for more automation types
-- better observability dashboards
-- richer retry policies with backoff strategies
+## 🔮 Future Extensions
 
-These enhancements remain intentionally out of scope for this repository to keep the project focused and clean.
+Potential later extensions include richer run filtering, queue/background execution, plugin-based automation types, observability dashboards, and more advanced retry/backoff policies.
