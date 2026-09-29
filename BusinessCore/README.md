@@ -438,52 +438,6 @@ The application exposes:
 
 ---
 
-## 14. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-### Planned Visual Evidence
-
-```text
-[ Screenshot area intentionally reserved ]
-
-• Swagger / OpenAPI interface
-• End-to-end workflow execution
-• Database / persisted workflow evidence
-• Analytics summary
-• Generated reports
-```
-
----
-
-## 15. 🎥 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-### Planned Demonstration
-
-```text
-[ Demo area intentionally reserved ]
-
-Request
-   ↓
-Validation
-   ↓
-Customer
-   ↓
-Order
-   ↓
-Business Rules
-   ↓
-Tasks / Notifications
-   ↓
-Persistence
-   ↓
-Analytics / Report
-```
-
----
-
 ## 16. 📊 Results / Benefits
 
 BusinessCore demonstrates how multiple business-automation capabilities can operate as one coordinated system.
