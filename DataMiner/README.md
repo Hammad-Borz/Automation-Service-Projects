@@ -328,52 +328,6 @@ Processing report
 
 ---
 
-## 14. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-Planned portfolio evidence:
-
-- Local HTML source
-- Terminal running the source server
-- DataMiner execution output
-- Extracted/cleaned CSV
-- JSON export
-- Processing report
-- Log output
-
----
-
-## 15. 🎥 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-Planned demonstration:
-
-~~~text
-Start local HTML server
-        ↓
-Configure SOURCE_URL
-        ↓
-Run DataMiner
-        ↓
-Fetch HTML
-        ↓
-Extract product cards
-        ↓
-Validate records
-        ↓
-Clean valid records
-        ↓
-Export CSV + JSON
-        ↓
-Generate processing report
-~~~
-
-The final demo should show the complete workflow and the intentional cleaning failure being isolated without stopping successful records.
-
----
-
 ## 16. 📊 Results / Benefits
 
 DataMiner demonstrates:
