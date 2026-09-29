@@ -368,24 +368,6 @@ input/sales_data.csv
           logs/autoflow.log
 ```
 
----
-
-## 14. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-<br><br><br>
-
----
-
-## 15. 🎬 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-<br><br><br>
-
----
-
 ## 16. 📈 Results / Benefits
 
 AutoFlow provides a repeatable workflow for the current file-processing scope:
