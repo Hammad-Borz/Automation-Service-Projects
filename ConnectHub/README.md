@@ -398,49 +398,6 @@ Execution Summary
 
 ---
 
-## 14. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-### Planned Visual Evidence
-
-```text
-[ Screenshot area intentionally reserved ]
-
-• Source API response
-• ConnectHub execution output
-• Validation results
-• Destination payload
-• Execution summary
-• Log output
-```
-
----
-
-## 15. 🎥 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-### Planned Demonstration
-
-```text
-Source API
-    ↓
-Fetch
-    ↓
-Validate
-    ├── Invalid → Log & Skip
-    └── Valid
-          ↓
-      Transform
-          ↓
-   Destination API
-          ↓
- Execution Summary
-```
-
----
-
 ## 16. 📊 Results / Benefits
 
 ConnectHub demonstrates a reusable API-integration pattern suitable for cross-system data movement.
