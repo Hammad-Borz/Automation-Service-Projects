@@ -349,50 +349,6 @@ The test suite uses mocked boundaries where appropriate, so normal testing does 
 
 ---
 
-## 14. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-Planned portfolio evidence:
-
-- 📄 Sample PDF/DOCX input
-- 🖥️ CLI processing command
-- 🤖 Structured AI result
-- 🛡️ Validated JSON output
-- 📄 Generated processing report
-- 📝 Runtime log
-- 📁 Final output directory
-
----
-
-## 15. 🎥 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-Planned demonstration:
-
-~~~text
-Open supported document
-        ↓
-Run DocuMind
-        ↓
-Extract text
-        ↓
-Send structured AI request
-        ↓
-Validate AI JSON
-        ↓
-Export JSON
-        ↓
-Generate report
-        ↓
-Show logs + final outputs
-~~~
-
-The demonstration should use a safe test document and avoid exposing any API credentials.
-
----
-
 ## 16. 📊 Results / Benefits
 
 DocuMind demonstrates:
