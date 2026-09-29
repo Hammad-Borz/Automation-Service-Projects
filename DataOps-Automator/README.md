@@ -336,54 +336,6 @@ top_products.csv
 business_report.txt
 ~~~
 
----
-
-## 14. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-Planned portfolio evidence:
-
-- Terminal workflow execution
-- Input sales CSV
-- SQLite database/table
-- UPSERT evidence
-- SQL analytics output
-- Generated CSV reports
-- Executive business report
-- Application logs
-
----
-
-## 15. 🎥 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-Planned demonstration:
-
-~~~text
-Sales CSV
-   ↓
-Validation
-   ↓
-Transformation
-   ↓
-SQLite Schema
-   ↓
-UPSERT
-   ↓
-SQL Analytics
-   ↓
-6 CSV Reports
-   ↓
-Executive Report
-   ↓
-Completed Automation
-~~~
-
-The final demo should show the complete workflow from raw sales data through database persistence and business reporting.
-
----
 
 ## 16. 📊 Results / Benefits
 
