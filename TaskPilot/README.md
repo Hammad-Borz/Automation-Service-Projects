@@ -437,57 +437,7 @@ Report generated: reports/task_report_YYYYMMDD_HHMMSS.txt
 | Request Pattern | Tool |
 |---|---|
 | Create/add task | `create_task` |
-| List/show tasks | `list_tasks` |
-| Update task | `update_task` |
-| Complete task | `complete_task` |
-| Delete task | `delete_task` |
-| Task summary | `task_summary` |
-
-Task IDs are generated dynamically, so example IDs are placeholders rather than fixed values.
-
----
-
-## 14. Screenshots
-
-> 🟡 **Reserved area — screenshots will be added later.**
-
-Planned visual proof:
-
-- 💬 Natural-language task request.
-- 🤖 Assistant response.
-- 🔧 Tool selection/execution.
-- 📋 Created task structure.
-- 💾 JSON persistence.
-- 📊 Task summary.
-- 📝 Generated report.
-- 🧪 Test execution.
-- 🤖 Optional OpenAI tool-calling flow where appropriate.
-
----
-
-## 15. Demo Video / GIF
-
-> 🟡 **Reserved area — demo video/GIF will be added later.**
-
-### Planned demonstration
-
-```text
-Start TaskPilot
-      ↓
-Create tasks using natural language
-      ↓
-Route requests to tools
-      ↓
-Persist tasks
-      ↓
-List / update / complete tasks
-      ↓
-Generate summary
-      ↓
-Generate report
-      ↓
-Show validated structured results
-```
+| List/show tasks | `list_ta
 
 A separate segment can demonstrate optional OpenAI tool calling while keeping the same Python execution layer.
 
