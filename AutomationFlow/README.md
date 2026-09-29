@@ -418,48 +418,6 @@ The exact score is determined by the processor's configured keyword and adjustme
 
 ---
 
-## 14. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-### Planned Visual Evidence
-
-```text
-[ Screenshot area reserved ]
-
-• n8n workflow canvas
-• Make scenario
-• FastAPI /docs
-• Example webhook execution
-• Structured automation response
-```
-
----
-
-## 15. 🎥 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-### Planned Demonstration
-
-```text
-[ Demo area reserved ]
-
-Lead Input
-   ↓
-Webhook
-   ↓
-Validation
-   ↓
-Classification
-   ↓
-Priority
-   ↓
-Automation Result
-```
-
----
-
 ## 16. 📊 Results / Benefits
 
 AutomationFlow demonstrates a reusable automation pattern rather than a single hard-coded business interface.
