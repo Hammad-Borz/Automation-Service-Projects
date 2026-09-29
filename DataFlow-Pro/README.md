@@ -328,54 +328,6 @@ The repository's sample dataset currently produces **24 input rows, 19 valid rec
 
 ---
 
-## 14. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-Planned portfolio evidence:
-
-- Swagger/OpenAPI interface
-- Pipeline execution response
-- Data-quality report
-- Canonical SQLite records
-- Business analytics output
-- Generated Excel report
-- Input → validation → transformation evidence
-
----
-
-## 15. 🎥 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-Planned demonstration:
-
-~~~text
-CSV Input
-   ↓
-Ingestion
-   ↓
-Cleaning
-   ↓
-Validation
-   ↓
-Duplicate Detection
-   ↓
-Canonical Transformation
-   ↓
-Quality + Analytics
-   ↓
-SQLite Persistence
-   ↓
-Reports
-   ↓
-FastAPI Visibility
-~~~
-
-The final demo should show the complete workflow from raw business data to validated records, analytics, persistence, and generated reports.
-
----
-
 ## 16. 📊 Results / Benefits
 
 DataFlow Pro provides:
