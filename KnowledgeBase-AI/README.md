@@ -478,58 +478,6 @@ This demonstrates the intended abstention behavior when the indexed documents do
 
 ---
 
-## 17. 📸 Screenshots
-
-> **Reserved area — screenshots will be added later.**
-
-Planned portfolio evidence:
-
-- 📚 Indexed document list
-- 🔎 Retrieval results
-- 🧠 Grounded answer
-- 📌 Source citations
-- 🚫 Unsupported-question abstention
-- 💬 Conversation follow-up
-- 🗑️ Document removal
-- 🧹 Knowledge-base clearing
-- 🧪 Test results
-
----
-
-## 18. 🎥 Demo Video / GIF
-
-> **Reserved area — demo video/GIF will be added later.**
-
-Planned demonstration:
-
-```text
-Launch KnowledgeBase AI
-        ↓
-Index PDF + DOCX
-        ↓
-Show knowledge-base documents
-        ↓
-Ask grounded question
-        ↓
-Show hybrid retrieval
-        ↓
-Show citation
-        ↓
-Ask unsupported question
-        ↓
-Show abstention + Sources: none
-        ↓
-Ask follow-up question
-        ↓
-Remove document
-        ↓
-Clear knowledge base
-```
-
-The demonstration will clearly distinguish offline demo behavior from OpenAI-backed runtime behavior.
-
----
-
 ## 19. 📊 Results, Benefits & Verification
 
 ### Verified Project Results
