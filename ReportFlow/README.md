@@ -429,54 +429,6 @@ For the included dataset:
 
 ---
 
-## 14. Screenshots
-
-> 🟡 **Reserved area — screenshots will be added later.**
-
-Planned visual proof:
-
-- 📥 Input dataset.
-- 🛡️ Validation / processing flow.
-- 📊 KPI output.
-- 📗 Excel Executive Summary.
-- 📈 Product revenue chart.
-- 📈 Monthly revenue chart.
-- 📄 Generated CSV reports.
-- 📝 Executive text report.
-- 🧪 Test execution.
-
----
-
-## 15. Demo Video / GIF
-
-> 🟡 **Reserved area — demo video/GIF will be added later.**
-
-### Planned demonstration
-
-```text
-Open ReportFlow
-      ↓
-Load sales_data.csv
-      ↓
-Validate input
-      ↓
-Clean & enrich data
-      ↓
-Calculate KPIs
-      ↓
-Generate Excel workbook
-      ↓
-Generate CSV exports
-      ↓
-Generate executive report
-      ↓
-Open final outputs
-```
-
-The visual demo will focus on the complete transformation from source business data to finished reporting outputs.
-
----
-
 ## 16. Results / Benefits
 
 ### 🧪 Current Verification
